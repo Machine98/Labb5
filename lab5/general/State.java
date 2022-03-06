@@ -29,7 +29,7 @@ public class State extends Observable {
         timePassed = 0;
         lastEventTime = 0;
 
-        storeState = new StoreSate(maxCustomers, registers, closingTime)
+        storeState = new StoreSate(maxCustomers, registers, closingTime);
 
     }
 

@@ -23,9 +23,10 @@ public class SimMain {
 
 
         State state = new State(seed, maxCustomers, registers, closingTime, minPayTime, maxPayTime, minPickTime, maxPickTime, lambda);
-        StoreView view = new View(state, state.getStore());
+        View view = new StoreView(state, state.getStore());
 
         Simulator simulator = new Simulator(state, view);
+        simulator.run();
 
 
     }
