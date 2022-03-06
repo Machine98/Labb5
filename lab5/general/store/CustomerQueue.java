@@ -1,4 +1,11 @@
 package lab5.general.store;
 
-public class CustomerQueue {
+import lab5.general.FIFO;
+
+public class CustomerQueue  {
+
+    public CustomerQueue{
+        FIFO customerQueue = new FIFO;
+    }
+
 }
