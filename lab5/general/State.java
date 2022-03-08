@@ -1,6 +1,6 @@
 package lab5.general;
 
-import lab5.general.store.StoreSate;
+import lab5.general.store.StoreState;
 
 import java.util.Observable;
 
