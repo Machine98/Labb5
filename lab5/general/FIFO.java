@@ -6,11 +6,12 @@ public class FIFO {
 
     private Node first;
     private Node last;
+    private Node node;
     private int size = 0;
     private int maxSize = 0;
 
     public void add(Object item) {
-        Node node = new Node(item);
+        node = new Node(item);
         if (first == null) {
             first = node;
             last = node;
@@ -76,44 +77,61 @@ public class FIFO {
         Node node = first;
         String queue = "Queue: ";
         while (node != null) {
-            queue = queue +"(" + node.getValue() + ") ";
+            queue = queue + "(" + node.getValue() + ") ";
             node = node.getNext();
         }
         return queue;
     }
-}
 
-class Node {
-
-    Object value;
-    private Node next;
-
-    public Node(Object x) {
-        this.value = x;
-    }
-
-    public Object getValue() {
-        return value;
-    }
-
-    public void setNext(Node node) {
-        next = node;
-    }
-
-    public boolean equals(Object obj) {
-        if (obj instanceof Node input) {
-            if (this.value == null) {
-                if(input.value == null){
-                    return true;
-                }
-                return false;
+    public Node getIndex(int index){
+        if (index >= size || index < 0){
+            throw new IndexOutOfBoundsException();
+        }else {
+            Node iterator = node.getNext();
+            for(int i = 0; i < index; i++){
+                iterator = iterator.getNext();
             }
-            return this.value.equals(input.value);
+            return iterator;
         }
-        return false;
+    }
+    public Object getIndexValue(int index){
+        return getIndex(index).getValue();
     }
 
-    public Node getNext() {
-        return this.next;
+
+    public class Node {
+
+        Object value;
+        private Node next;
+
+        public Node(Object x) {
+            this.value = x;
+        }
+
+        public Object getValue() {
+            return value;
+        }
+
+        public void setNext(Node node) {
+            next = node;
+        }
+
+        public boolean equals(Object obj) {
+            if (obj instanceof Node input) {
+                if (this.value == null) {
+                    if (input.value == null) {
+                        return true;
+                    }
+                    return false;
+                }
+                return this.value.equals(input.value);
+            }
+            return false;
+        }
+
+        public Node getNext() {
+            return this.next;
+        }
+
     }
 }
