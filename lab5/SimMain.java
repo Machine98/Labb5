@@ -4,7 +4,7 @@ package lab5;
 import lab5.general.Simulator;
 import lab5.general.State;
 import lab5.general.View;
-import lab5.general.store.StoreSate;
+import lab5.general.store.StoreState;
 import lab5.general.store.StoreView;
 
 
@@ -22,7 +22,7 @@ public class SimMain {
         double lambda = 1;
 
 
-        State state = new State(seed, maxCustomers, registers, closingTime, minPayTime, maxPayTime, minPickTime, maxPickTime, lambda);
+        StoreState storeState = new StoreState(seed, maxCustomers, registers, closingTime, minPayTime, maxPayTime, minPickTime, maxPickTime, lambda);
         View view = new StoreView(state, state.getStore());
 
         Simulator simulator = new Simulator(state, view);
