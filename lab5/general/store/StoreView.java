@@ -1,4 +1,6 @@
 package lab5.general.store;
 
-public class StoreView {
+import lab5.general.View;
+
+public class StoreView extends View {
 }
