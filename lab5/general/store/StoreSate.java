@@ -4,7 +4,7 @@ import lab5.general.ExponentialRandomStream;
 import lab5.general.UniformedRandomStream;
 import lab5.general.State;
 
-public class StoreSate extends State {
+public class StoreState extends State {
     private boolean simulating;
 
     private double timePassed;
@@ -17,7 +17,7 @@ public class StoreSate extends State {
     private double maxPayTime;
     private double lambda;
 
-    public storeState(long seed, int maxCustomers, int registers, double closingTime,
+    public StoreState(long seed, int maxCustomers, int registers, double closingTime,
                  double minPickTime, double maxPickTime, double minPayTime,
                  double maxPayTime, double lambda){
 
