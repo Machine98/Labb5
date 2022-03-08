@@ -22,7 +22,7 @@ public class SimMain {
         double lambda = 1;
 
 
-        State state = new State(seed, maxCustomers, registers, closingTime, minPayTime, maxPayTime, minPickTime, maxPickTime, lambda);
+        State state = new storeState(seed, maxCustomers, registers, closingTime, minPayTime, maxPayTime, minPickTime, maxPickTime, lambda);
         View view = new StoreView(state, state.getStore());
 
         Simulator simulator = new Simulator(state, view);

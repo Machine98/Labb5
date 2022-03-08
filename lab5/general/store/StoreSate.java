@@ -17,7 +17,7 @@ public class StoreSate extends State {
     private double maxPayTime;
     private double lambda;
 
-    public State(long seed, int maxCustomers, int registers, double closingTime,
+    public storeState(long seed, int maxCustomers, int registers, double closingTime,
                  double minPickTime, double maxPickTime, double minPayTime,
                  double maxPayTime, double lambda){
 
