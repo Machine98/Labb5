@@ -40,7 +40,7 @@ public class StoreView extends View {
     }
     private void eventPrint(){
         String currentEvent = "" + storeState.getCurrentEvent().getEventName();
-
+        //behöver ta emot kund id, lediga kassor, lediga kassor tid, I, antal kunder som betalat, missade kunder, köat, kötid, köar, kassakö
 
 
     }
