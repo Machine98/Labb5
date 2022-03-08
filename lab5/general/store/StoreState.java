@@ -26,7 +26,7 @@ public class StoreState extends State {
         timePassed = 0;
         lastEventTime = 0;
 
-        storeState = new StoreSate(maxCustomers, registers, closingTime);
+        storeState = new StoreState(maxCustomers, registers, closingTime);
 
     }
 }

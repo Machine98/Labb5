@@ -8,7 +8,7 @@ public class StoreView extends View {
     private State state;
     private StoreSate storeState;
 
-    public StoreView (State state, StoreSate storeState){
+    public StoreView (State state, StoreState storeState){
         this.state = state;
         this.storeState = storeState;
 
