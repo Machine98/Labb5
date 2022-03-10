@@ -5,7 +5,7 @@ public class Customer {
     private int customerID;
     private double pickTime;
 
-    public Customer(int id){
+    public Customer(int id, PickuoCalc pickUpTime){
         this.pickTime = pickUpTime.newPickUpTime();
         setCustomerID(id);
     }
