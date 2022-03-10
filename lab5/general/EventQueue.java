@@ -12,16 +12,16 @@ public class EventQueue {
         eventQueue.add(event);
     }
 
-    public void Sort(EventQueue[] a) {
+    public void Sort(EventQueue[] eventPlace) {
         boolean sorted = false;
         EventQueue temp;
         while(!sorted) {
             sorted = true;
             for (int i = 0; i < eventQueue.size() - 1; i++) {
-                if (a[i].event.EventID() > a[i+1].event.EventID()) {
-                    temp = a[i];
-                    a[i] = a[i+1];
-                    a[i+1] = temp;
+                if (eventPlace[i].event.EventID() > eventPlace[i+1].event.EventID()) {
+                    temp = eventPlace[i];
+                    eventPlace[i] = eventPlace[i+1];
+                    eventPlace[i+1] = temp;
                     sorted = false;
                 }
             }

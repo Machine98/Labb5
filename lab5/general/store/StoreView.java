@@ -4,7 +4,7 @@ import lab5.general.State;
 public class StoreView {
 
     private State state;
-    private StoreSate storeState;
+    private StoreState storeState;
 
     public StoreView (State state, StoreState storeState){
         this.state = state;
