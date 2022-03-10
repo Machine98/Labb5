@@ -11,7 +11,7 @@ public class PickuoCalc {
         this.minPickTime = minPickTime;
         this.maxPickTIme = maxPickTime;
         this.seed = seed;
-        this.pickUpTime =
+        this.pickUpTime = new UniformRandomStream(minPickTime, maxPickTime, seed);
     }
     public double newPickUpTime() {
         return pickUpTime.next();
