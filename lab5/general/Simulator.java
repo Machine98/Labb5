@@ -18,7 +18,7 @@ public class Simulator {
     public void run() {
         while (state.simulating == true){
             while (eventQueue.size()){
-                eventQueue.getEvent().performEvent();
+                eventQueue.getFirst().performEvent();
 
 
 

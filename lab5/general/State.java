@@ -6,8 +6,8 @@ import java.util.Observable;
 
 public class State extends Observable {
 
-    private double timePassed;
-    private boolean simulating = true;
+    public double timePassed;
+    public boolean simulating = true;
 
 
 }
