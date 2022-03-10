@@ -16,6 +16,8 @@ public class StoreState extends State {
     private double minPayTime;
     private double maxPayTime;
     private double lambda;
+    private int registers;
+    int ocupiedregisters;
 
     public StoreState(long seed, int maxCustomers, int registers, double closingTime,
                  double minPickTime, double maxPickTime, double minPayTime,
@@ -28,5 +30,11 @@ public class StoreState extends State {
 
         storeState = new StoreState(maxCustomers, registers, closingTime);
 
+    }
+    public boolean freeRegisters(){
+        if(registers > ocupiedregisters){
+            return true;
+        }
+        return false;
     }
 }

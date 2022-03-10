@@ -9,4 +9,12 @@ public class CustomerQueue {
     public CustomerQueue() {
         customerFIFO = new FIFO();
     }
+
+    public void add(Customer customer){
+        customerFIFO.add(customer);
+    }
+
+    public void remove(){
+        customerFIFO.removeFirst();
+    }
 }
