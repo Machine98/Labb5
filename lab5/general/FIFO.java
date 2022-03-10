@@ -136,6 +136,5 @@ public class FIFO {
         public Node getNext() {
             return this.next;
         }
-
     }
 }

@@ -20,7 +20,7 @@ public class Simulator {
         while (state.simulating){
             eventQueue.addEvent(new StartEvent(state));
             while (eventQueue.size()){
-                eventQueue.getFirst().performEvent();
+                eventQueue.getFirst().getValue() performEvent();
                 StoreView.eventPrint();
             }
             break;
