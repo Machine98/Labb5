@@ -6,9 +6,8 @@ import java.util.Observable;
 
 public class State extends Observable {
 
-    private boolean simulating = true;
-    public double timeElapsed = 0;
     private double timePassed;
+    private boolean simulating = true;
 
     public State() {
         this.timePassed = 0;
@@ -26,7 +25,32 @@ public class State extends Observable {
         simulating = false;
     }
 
+    /*private StoreSate storeState;
 
+    private boolean simulating;
+
+    private double timePassed;
+    private double lastEventTime;
+
+    private long seed;
+    private double minPickTime;
+    private double maxPickTime;
+    private double minPayTime;
+    private double maxPayTime;
+    private double lambda;
+
+    public State(long seed, int maxCustomers, int registers, double closingTime,
+                 double minPickTime, double maxPickTime, double minPayTime,
+                 double maxPayTime, double lambda){
+
+        simulating = true;
+
+        timePassed = 0;
+        lastEventTime = 0;
+
+        storeState = new StoreSate(maxCustomers, registers, closingTime);
+
+    }*/
 
 
 }

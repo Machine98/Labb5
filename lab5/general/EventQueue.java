@@ -16,6 +16,12 @@ public class EventQueue {
         return eventQueue.size();
     }
 
+    public Event getNext(){
+        Event next = (Event) eventQueue.first();
+        eventQueue.removeFirst();;
+        return next;
+    }
+
     public void Sort(EventQueue[] eventPlace) {
         boolean sorted = false;
         EventQueue temp;
@@ -29,6 +35,14 @@ public class EventQueue {
                     sorted = false;
                 }
             }
+        }
+    }
+
+    public boolean nextEventExist() {
+        if (eventQueue.isEmpty() == true){
+            return false;
+        } else{
+            return true;
         }
     }
 }
