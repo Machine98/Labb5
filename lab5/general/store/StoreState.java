@@ -1,7 +1,7 @@
 package lab5.general.store;
 
-import lab5.general.ExponentialRandomStream;
-import lab5.general.UniformedRandomStream;
+import lab5.ExponentialRandomStream;
+import lab5.UniformRandomStream;
 import lab5.general.State;
 
 public class StoreState extends State {
