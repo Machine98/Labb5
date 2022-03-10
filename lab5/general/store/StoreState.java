@@ -41,7 +41,6 @@ public class StoreState extends State {
 
     }
 
-    }
     public boolean freeRegisters(){
         if(registers > ocupiedregisters){
             return true;
