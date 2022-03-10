@@ -8,24 +8,23 @@ public class Simulator {
     private EventQueue eventQueue;
     private View view;
 
-
-    public Simulator(State state, View view){
+    public Simulator(State state, View view, EventQueue eventQueue){
         this.state = state;
         this.view = view;
-        this.eventQueue = new EventQueue();
+        this.eventQueue = eventQueue;
     }
 
     public void run() {
-        StoreView.firstPrint();
+        ((StoreView) view).firstPrint();
         while (state.simulating){
-            eventQueue.addEvent(new StartEvent(state));
-            while (eventQueue.size()){
-                eventQueue.getFirst().getValue() performEvent();
-                StoreView.eventPrint();
+            while (!eventQueue.isEmpty()){
+                Event event = eventQueue.getNext();
+                //StoreView.eventPrint();
+                event.performEvent();
             }
             break;
         }
-        StoreView.lastPrint();
+        ((StoreView) view).lastPrint();
     }
 }
 

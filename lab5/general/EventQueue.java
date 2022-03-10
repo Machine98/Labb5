@@ -1,6 +1,8 @@
 package lab5.general;
 
-public class EventQueue {
+import lab5.general.store.StartEvent;
+
+public class EventQueue extends FIFO {
     private FIFO eventQueue;
     private Event event;
 
@@ -8,21 +10,8 @@ public class EventQueue {
         eventQueue = new FIFO();
     }
 
-    public void addEvent() {
+    public void addEvent(StartEvent startEvent) {
         eventQueue.add(event);
-    }
-
-    public boolean size(){
-        if (eventQueue.size() > 0){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-
-    public void remove(){
-        eventQueue.removeFirst();
     }
 
     public FIFO.Node getFirst(){
@@ -41,7 +30,7 @@ public class EventQueue {
         while(!sorted) {
             sorted = true;
             for (int i = 0; i < eventQueue.size() - 1; i++) {
-                if (eventPlace[i].event.EventID() > eventPlace[i+1].event.EventID()) {
+                if (eventPlace[i].event.EventTime() > eventPlace[i+1].event.EventTime()) {
                     temp = eventPlace[i];
                     eventPlace[i] = eventPlace[i+1];
                     eventPlace[i+1] = temp;

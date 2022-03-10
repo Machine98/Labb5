@@ -5,15 +5,13 @@ import lab5.general.View;
 
 public class StoreView extends View {
 
-    private State state;
     private StoreState storeState;
 
-    public StoreView (State state, StoreState storeState){
-        this.state = state;
+    public StoreView(StoreState storeState){
         this.storeState = storeState;
-
     }
-    public static void firstPrint() {
+
+    public void firstPrint() {
         System.out.println("PARAMETRAR");
         System.out.println("==========");
         System.out.println("Antal kassor, N............:" + storeState.getRegisters());
@@ -24,22 +22,22 @@ public class StoreView extends View {
         System.out.println("Frö, f.....................:" + storeState.getSeed());
     }
 
-    public static void lastPrint(){
+    public void lastPrint(){
         System.out.println("RESULTAT");
         System.out.println("========");
         System.out.println("1) Av " + storeState.getTotalCustomers() + " handlade " + storeState.getCustomersPayed()
                 + " medan " + storeState.getCustomersTurnedAway() + " missades.");
         System.out.println("");
-        System.out.println("2) Total tid " + storeState.getRegisters() + " kassor varit lediga: " + här i ska vi ta tid de varit lediga );
-        System.out.println("\tGenomsnittlig legid kassa tid " + något + " (dvs " + procentenhet på medelvärdet + " av tiden från öppning tills sista kunden betalat).");
+        System.out.println("2) Total tid " + storeState.getRegisters() + " kassor varit lediga: " + "här i ska vi ta tid de varit lediga" );
+        System.out.println("\tGenomsnittlig ledig kassa tid " + "något" + " (dvs " + "procentenhet på medelvärdet" + " + " + "av tiden från öppning tills sista kunden betalat" + ".");
         System.out.println("");
-        System.out.println("3) Total tid " + köade kunder + " kunder tvingats köa:" + tid de köat i te + ".");
-        System.out.println("\tGenomsnittlig kötid: " + genomsnittlig kötid i te);
+        System.out.println("3) Total tid " + "köade kunder" + " kunder tvingats köa:" + "tid de köat i te" + ".");
+        System.out.println("\tGenomsnittlig kötid: " + "genomsnittlig kötid i te");
 
 
     }
-    public static void eventPrint(){
-        String currentEvent = "" + storeState.getCurrentEvent().getEventName();
+    public void eventPrint(){
+        String currentEvent = "";
         //behöver ta emot kund id, lediga kassor, lediga kassor tid, I, antal kunder som betalat, missade kunder, köat, kötid, köar, kassakö
 
 
