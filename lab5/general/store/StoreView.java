@@ -25,8 +25,7 @@ public class StoreView extends View {
     public void lastPrint(){
         System.out.println("RESULTAT");
         System.out.println("========");
-        System.out.println("1) Av " + storeState.getTotalCustomers() + " handlade " + storeState.getCustomersPayed()
-                + " medan " + storeState.getCustomersTurnedAway() + " missades.");
+        System.out.println("1) Av " + storeState.getTotalCustomers() + " handlade " + storeState.getCustomersPayed() + " medan " + storeState.getCustomersTurnedAway() + " missades.");
         System.out.println("");
         System.out.println("2) Total tid " + storeState.getRegisters() + " kassor varit lediga: " + här i ska vi ta tid de varit lediga );
         System.out.println("\tGenomsnittlig ledig kassa tid " + något + " (dvs " + "procentenhet på medelvärdet" + " + " + "av tiden från öppning tills sista kunden betalat" + ".");

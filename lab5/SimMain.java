@@ -5,9 +5,7 @@ import lab5.general.EventQueue;
 import lab5.general.Simulator;
 import lab5.general.State;
 import lab5.general.View;
-import lab5.general.store.StartEvent;
-import lab5.general.store.StoreState;
-import lab5.general.store.StoreView;
+import lab5.general.store.*;
 
 
 public class SimMain {
@@ -24,10 +22,11 @@ public class SimMain {
 
         StoreState storeState = new StoreState(seed, maxCustomers, registers, minPayTime, maxPayTime, minPickTime, maxPickTime, lambda);
 
-        // eventqueue, Start, end och closing
         EventQueue eventQueue = new EventQueue();
 
         eventQueue.addEvent(new StartEvent(storeState, 0, eventQueue));
+        //eventQueue.addEvent(new ClosingEvent());
+        //eventQueue.addEvent(new EndEvent());
 
         View view = new StoreView(storeState);
         storeState.addObserver(view);

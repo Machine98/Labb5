@@ -30,7 +30,7 @@ public class StoreState extends State {
 
         this.maxCustomers = maxCustomers;
         this.registers = registers;
-        this.lambda = this.lambda;
+        this.lambda = lambda;
         this.seed = seed;
         this.minPickTime = minPickTime;
         this.maxPickTime = maxPickTime;
@@ -109,6 +109,14 @@ public class StoreState extends State {
 
     public int getCustomersTurnedAway() {
         return this.customersTurnedAway;
+    }
+
+    public void setPayedCustomers(int payedCustomers) {
+        this.payedCustomers = payedCustomers;
+    }
+
+    public void setCustomersTurnedAway(int customersTurnedAway) {
+        this.customersTurnedAway = customersTurnedAway;
     }
 }
 
