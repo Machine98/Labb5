@@ -8,6 +8,7 @@ public class Simulator {
     private EventQueue eventQueue;
     private View view;
 
+
     public Simulator(State state, View view){
         this.state = state;
         this.view = view;
@@ -15,6 +16,16 @@ public class Simulator {
     }
 
     public void run() {
+        while (state.simulating == true){
+            while (eventQueue.size()){
+                eventQueue.getEvent().performEvent();
+
+
+
+            }
+
+
+        }
         eventQueue.addEvent(new StartEvent(state, eventQueue));
         eventQueue.addEvent(new EndEvent(state, eventQueue));
     }
