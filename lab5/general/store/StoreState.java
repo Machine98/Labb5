@@ -21,6 +21,7 @@ public class StoreState extends State {
     private int ocupiedregisters = 0;
     private PickuoCalc PickTime;
     private PayTimeCalc PayTime;
+    private ArrivalTimeCalc ArrivalTime;
     private int payedCustomers;
     private int customersTurnedAway;
 
@@ -37,7 +38,7 @@ public class StoreState extends State {
         this.maxPayTime = maxPayTime;
         this.PickTime = new PickuoCalc(minPickTime, maxPickTime, seed);
         this.PayTime = new PayTimeCalc(minPayTime, maxPayTime, seed);
-
+        this.ArrivalTime = new ArrivalTimeCalc(lambda, seed);
     }
 
     public boolean freeRegisters(){
@@ -49,6 +50,9 @@ public class StoreState extends State {
 
     public int getQueueSize() {
         return queue.size();
+    }
+    public double getArrivalTime() {
+        return ArrivalTime.newArrivalTime();
     }
 
     public double getPickTime() {
