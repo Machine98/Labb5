@@ -12,8 +12,13 @@ public class EventQueue {
         eventQueue.add(event);
     }
 
-    public int size(){
-        return eventQueue.size();
+    public boolean size(){
+        if (eventQueue.size() > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     public void remove(){
