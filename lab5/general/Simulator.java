@@ -18,6 +18,7 @@ public class Simulator {
     public void run() {
         StoreView.firstPrint();
         while (state.simulating){
+            eventQueue.addEvent(new StartEvent(state));
             while (eventQueue.size()){
                 eventQueue.getFirst().performEvent();
                 StoreView.eventPrint();
