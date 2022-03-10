@@ -16,22 +16,15 @@ public class Simulator {
     }
 
     public void run() {
-        state.StoreView.firstPrint();
-        while (state.simulating == true){
+        StoreView.firstPrint();
+        while (state.simulating){
             while (eventQueue.size()){
                 eventQueue.getFirst().performEvent();
-                state.StoreView.eventPrint();
+                StoreView.eventPrint();
             }
+            break;
         }
-        state.StoreView.lastPrint();
-    }
-
-
-    private void simulating() {
-
-        while (eventQueue.nextEventExist() && state.getRunningValue() == true){
-            eventQueue.run();
-        }
+        StoreView.lastPrint();
     }
 }
 
