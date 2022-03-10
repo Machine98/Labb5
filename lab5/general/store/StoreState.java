@@ -21,14 +21,15 @@ public class StoreState extends State {
     private int ocupiedregisters = 0;
     private PickuoCalc PickTime;
     private PayTimeCalc PayTime;
+    private int payedCustomers;
+    private int customersTurnedAway;
 
-    public StoreState(long seed, int maxCustomers, int registers, double closingTime,
-                      double minPickTime, double maxPickTime, double minPayTime,
-                      double maxPayTime){
+    public StoreState(long seed, int maxCustomers, int registers, double minPickTime, double maxPickTime, double minPayTime,
+                      double maxPayTime, double lambda){
 
         this.maxCustomers = maxCustomers;
         this.registers = registers;
-        this.lambda = lambda;
+        this.lambda = this.lambda;
         this.seed = seed;
         this.minPickTime = minPickTime;
         this.maxPickTime = maxPickTime;
@@ -61,4 +62,50 @@ public class StoreState extends State {
     public void incOcupiedregisters() {
         this.ocupiedregisters++;
     }
+
+    public int getRegisters() {
+        return this.registers;
+    }
+
+    public int getMaxCustomers() {
+        return this.maxCustomers;
+    }
+
+    public double getlambda() {
+        return this.lambda;
+    }
+
+    public double getMinPickTime() {
+        return this.maxPickTime;
+    }
+
+    public double getMinPayTime() {
+        return this.minPayTime;
+    }
+
+    public double getMaxPickTime() {
+        return this.maxPickTime;
+    }
+
+    public double getMaxPayTime() {
+        return this.maxPayTime;
+    }
+
+    public long getSeed() {
+        return this.seed;
+    }
+
+    public int getTotalCustomers() {
+        return this.maxCustomers;
+    }
+
+    public int getCustomersPayed() {
+        return this.payedCustomers;
+    }
+
+    public int getCustomersTurnedAway() {
+        return this.customersTurnedAway;
+    }
 }
+
+
