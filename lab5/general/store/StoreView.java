@@ -13,7 +13,7 @@ public class StoreView extends View {
         this.storeState = storeState;
 
     }
-    private void firstPrint() {
+    public void firstPrint() {
         System.out.println("PARAMETRAR");
         System.out.println("==========");
         System.out.println("Antal kassor, N............:" + storeState.getRegisters());
@@ -24,7 +24,7 @@ public class StoreView extends View {
         System.out.println("Frö, f.....................:" + storeState.getSeed());
     }
 
-    private void lastPrint(){
+    public void lastPrint(){
         System.out.println("RESULTAT");
         System.out.println("========");
         System.out.println("1) Av " + storeState.getTotalCustomers() + " handlade " + storeState.getCustomersPayed()
@@ -38,7 +38,7 @@ public class StoreView extends View {
 
 
     }
-    private void eventPrint(){
+    public void eventPrint(){
         String currentEvent = "" + storeState.getCurrentEvent().getEventName();
         //behöver ta emot kund id, lediga kassor, lediga kassor tid, I, antal kunder som betalat, missade kunder, köat, kötid, köar, kassakö
 
