@@ -12,6 +12,10 @@ public class EventQueue {
         eventQueue.add(event);
     }
 
+    public int size(){
+        return eventQueue.size();
+    }
+
     public void Sort(EventQueue[] eventPlace) {
         boolean sorted = false;
         EventQueue temp;
