@@ -22,7 +22,7 @@ public class StoreState extends State {
     private int maxCustomers;
     int ocupiedregisters = 0;
     private PickuoCalc PickTime;
-    private UniformRandomStream PayTime;
+    private PayTimeCalc PayTime;
 
     public StoreState(long seed, int maxCustomers, int registers, double closingTime,
                       double minPickTime, double maxPickTime, double minPayTime,
@@ -37,7 +37,7 @@ public class StoreState extends State {
         this.minPayTime = minPayTime;
         this.maxPayTime = maxPayTime;
         this.PickTime = new PickuoCalc(minPickTime, maxPickTime, seed);
-        this.PayTime = new UniformRandomStream(minPayTime, maxPayTime, seed);
+        this.PayTime = new PayTimeCalc(minPayTime, maxPayTime, seed);
 
     }
 
