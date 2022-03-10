@@ -22,7 +22,7 @@ public class Simulator {
 
     private void simulating() {
 
-        while (eventQueue.getNext() && state.getRunningValue() == true){
+        while (eventQueue.nextEventExist() && state.getRunningValue() == true){
             eventQueue.run();
         }
     }
