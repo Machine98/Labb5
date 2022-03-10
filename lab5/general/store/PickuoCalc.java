@@ -5,9 +5,9 @@ import lab5.UniformRandomStream;
 public class PickuoCalc {
     private double minPickTime;
     private double maxPickTIme;
-    private int seed;
+    private long seed;
     private UniformRandomStream pickUpTime;
-    public PickUpTimeCalc(double minPickTime, double maxPickTime, int seed){
+    public PickuoCalc(double minPickTime, double maxPickTime, long seed){
         this.minPickTime = minPickTime;
         this.maxPickTIme = maxPickTime;
         this.seed = seed;
