@@ -15,9 +15,7 @@ public abstract class Event {
         this.eventID = eventId;
     }
 
-    public void executeEvent(){
-
-    }
+    public abstract void performEvent();
 
     public int EventID(){
         return eventID;

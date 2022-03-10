@@ -10,7 +10,7 @@ public class StartEvent extends Event {
     private StoreState storeState;
     private double time;
 
-    public StartEvent(State state, double time, EventQueue eventQueue){
+    public StartEvent(State state){
         super(state, time, eventQueue);
         this.state = state;
         this.time = time;
