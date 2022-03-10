@@ -6,9 +6,9 @@ public class Customer {
     private double pickTime;
     private double payTime;
 
-    public Customer(int id, PickuoCalc pickUpTime, PayTimeCalc payTime){
-        this.pickTime = pickUpTime.newPickUpTime();
-        this.payTime = payTime.newPayTime();
+    public Customer(int id, StoreState storeState){
+        this.pickTime = storeState.getPickTime();
+        this.payTime = storeState.getPayTime();
         setCustomerID(id);
     }
 
@@ -16,10 +16,10 @@ public class Customer {
 
         this.customerID = id;
     }
-    public double getPickTime() {
+    public double getCustomerPickTime() {
         return pickTime;
     }
-    public double getPayTime() {
+    public double getCustomerPayTime() {
         return payTime;
     }
     public int getCustomerID(){

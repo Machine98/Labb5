@@ -52,7 +52,12 @@ public class StoreState extends State {
         return queue.size();
     }
 
+    public double getPickTime() {
+        return PickTime.newPickUpTime();
+    }
 
+    public double getPayTime() {
+        return PayTime.newPayTime();
     }
 
 }
