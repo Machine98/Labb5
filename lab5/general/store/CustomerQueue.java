@@ -4,9 +4,9 @@ import lab5.general.FIFO;
 
 public class CustomerQueue {
 
-    private FIFO customerFIFO;
+    FIFO customerFIFO;
 
     public CustomerQueue() {
-        this.customerFIFO = new FIFO();
+        customerFIFO = new FIFO();
     }
 }
