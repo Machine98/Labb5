@@ -36,7 +36,7 @@ public class StoreState extends State {
         this.maxPickTime = maxPickTime;
         this.minPayTime = minPayTime;
         this.maxPayTime = maxPayTime;
-        this.PickTime = new UniformRandomStream(minPickTime, maxPickTime, seed);
+        this.PickTime = PickUpTimeCalc(minPickTime, maxPickTime, seed);
         this.PayTime = new UniformRandomStream(minPayTime, maxPayTime, seed);
 
     }
@@ -51,4 +51,8 @@ public class StoreState extends State {
     public int getQueueSize() {
         return queue.size();
     }
+
+
+    }
+
 }
