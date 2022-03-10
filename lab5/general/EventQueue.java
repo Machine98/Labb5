@@ -12,15 +12,15 @@ public class EventQueue {
         eventQueue.add(event);
     }
 
-    public boolean size(){
-        if (eventQueue.size()>0){
-            return true;
-        }
-        else{
-            return false;
-        }
+    public int size(){
+        return eventQueue.size();
     }
 
+    public Event getNext(){
+        Event next = (Event) eventQueue.first();
+        eventQueue.removeFirst();;
+        return next;
+    }
 
     public void Sort(EventQueue[] eventPlace) {
         boolean sorted = false;
@@ -35,6 +35,14 @@ public class EventQueue {
                     sorted = false;
                 }
             }
+        }
+    }
+
+    public boolean nextEventExist() {
+        if (eventQueue.isEmpty() == true){
+            return false;
+        } else{
+            return true;
         }
     }
 }
