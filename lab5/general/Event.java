@@ -3,19 +3,23 @@ package lab5.general;
 public abstract class Event {
 
     private double time;
+    private State state;
+    private EventQueue eventQueue;
+    private int eventID;
 
-    public State state;
 
-    public EventQueue eventQueue;
-
-    public Event(State state, double time, EventQueue eventQueue){
+    public Event(State state, double time, EventQueue eventQueue, int eventId){
         this.state = state;
         this.time = time;
         this.eventQueue = eventQueue;
+        this.eventID = eventId;
     }
 
-    public void executeEvent();
-    public int eventID(Object indexValue) {
-        return id;
+    public void executeEvent(){
+
+    }
+
+    public int EventID(){
+        return eventID;
     }
 }

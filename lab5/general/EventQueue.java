@@ -12,16 +12,19 @@ public class EventQueue {
         eventQueue.add(event);
     }
 
-    public void sort() {
-        int x = eventQueue.size();
-        for (int i = 1; i < x; i++) {
-            int temp = event.eventID(eventQueue.getIndexValue(i));
-            int y = i - 1;
-            while (y >= 0 && event.eventID(eventQueue.getIndexValue(y)) > temp) {
-                eventQueue.getIndex(y + 1) = eventQueue.getIndex(y);
-                y--;
+    public void Sort(EventQueue[] a) {
+        boolean sorted = false;
+        EventQueue temp;
+        while(!sorted) {
+            sorted = true;
+            for (int i = 0; i < eventQueue.size() - 1; i++) {
+                if (a[i].event.EventID() > a[i+1].event.EventID()) {
+                    temp = a[i];
+                    a[i] = a[i+1];
+                    a[i+1] = temp;
+                    sorted = false;
+                }
             }
-            event.eventID(eventQueue.getIndex(y + 1)) = temp;
         }
     }
 }
