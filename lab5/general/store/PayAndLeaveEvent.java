@@ -13,7 +13,7 @@ public class PayAndLeaveEvent {
     public void pay() {
         if(storeState.freeRegisters()){
             customerQueue.remove();
-            storeState.ocupiedregisters++;
+            storeState.incOcupiedregisters();
         }
     }
 }

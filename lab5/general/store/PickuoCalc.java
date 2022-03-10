@@ -6,14 +6,14 @@ public class PickuoCalc {
     private double minPickTime;
     private double maxPickTIme;
     private long seed;
-    private UniformRandomStream pickUpTime;
+    private static UniformRandomStream pickUpTime;
     public PickuoCalc(double minPickTime, double maxPickTime, long seed){
         this.minPickTime = minPickTime;
         this.maxPickTIme = maxPickTime;
         this.seed = seed;
         this.pickUpTime = new UniformRandomStream(minPickTime, maxPickTime, seed);
     }
-    public double newPickUpTime() {
+    public static double newPickUpTime() {
 
         return pickUpTime.next();
     }
