@@ -56,6 +56,10 @@ public class FIFO {
         return size;
     }
 
+    public Node getFirst(){
+        return first;
+    }
+
     public boolean equals(Object f) {
         FIFO newFIFO = (FIFO) f;
         if (this.size == newFIFO.size) {

@@ -16,6 +16,14 @@ public class EventQueue {
         return eventQueue.size();
     }
 
+    public void remove(){
+        eventQueue.removeFirst();
+    }
+
+    public FIFO.Node getFirst(){
+        return eventQueue.getFirst();
+    }
+
     public void Sort(EventQueue[] eventPlace) {
         boolean sorted = false;
         EventQueue temp;
