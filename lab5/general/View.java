@@ -14,7 +14,8 @@ public abstract class View implements Observer{
         state.addObserver(this);
     }
 
-    public void update(Observable arg, object o); {
+    @Override
+    public void update(Observable o, Object arg) {
 
     }
 }

@@ -1,7 +1,9 @@
 package lab5.general.store;
 
 import lab5.general.State;
-public class StoreView {
+import lab5.general.View;
+
+public class StoreView extends View {
 
     private State state;
     private StoreState storeState;
