@@ -15,7 +15,7 @@ public class PayTimeCalc {
         this.payTime = new UniformRandomStream(minPayTime, maxPayTime, seed);
     }
 
-    public double getNewPayTime() {
+    public double newPayTime() {
         return payTime.next();
     }
 }
