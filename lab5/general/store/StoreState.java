@@ -17,18 +17,27 @@ public class StoreState extends State {
     private double maxPayTime;
     private double lambda;
     private int registers;
+    private int maxCustomers;
     int ocupiedregisters;
+    private UniformRandomStream PickTime;
+    private UniformRandomStream PayTime;
 
     public StoreState(long seed, int maxCustomers, int registers, double closingTime,
-                 double minPickTime, double maxPickTime, double minPayTime,
-                 double maxPayTime, double lambda){
+                      double minPickTime, double maxPickTime, double minPayTime,
+                      double maxPayTime, double lambda){
 
-        simulating = true;
+        this.maxCustomers = maxCustomers;
+        this.registers = registers;
+        this.lambda = lambda;
+        this.seed = seed;
+        this.minPickTime = minPickTime;
+        this.maxPickTime = maxPickTime;
+        this.minPayTime = minPayTime;
+        this.maxPayTime = maxPayTime;
+        this.PickTime = new UniformRandomStream(minPickTime, maxPickTime, seed);
+        this.PayTime = new UniformRandomStream(minPayTime, maxPayTime, seed);
 
-        timePassed = 0;
-        lastEventTime = 0;
-
-        storeState = new StoreState(maxCustomers, registers, closingTime);
+    }
 
     }
     public boolean freeRegisters(){
