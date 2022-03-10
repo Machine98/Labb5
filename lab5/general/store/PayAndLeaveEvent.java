@@ -8,11 +8,10 @@ public class PayAndLeaveEvent {
 
     public PayAndLeaveEvent() {
         customerQueue.add(customer);
-        storeState.queueSize++;
     }
 
     public void pay() {
-        if(storeState.freeRegisters >= 1){
+        if(storeState.freeRegisters()){
             customerQueue.remove();
             storeState.ocupiedregisters++;
         }

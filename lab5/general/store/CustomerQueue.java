@@ -17,4 +17,8 @@ public class CustomerQueue {
     public void remove(){
         customerFIFO.removeFirst();
     }
+
+    public int size(){
+        return customerFIFO.size();
+    }
 }

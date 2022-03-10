@@ -10,6 +10,8 @@ public class StoreState extends State {
     private double timePassed;
     private double lastEventTime;
 
+    private CustomerQueue queue;
+
     private long seed;
     private double minPickTime;
     private double maxPickTime;
@@ -17,7 +19,7 @@ public class StoreState extends State {
     private double maxPayTime;
     private double lambda;
     private int registers;
-    int ocupiedregisters;
+    int ocupiedregisters = 0;
 
     public StoreState(long seed, int maxCustomers, int registers, double closingTime,
                  double minPickTime, double maxPickTime, double minPayTime,
@@ -36,5 +38,9 @@ public class StoreState extends State {
             return true;
         }
         return false;
+    }
+
+    public int getQueueSize() {
+        return queue.size();
     }
 }
