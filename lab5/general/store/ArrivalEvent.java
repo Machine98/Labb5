@@ -20,7 +20,8 @@ public class ArrivalEvent extends Event {
 
     @Override
     public void performEvent() {
-
+        storeState.setEventName("Ankomst");
+        storeState.currentCustomerID(customerID);
         time = ArrivalTimeCalc.newArrivalTime();
         if(event.getIsOpen()){
             if(storeState.getCurrentCustomers() == storeState.getMaxCustomers()){
