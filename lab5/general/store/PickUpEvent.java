@@ -17,7 +17,11 @@ public class PickUpEvent extends Event {
     }
 
     public void performEvent() {
-        double newTime = state.getTimePassed() + customerID.getCustomerPickTime();
+        state.setTimePassed(super.EventTime());
+        super.EventTime() - state.timePassed;
+        double newTime = state.getTimePassed() + super.EventTime();
+
+        storeState.incUnoccupiedRegistersTime();
         if (storeState.freeRegisters()) {
             eventQueue.addEvent(new PayAndLeaveEvent(storeState, newTime, customerID, eventQueue, state));
             storeState.incOcupiedregisters();

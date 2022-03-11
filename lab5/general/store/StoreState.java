@@ -25,6 +25,7 @@ public class StoreState extends State {
     private ArrivalTimeCalc ArrivalTime;
     private int payedCustomers;
     private int customersTurnedAway;
+    private double unoccupiedRegistersTime;
 
     public StoreState(long seed, int maxCustomers, int registers, double minPickTime, double maxPickTime, double minPayTime,
                       double maxPayTime, double lambda){
@@ -41,6 +42,7 @@ public class StoreState extends State {
         this.PayTime = new CashierSpeedCalc(minPayTime, maxPayTime, seed);
         this.ArrivalTime = new ArrivalTimeCalc(lambda, seed);
         this.customerQueue = new CustomerQueue();
+        this.unoccupiedRegistersTime = 0d;
     }
 
     public boolean freeRegisters(){
@@ -127,6 +129,10 @@ public class StoreState extends State {
 
     public void currentEvent(StartEvent startEvent){
 
+    }
+
+    public void incUnoccupiedRegistersTime(double timeDiff) {
+        unoccupiedRegistersTime += timeDiff;
     }
 }
 
