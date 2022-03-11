@@ -11,7 +11,21 @@ public class EventQueue extends FIFO {
     }
 
     public void addEvent(Event newEvent) {
-        eventQueue.add(event);
+        if(eventQueue.size() == 0) {
+            eventQueue.add(newEvent);
+        } else {
+            for(int i = 0; i < eventQueue.size(); i++) {
+                Event temp = (Event) eventQueue.getIndexValue(i);
+                if(temp.EventTime() > event.EventTime()) {
+                    eventQueue.add(newEvent);
+                    break;
+                }
+                else if(i == eventQueue.size() - 1) {
+                    eventQueue.add(newEvent);
+                    break;
+                }
+            }
+        }
     }
 
     public FIFO.Node getFirst(){
@@ -19,24 +33,12 @@ public class EventQueue extends FIFO {
     }
 
     public Event getNext(){
-        Event next = (Event) eventQueue.first();
-        eventQueue.removeFirst();;
-        return next;
-    }
-
-    public void Sort(EventQueue[] eventPlace) {
-        boolean sorted = false;
-        EventQueue temp;
-        while(!sorted) {
-            sorted = true;
-            for (int i = 0; i < eventQueue.size() - 1; i++) {
-                if (eventPlace[i].event.EventTime() > eventPlace[i+1].event.EventTime()) {
-                    temp = eventPlace[i];
-                    eventPlace[i] = eventPlace[i+1];
-                    eventPlace[i+1] = temp;
-                    sorted = false;
-                }
-            }
+        if (eventQueue.isEmpty() == true){
+            return null;
+        } else {
+            Event next = (Event) eventQueue.first();
+            eventQueue.removeFirst();;
+            return next;
         }
     }
 
