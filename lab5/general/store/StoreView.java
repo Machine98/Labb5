@@ -17,7 +17,7 @@ public class StoreView extends View {
     public void firstPrint() {
         System.out.println("PARAMETRAR");
         System.out.println("==========");
-        System.out.println("Antal kassor, N............:" + storeState.getRegisters();
+        System.out.println("Antal kassor, N............:" + storeState.getRegisters());
         System.out.println("Max som rums, M............:" + storeState.getMaxCustomers());
         System.out.println("Ankomsthastighet, lambda...:" + storeState.getlambda());
         System.out.println("Plocktider, [P_min...P_max]: [" + storeState.getMinPickTime() + "..." + storeState.getMaxPickTime() + "]");
