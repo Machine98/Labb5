@@ -7,6 +7,7 @@ import lab5.general.State;
 public class ClosingEvent extends Event {
     private Event event;
     private State state;
+    private StoreState storeState;
 
 
     public ClosingEvent(StoreState storeState, double time, EventQueue eventQueue){
@@ -15,6 +16,6 @@ public class ClosingEvent extends Event {
 
     @Override
     public void performEvent() {
-        event.isOpen(false);
+        storeState.isOpen(false);
     }
 }

@@ -23,7 +23,7 @@ public class ArrivalEvent extends Event {
         storeState.setEventName("Ankomst");
         storeState.currentCustomerID(customerID);
         time = ArrivalTimeCalc.newArrivalTime();
-        if(event.getIsOpen()){
+        if(storeState.getIsOpen()){
             if(storeState.getCurrentCustomers() == storeState.getMaxCustomers()){
                 storeState.setCustomersTurnedAway(1);
             }else{

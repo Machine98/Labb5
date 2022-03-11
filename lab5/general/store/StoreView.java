@@ -68,7 +68,7 @@ public class StoreView extends View {
 
 
         String cusID = String.valueOf(storeState.getCustomerID) + "  ";
-        String store = (storeState.getStoreOpen()) ? "Ö" : "S";
+        String store = (storeState.getIsOpen()) ? "Ö" : "S";
         String availableReg = String.valueOf(storeState.getRegisters() - storeState.getAvailableRegisters());
         String timeFreeReg = String.valueOf(String.format(".2f", storeState.getUnoccupiedRegTime()));
         String amCust = String.valueOf(storeState.getTotalCustomers());

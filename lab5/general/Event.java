@@ -26,10 +26,5 @@ public abstract class Event {
         return time;
     }
 
-    public void isOpen(Boolean close){
-        open = close;
-    }
-    public boolean getIsOpen(){
-        return open;
-    }
+
 }

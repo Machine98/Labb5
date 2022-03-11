@@ -34,6 +34,7 @@ public class StoreState extends State {
     private String eventName;
     private Event currentEvent;
     private Customer currentCustomerID;
+    private boolean open;
 
     public StoreState(long seed, int maxCustomers, int registers, double minPickTime, double maxPickTime, double minPayTime,
                       double maxPayTime, double lambda) {
@@ -183,6 +184,13 @@ public class StoreState extends State {
     public void update(){
         setChanged();
         notifyObservers();
+    }
+    public void isOpen(Boolean close){
+        open = close;
+    }
+
+    public boolean getIsOpen(){
+        return open;
     }
 
 }
