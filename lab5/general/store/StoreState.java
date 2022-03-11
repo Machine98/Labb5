@@ -125,6 +125,10 @@ public class StoreState extends State {
         return this.totalCustomers;
     }
 
+    public void addTotalCustomers(){
+        this.totalCustomers++;
+    }
+
     public int getCustomersPayed() {
 
         return this.payedCustomers;
