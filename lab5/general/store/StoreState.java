@@ -150,6 +150,14 @@ public class StoreState extends State {
         this.customersTurnedAway = customersTurnedAway;
     }
 
+    public void currentCustomerID(Customer customerID) {
+        this.currentCustomerID = customerID;
+    }
+
+    public Customer getCurrentCustomerID() {
+        return currentCustomerID;
+    }
+
     public void currentEvent(Event event) {
         currentEvent = event;
         setChanged();
