@@ -25,8 +25,8 @@ public class SimMain {
         EventQueue eventQueue = new EventQueue();
 
         eventQueue.addEvent(new StartEvent(storeState, 0, eventQueue));
-        eventQueue.addEvent(new ClosingEvent(storeState, 99999, eventQueue));
-        eventQueue.addEvent(new EndEvent(storeState, 999999, eventQueue));
+        eventQueue.addEvent(new ClosingEvent(storeState, 10, eventQueue));
+        eventQueue.addEvent(new EndEvent(storeState, 999, eventQueue));
 
         View view = new StoreView(storeState);
         storeState.addObserver(view);
