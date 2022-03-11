@@ -17,11 +17,9 @@ public class PickUpEvent extends Event {
     }
 
     public void performEvent() {
-        double tempTime = state.setTimePassed();
 
-        double timeDiff = super.EventTime() - tempTime;
 
-        storeState.incUnoccupiedRegTime(timeDiff);
+        storeState.incUnoccupiedRegTime(super.EventTime() - state.getTimePassed());
 
         state.setTimePassed(super.EventTime());
 
