@@ -1,7 +1,5 @@
 package lab5.general;
 
-import lab5.general.store.StartEvent;
-
 public class EventQueue extends FIFO {
     private FIFO eventQueue;
     private Event event;
@@ -10,36 +8,30 @@ public class EventQueue extends FIFO {
         eventQueue = new FIFO();
     }
 
+
     public void addEvent(Event newEvent) {
-        if(eventQueue.size() == 0) {
-            eventQueue.add(newEvent);
-        } else {
-            for(int i = 0; i < eventQueue.size(); i++) {
-                Event temp = (Event) eventQueue.getIndexValue(i);
-                if(temp.EventTime() > event.EventTime()) {
-                    eventQueue.add(newEvent);
-                    break;
-                }
-                else if(i == eventQueue.size() - 1) {
-                    eventQueue.add(newEvent);
-                    break;
-                }
-            }
-        }
+        eventQueue.add(newEvent);
     }
 
-    public FIFO.Node getFirst(){
-        return eventQueue.getFirst();
+
+    public FIFO First(){
+        return (FIFO) eventQueue.first();
     }
 
     public Event getNext(){
-        if (eventQueue.isEmpty() == true){
-            return null;
-        } else {
-            Event next = (Event) eventQueue.first();
-            eventQueue.removeFirst();;
-            return next;
+        Event newest = null;
+
+        for (int i = 0; i < eventQueue.size(); i++) {
+            Event temp = (Event) eventQueue.getIndex(i);
+            if (newest == null){
+                newest = (Event) eventQueue.first();
+            }
+            else if (newest.EventTime() > temp.EventTime()){
+                newest = temp;
+            }
         }
+
+        return newest;
     }
 
     public boolean nextEventExist() {

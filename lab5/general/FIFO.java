@@ -1,47 +1,35 @@
 package lab5.general;
 
+import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 public class FIFO {
-
-    private Node first;
-    private Node last;
-    private Node node;
-    private int size = 0;
+    private ArrayList<Object> queue = new ArrayList<Object>();
     private int maxSize = 0;
 
-    public void add(Object item) {
-        node = new Node(item);
-        if (first == null) {
-            first = node;
-            last = node;
-        } else if (first.getNext() == null) {
-            last = node;
-            first.setNext(node);
-        } else {
-            last.setNext(node);
-            last = node;
+    public void add(Object o) {
+        queue.add(o);
+        if (this.queue.size() > maxSize) {
+            maxSize = this.queue.size();
         }
-        size++;
-        if (size >= maxSize) {
-            maxSize = size;
-        }
+    }
+
+    public Object getIndex(int index){
+        return queue.get(index);
     }
 
     public void removeFirst() throws NoSuchElementException {
-        if (first != null) {
-            this.first = first.getNext();
-            size--;
-        } else {
+        if (isEmpty()) {
             throw new NoSuchElementException();
         }
+        this.queue.remove(0);
     }
 
     public Object first() throws NoSuchElementException {
-        if (first != null) {
-            return first.getValue();
+        if (isEmpty()) {
+            throw new NoSuchElementException();
         }
-        throw new NoSuchElementException();
+        return this.queue.get(0);
     }
 
     public int maxSize() {
@@ -49,79 +37,49 @@ public class FIFO {
     }
 
     public boolean isEmpty() {
-        return first == null;
-    }
-
-    public int size() {
-        return size;
-    }
-
-    public Node getFirst(){
-        return first;
-    }
-
-    public boolean equals(Object f) {
-        FIFO newFIFO = (FIFO) f;
-        if (this.size == newFIFO.size) {
-            Node fIFONode = first;
-            Node fNode = newFIFO.first;
-            while (fIFONode != null) {
-                if (!(fIFONode.equals(fNode))) {
-                    return false;
-                }
-                fIFONode = fIFONode.getNext();
-                fNode = fNode.getNext();
-            }
+        if (queue.size() == 0) {
             return true;
         }
         return false;
     }
 
-    public String toString() {
-        Node node = first;
-        String queue = "Queue: ";
-        while (node != null) {
-            queue = queue + "(" + node.getValue() + ") ";
-            node = node.getNext();
-        }
-        return queue;
+    public int size() {
+        return this.queue.size();
     }
 
-    public Node getIndex(int index){
-        if (index >= size || index < 0){
-            throw new IndexOutOfBoundsException();
-        }else {
-            Node iterator = node.getNext();
-            for(int i = 0; i < index; i++){
-                iterator = iterator.getNext();
+    public boolean equals(Object f) {
+        if (f.getClass() == this.getClass()) {
+
+            if (((FIFO) f).queue.size() == this.queue.size()) {
+
+                for (int i = 0; i < this.queue.size(); i++) {
+
+                    if ((this.queue.get(i) == null) || (((FIFO) f).queue.get(i) == null)) {
+
+                        if ((this.queue.get(i) == null) && (((FIFO) f).queue.get(i) == null)) {
+                            continue;
+                        }
+                        return false;
+                    }
+
+                    else if (((FIFO) f).queue.get(i).equals(this.queue.get(i))) {
+                        continue;
+                    }
+                }
+                return true;
+            }else {
+                return false;
             }
-            return iterator;
+        }else {
+            throw new ClassCastException();
         }
     }
-    public Object getIndexValue(int index){
-        return getIndex(index).getValue();
-    }
 
-
-    public class Node {
-
-        Object value;
-        private Node next;
-
-        public Node(Object value) {
-            this.value = value;
+    public String toString() {
+        String printQueue = "Queue: ";
+        for (Object o : queue) {
+            printQueue += "(" + o + ") ";
         }
-
-        public Object getValue() {
-            return value;
-        }
-
-        public void setNext(Node node) {
-            next = node;
-        }
-
-        public Node getNext() {
-            return this.next;
-        }
+        return printQueue;
     }
 }
