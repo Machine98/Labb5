@@ -1,18 +1,17 @@
 package lab5.general;
-import lab5.general.State;
 import lab5.general.store.StoreState;
 
 public abstract class Event {
 
     private double time;
-    private StoreState state;
+    private StoreState storeState;
     protected EventQueue eventQueue;
     private boolean open;
     private String name;
 
 
-    public Event(StoreState state, double time, EventQueue eventQueue){
-        this.state = state;
+    public Event(StoreState storeState, double time, EventQueue eventQueue){
+        this.storeState = storeState;
         this.time = time;
         this.eventQueue = eventQueue;
     }

@@ -4,7 +4,6 @@ import lab5.general.*;
 public class PickUpEvent extends Event {
     private StoreState storeState;
     private Customer customerID;
-    private State state;
     private EventQueue eventQueue;
 
     public PickUpEvent(StoreState storeState, double time, Customer customerID, EventQueue queue) {
@@ -18,11 +17,11 @@ public class PickUpEvent extends Event {
     public void performEvent() {
         storeState.setEventName("Plock");
         storeState.currentCustomerID(customerID);
-        storeState.incTimeInCQ(super.EventTime() - state.getTimePassed());
-        storeState.incUnoccupiedRegTime(super.EventTime() - state.getTimePassed());
+        storeState.incTimeInCQ(super.EventTime() - storeState.getTimePassed());
+        storeState.incUnoccupiedRegTime(super.EventTime() - storeState.getTimePassed());
 
-        state.setTimePassed(super.EventTime());
-        double newTime = state.getTimePassed() + super.EventTime();
+        storeState.setTimePassed(super.EventTime());
+        double newTime = storeState.getTimePassed() + super.EventTime();
 
         storeState.update();
         if (storeState.freeRegisters()) {

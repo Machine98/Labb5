@@ -18,6 +18,7 @@ public class StartEvent extends Event {
     @Override
     public void performEvent() {
         time = 0;
+        state.setOpen(true);
         state.currentEvent(this);
         eventQueue.addEvent(new ArrivalEvent(state, time, eventQueue));
     }

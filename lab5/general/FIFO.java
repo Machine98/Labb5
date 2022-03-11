@@ -19,7 +19,7 @@ public class FIFO {
 
     public void removeFirst() throws NoSuchElementException {
         if (isEmpty()) {
-            throw new NoSuchElementException();
+            return;
         }
         this.queue.remove(0);
     }

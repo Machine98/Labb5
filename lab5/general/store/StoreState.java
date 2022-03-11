@@ -5,6 +5,14 @@ import lab5.general.State;
 
 public class StoreState extends State {
 
+    public boolean isOpen() {
+        return open;
+    }
+
+    public void setOpen(boolean open) {
+        this.open = open;
+    }
+
     private boolean open;
 
     private CustomerQueue queue = new CustomerQueue();
@@ -195,10 +203,6 @@ public class StoreState extends State {
     }
     public void isOpen(Boolean close){
         open = close;
-    }
-
-    public boolean getIsOpen(){
-        return open;
     }
 
     public int getQueue(){
