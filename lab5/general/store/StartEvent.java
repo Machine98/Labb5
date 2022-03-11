@@ -18,7 +18,7 @@ public class StartEvent extends Event {
     public void performEvent() {
         time = 0;
         state.currentEvent(this);
-        new ArrivalEvent(state, time, eventQueue);
+        eventQueue.addEvent(new ArrivalEvent(state, time, eventQueue));
     }
 
 }
