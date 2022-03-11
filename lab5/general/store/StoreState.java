@@ -4,37 +4,42 @@ import lab5.general.Event;
 import lab5.general.State;
 
 public class StoreState extends State {
+
     private boolean simulating;
+    private boolean open;
+
+    private CustomerQueue queue;
+    private String eventName;
+    private Event currentEvent;
+    private Customer currentCustomerID;
+    private PickUpCalc PickTime;
+    private CashierSpeedCalc PayTime;
+
+    private long seed;
 
     private double timePassed;
     private double lastEventTime;
-
-    private CustomerQueue queue;
-
-    private long seed;
     private double minPickTime;
     private double maxPickTime;
     private double minPayTime;
     private double maxPayTime;
     private double lambda;
+    private double unoccupiedRegTime;
+    private double timeInCQ;
+
+    private int ocupiedregisters = 0;
     private int registers;
     private int maxCustomers;
     private int totalCustomers;
     private int currentCusomers;
-    CustomerQueue customerQueue;
-    private int ocupiedregisters = 0;
-    private PickUpCalc PickTime;
-    private CashierSpeedCalc PayTime;
-    ArrivalTimeCalc ArrivalTime;
     private int payedCustomers;
     private int customersTurnedAway;
     private int coinMade;
-    private double unoccupiedRegTime;
-    private double timeInCQ;
-    private String eventName;
-    private Event currentEvent;
-    private Customer currentCustomerID;
-    private boolean open;
+
+    CustomerQueue customerQueue;
+    ArrivalTimeCalc ArrivalTime;
+
+
 
     public StoreState(long seed, int maxCustomers, int registers, double minPickTime, double maxPickTime, double minPayTime,
                       double maxPayTime, double lambda) {
