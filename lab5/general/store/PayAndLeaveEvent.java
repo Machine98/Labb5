@@ -13,7 +13,7 @@ public class PayAndLeaveEvent extends Event {
 
     public PayAndLeaveEvent(StoreState storeState, double time, Customer customerID,
                             EventQueue eventQueue) {
-        super(state, time, eventQueue);
+        super(storeState, time, eventQueue);
         this.customerID = customerID;
         this.eventQueue = eventQueue;
         this.storeState = storeState;
@@ -21,6 +21,7 @@ public class PayAndLeaveEvent extends Event {
 
     @Override
     public void performEvent() {
+        storeState.setPayedCustomers(storeState.getCustomersPayed() + 1);
         customerQueue.remove();
         storeState.decOcupiedregisters();
     }

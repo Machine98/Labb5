@@ -31,7 +31,7 @@ public class StoreState extends State {
     private double unoccupiedRegTime;
 
     public StoreState(long seed, int maxCustomers, int registers, double minPickTime, double maxPickTime, double minPayTime,
-                      double maxPayTime, double lambda){
+                      double maxPayTime, double lambda) {
 
         this.maxCustomers = maxCustomers;
         this.registers = registers;
@@ -48,8 +48,8 @@ public class StoreState extends State {
         this.unoccupiedRegTime = 0.0d;
     }
 
-    public boolean freeRegisters(){
-        if(registers > ocupiedregisters){
+    public boolean freeRegisters() {
+        if (registers > ocupiedregisters) {
             return true;
         }
         return false;
@@ -58,6 +58,7 @@ public class StoreState extends State {
     public int getQueueSize() {
         return queue.size();
     }
+
     public double getArrivalTime() {
         return ArrivalTime.newArrivalTime();
     }
@@ -74,7 +75,7 @@ public class StoreState extends State {
         this.ocupiedregisters++;
     }
 
-    public void decOcupiedregisters(){
+    public void decOcupiedregisters() {
         this.ocupiedregisters--;
     }
 
@@ -110,7 +111,7 @@ public class StoreState extends State {
         return this.seed;
     }
 
-    public int getCurrentCustomers(){
+    public int getCurrentCustomers() {
         return this.currentCusomers;
     }
 
@@ -119,6 +120,7 @@ public class StoreState extends State {
     }
 
     public int getCustomersPayed() {
+
         return this.payedCustomers;
     }
 
@@ -134,7 +136,7 @@ public class StoreState extends State {
         this.customersTurnedAway = customersTurnedAway;
     }
 
-    public void currentEvent(StartEvent startEvent){
+    public void currentEvent(StartEvent startEvent) {
 
     }
 
