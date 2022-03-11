@@ -1,6 +1,6 @@
 package lab5.general.store;
-
-public class PayAndLeaveEvent {
+import lab5.general.*
+public class PayAndLeaveEvent extends Event {
     private Customer customer;
     private CustomerQueue customerQueue;
     private StoreState storeState;

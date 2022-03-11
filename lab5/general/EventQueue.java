@@ -10,7 +10,7 @@ public class EventQueue extends FIFO {
         eventQueue = new FIFO();
     }
 
-    public void addEvent(StartEvent startEvent) {
+    public void addEvent(Event newEvent) {
         eventQueue.add(event);
     }
 
