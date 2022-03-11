@@ -12,6 +12,7 @@ public class ArrivalEvent extends Event {
     private StoreState storeState;
     private Customer customerID;
     private Event event;
+    private NewCustomer newCustomer;
 
     public ArrivalEvent(State state, double time, EventQueue eventQueue) {
         super((StoreState) state, time, eventQueue);
@@ -24,7 +25,9 @@ public class ArrivalEvent extends Event {
             if(storeState.getCurrentCustomers() == storeState.getMaxCustomers()){
                 storeState.setCustomersTurnedAway(1);
             }else{
+                newCustomer = new NewCustomer(storeState.getTotalCustomers());
                 eventQueue.addEvent(new PickUpEvent(storeState, time, customerID, eventQueue, state));
+                storeState.addTotalCustomers();
             }
         }
     }
