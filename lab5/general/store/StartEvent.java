@@ -19,7 +19,7 @@ public class StartEvent extends Event {
     public void performEvent(StoreState state) {
             time = 0;
             state.currentEvent(this);
-            new ArrivalEvent(state, "kund 1");
+            new ArrivalEvent(state, "kund1");
         }
     }
 
