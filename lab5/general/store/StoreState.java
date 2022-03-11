@@ -163,6 +163,11 @@ public class StoreState extends State {
     public void incTimeInCQ(double timeDiff) {
         timeInCQ += timeDiff * customerQueue.size();
     }
+
+    public void update() {
+        setChanged();
+        notifyObservers();
+    }
 }
 
 
