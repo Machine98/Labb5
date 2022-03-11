@@ -5,7 +5,7 @@ public class PickUpEvent extends Event {
     private StoreState storeState;
     private Customer customerID;
     private State state;
-    private EventQueue eventqueue;
+    private EventQueue eventQueue;
 
     public PickUpEvent(StoreState storeState, double time, Customer customerID, EventQueue queue,
                             State state) {
@@ -17,9 +17,9 @@ public class PickUpEvent extends Event {
     }
 
     public void performEvent() {
-
-        if (storeState.freeRegisters()) {
-            eventQueue.addEvent(new PayAndLeaveEvent(/*massa argument*/));
+        double newTime = state.getTimePassed() + customerID.getCustomerPickTime();
+        if (storeState.freeRegisters())
+            eventQueue.addEvent(new PayAndLeaveEvent(storeState, newTime, customerID, eventQueue, state);
             storeState.incOcupiedregisters();
         }
         else {
