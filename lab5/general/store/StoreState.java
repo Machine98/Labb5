@@ -135,6 +135,10 @@ public class StoreState extends State {
         this.eventName = eventName;
     }
 
+    public String getEventName() {
+        return eventName;
+    }
+
     public void setPayedCustomers(int payedCustomers) {
         this.payedCustomers = payedCustomers;
     }
