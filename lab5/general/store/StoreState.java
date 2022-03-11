@@ -167,8 +167,8 @@ public class StoreState extends State {
         this.payedCustomers++;
     }
 
-    public void setCustomersTurnedAway(int customersTurnedAway) {
-        this.customersTurnedAway = customersTurnedAway;
+    public void incCustomersTurnedAway() {
+        this.customersTurnedAway++;
     }
 
     public void currentCustomerID(Customer customerID) {

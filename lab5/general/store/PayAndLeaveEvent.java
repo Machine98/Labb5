@@ -10,8 +10,7 @@ public class PayAndLeaveEvent extends Event {
     private StoreState storeState;
 
 
-    public PayAndLeaveEvent(StoreState storeState, double time, Customer customerID,
-                            EventQueue eventQueue) {
+    public PayAndLeaveEvent(StoreState storeState, double time, Customer customerID, EventQueue eventQueue) {
         super(storeState, time, eventQueue);
         this.customerID = customerID;
         this.eventQueue = eventQueue;

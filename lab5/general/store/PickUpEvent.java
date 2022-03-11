@@ -5,6 +5,7 @@ public class PickUpEvent extends Event {
     private StoreState storeState;
     private Customer customerID;
     private EventQueue eventQueue;
+    private double time;
 
     public PickUpEvent(StoreState storeState, double time, Customer customerID, EventQueue queue) {
 
@@ -12,6 +13,7 @@ public class PickUpEvent extends Event {
         this.customerID = customerID;
         this.eventQueue = queue;
         this.storeState = storeState;
+        this.time = time;
     }
 
     public void performEvent() {
@@ -21,11 +23,11 @@ public class PickUpEvent extends Event {
         storeState.incUnoccupiedRegTime(super.EventTime() - storeState.getTimePassed());
 
         storeState.setTimePassed(super.EventTime());
-        double newTime = storeState.getTimePassed() + super.EventTime();
+        time+= storeState.getTimePassed() + super.EventTime();
 
         storeState.update();
         if (storeState.freeRegisters()) {
-            eventQueue.addEvent(new PayAndLeaveEvent(storeState, newTime, customerID, eventQueue));
+            eventQueue.addEvent(new PayAndLeaveEvent(storeState, time, customerID, eventQueue));
             storeState.incOcupiedregisters();
         }
         else {

@@ -6,25 +6,24 @@ import lab5.general.State;
 
 public class ArrivalEvent extends Event {
     private double time;
-    private boolean open;
     private Customer customerID;
-    private Event event;
-    private NewCustomer newCustomer;
     private StoreState storeState;
 
     public ArrivalEvent(StoreState state, double time, EventQueue eventQueue) {
         super(state, time, eventQueue);
         this.storeState = state;
+        this.time = time;
     }
 
     @Override
     public void performEvent() {
         storeState.setEventName("Ankomst");
+        storeState.currentEvent(this);
         storeState.currentCustomerID(customerID);
-        time = storeState.ArrivalTime.newArrivalTime();
+        time+= storeState.ArrivalTime.newArrivalTime();
         if(storeState.isOpen()){
             if(storeState.getCurrentCustomers() == storeState.getMaxCustomers()){
-                storeState.setCustomersTurnedAway(1);
+                storeState.incCustomersTurnedAway();
             }else{
                 customerID = new Customer(storeState.getTotalCustomers(), storeState);
                 eventQueue.addEvent(new PickUpEvent(storeState, time, customerID, eventQueue));
