@@ -25,7 +25,7 @@ public class ArrivalEvent extends Event {
             if(storeState.getCurrentCustomers() == storeState.getMaxCustomers()){
                 storeState.setCustomersTurnedAway(1);
             }else{
-                newCustomer = new NewCustomer(storeState.getTotalCustomers());
+                customerID = new Customer(storeState.getTotalCustomers(), storeState);
                 eventQueue.addEvent(new PickUpEvent(storeState, time, customerID, eventQueue, state));
                 storeState.addTotalCustomers();
             }
