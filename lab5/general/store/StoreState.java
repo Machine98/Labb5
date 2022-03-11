@@ -135,6 +135,8 @@ public class StoreState extends State {
         this.eventName = eventName;
     }
 
+
+
     public void setPayedCustomers(int payedCustomers) {
         this.payedCustomers = payedCustomers;
     }
