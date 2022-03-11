@@ -8,11 +8,16 @@ public abstract class Event {
     private StoreState state;
     protected EventQueue eventQueue;
     private boolean open;
+    private String name;
 
 
     public Event(StoreState state, double time, EventQueue eventQueue){
         this.state = state;
         this.time = time;
+    }
+
+    public String getName(){
+        return name;
     }
 
     public abstract void performEvent();
