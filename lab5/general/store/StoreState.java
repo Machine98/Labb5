@@ -30,6 +30,7 @@ public class StoreState extends State {
     private int coinMade;
     private double unoccupiedRegTime;
     private double timeInCQ;
+    private String eventName;
 
     public StoreState(long seed, int maxCustomers, int registers, double minPickTime, double maxPickTime, double minPayTime,
                       double maxPayTime, double lambda) {
@@ -128,6 +129,10 @@ public class StoreState extends State {
 
     public int getCustomersTurnedAway() {
         return this.customersTurnedAway;
+    }
+
+    public void setEventName(String eventName) {
+        this.eventName = eventName;
     }
 
     public void setPayedCustomers(int payedCustomers) {
