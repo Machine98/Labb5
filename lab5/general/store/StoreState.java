@@ -141,9 +141,8 @@ public class StoreState extends State {
     }
 
     public void incUnoccupiedRegTime(double timeDiff) {
-        if (freeRegisters()) {
-            unoccupiedRegTime += timeDiff;
-        }
+        unoccupiedRegTime += timeDiff * (registers - ocupiedregisters);
+
     }
 }
 
