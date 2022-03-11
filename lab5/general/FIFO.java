@@ -108,8 +108,8 @@ public class FIFO {
         Object value;
         private Node next;
 
-        public Node(Object x) {
-            this.value = x;
+        public Node(Object value) {
+            this.value = value;
         }
 
         public Object getValue() {
