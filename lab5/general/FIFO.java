@@ -24,11 +24,22 @@ public class FIFO {
         this.queue.remove(0);
     }
 
-    public void remove(int index) throws NoSuchElementException {
+    public void removeIndex(int index) throws NoSuchElementException {
         if (isEmpty()) {
             throw new NoSuchElementException();
         }
         this.queue.remove(index);
+    }
+
+    public void removeOb(Object item) throws NoSuchElementException {
+        if (isEmpty()) {
+
+        }
+        for (int i = 0; i < queue.size(); i++) {
+            if (item.equals(queue.get(i))){
+                removeIndex(i);
+            }
+        }
     }
 
     public Object first() throws NoSuchElementException {

@@ -6,16 +6,15 @@ import lab5.general.State;
 
 public class ArrivalEvent extends Event {
     private double time;
-    private EventQueue eventQueue;
-    private State state;
     private boolean open;
-    private StoreState storeState;
     private Customer customerID;
     private Event event;
     private NewCustomer newCustomer;
+    private StoreState storeState;
 
-    public ArrivalEvent(State state, double time, EventQueue eventQueue) {
-        super((StoreState) state, time, eventQueue);
+    public ArrivalEvent(StoreState state, double time, EventQueue eventQueue) {
+        super(state, time, eventQueue);
+        this.storeState = state;
     }
 
     @Override
@@ -28,7 +27,7 @@ public class ArrivalEvent extends Event {
                 storeState.setCustomersTurnedAway(1);
             }else{
                 customerID = new Customer(storeState.getTotalCustomers(), storeState);
-                eventQueue.addEvent(new PickUpEvent(storeState, time, customerID, eventQueue, state));
+                eventQueue.addEvent(new PickUpEvent(storeState, time, customerID, eventQueue));
                 storeState.addTotalCustomers();
                 eventQueue.addEvent(new ArrivalEvent(storeState, time, eventQueue));
             }

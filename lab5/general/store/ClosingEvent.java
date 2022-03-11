@@ -12,6 +12,7 @@ public class ClosingEvent extends Event {
 
     public ClosingEvent(StoreState storeState, double time, EventQueue eventQueue){
         super(storeState, time, eventQueue);
+        this.storeState = storeState;
     }
 
     @Override

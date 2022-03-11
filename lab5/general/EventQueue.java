@@ -26,7 +26,7 @@ public class EventQueue extends FIFO {
             this.removeFirst();
         }
 
-
+        removeOb(newest);
         return newest;
     }
 
