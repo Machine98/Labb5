@@ -18,7 +18,7 @@ public class StoreState extends State {
     private double lambda;
     private int registers;
     private int maxCustomers;
-    CustomerQueue customerQueue = new CustomerQueue();
+    CustomerQueue customerQueue;
     private int ocupiedregisters = 0;
     private PickuoCalc PickTime;
     private PayTimeCalc PayTime;
@@ -40,6 +40,7 @@ public class StoreState extends State {
         this.PickTime = new PickuoCalc(minPickTime, maxPickTime, seed);
         this.PayTime = new PayTimeCalc(minPayTime, maxPayTime, seed);
         this.ArrivalTime = new ArrivalTimeCalc(lambda, seed);
+        this.customerQueue = new CustomerQueue();
     }
 
     public boolean freeRegisters(){

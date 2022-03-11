@@ -17,8 +17,9 @@ public class PickUpEvent extends Event {
     }
 
     public void performEvent() {
+
         if (storeState.freeRegisters()) {
-            eventQueue.addEvent(new PayAndLeaveEvent(/*masssa argument*/));
+            eventQueue.addEvent(new PayAndLeaveEvent(storeState, /));
             storeState.incOcupiedregisters();
         }
         else {
