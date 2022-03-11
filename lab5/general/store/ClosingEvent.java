@@ -1,4 +1,12 @@
 package lab5.general.store;
 
-public class ClosingEvent {
+import lab5.general.Event;
+
+public class ClosingEvent extends Event {
+    private Event event;
+
+    @Override
+    public void performEvent() {
+        event.isOpen(false);
+    }
 }
