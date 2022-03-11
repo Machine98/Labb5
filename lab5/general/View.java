@@ -11,7 +11,7 @@ public abstract class View implements Observer{
 
     public View() {
 
-        state.addObserver(this);
+        //state.addObserver(this);
     }
 
     @Override
