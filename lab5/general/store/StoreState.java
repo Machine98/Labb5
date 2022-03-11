@@ -18,6 +18,7 @@ public class StoreState extends State {
     private double lambda;
     private int registers;
     private int maxCustomers;
+    CustomerQueue customerQueue = new CustomerQueue();
     private int ocupiedregisters = 0;
     private PickuoCalc PickTime;
     private PayTimeCalc PayTime;

@@ -3,11 +3,11 @@ import lab5.general.*;
 
 public class PickUpEvent extends Event {
     private StoreState storeState;
-    private int customerID;
+    private Customer customerID;
     private State state;
     private EventQueue eventqueue;
 
-    public PickUpEvent(StoreState storeState, double time, int customerID, EventQueue queue,
+    public PickUpEvent(StoreState storeState, double time, Customer customerID, EventQueue queue,
                             State state) {
 
         super(state, time, queue);
@@ -19,6 +19,10 @@ public class PickUpEvent extends Event {
     public void performEvent() {
         if (storeState.freeRegisters()) {
             eventQueue.addEvent(new PayAndLeaveEvent(/*masssa argument*/));
+            storeState.incOcupiedregisters();
+        }
+        else {
+            storeState.customerQueue.add(customerID);
         }
 
         //tate.setNewTimePassed(Customer.getPickTime(customerID) + state.timePassed);
