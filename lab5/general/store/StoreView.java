@@ -67,11 +67,26 @@ public class StoreView extends View {
         }
 
 
-        //String cusID = String.valueOf(storeState.getCustomerID) + "  ";
-        //String availableReg = String.valueOf(storeState.getRegisters() - storeState.getAvailableRegisters());
+        String cusID = String.valueOf(storeState.getCustomerID) + "  ";
+        String store = (storeState.getStoreOpen()) ? "Ö" : "S";
+        String availableReg = String.valueOf(storeState.getRegisters() - storeState.getAvailableRegisters());
         String timeFreeReg = String.valueOf(String.format(".2f", storeState.getUnoccupiedRegTime()));
-        //String
+        String amCust = String.valueOf(storeState.getTotalCustomers());
+        String coinMade = String.valueOf(storeState.getCustomersPayed());
+        String missCust = String.valueOf(storeState.getCustomersTurnedAway());
+        String totAmQueue = String.valueOf(storeState.getTotQueueTime);
+        String timeQueued = String.valueOf(String.format("%.2f", storeState.getQueueTime));
+        String amQueue = String.valueOf(storeState.getQueueSize());
+        String currentQueue = storeState.getQueue();
 
+        String infoRow;
+        if (event == "Start " || event == "Stop "){
+            infoRow = time + event;
+        }
+        else {
+            infoRow = time + event + cusID + store + availableReg + timeFreeReg + amCust + coinMade + missCust + totAmQueue +timeQueued + amQueue + currentQueue;
+        }
 
+        System.out.println(infoRow);
     }
 }
