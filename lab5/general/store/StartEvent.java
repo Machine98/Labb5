@@ -16,8 +16,11 @@ public class StartEvent extends Event {
         this.time = time;
     }
 
-    public void performEvent() {
-
+    public void performEvent(StoreState state) {
+            time = 0;
+            state.currentEvent(this);
+            new ArrivalEvent(state, "kund 1");
+        }
     }
 
 }

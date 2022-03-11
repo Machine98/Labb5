@@ -120,6 +120,10 @@ public class StoreState extends State {
     public void setCustomersTurnedAway(int customersTurnedAway) {
         this.customersTurnedAway = customersTurnedAway;
     }
+
+    public void currentEvent(StartEvent startEvent){
+
+    }
 }
 
 
