@@ -30,8 +30,8 @@ public class StoreView extends View {
         System.out.println("========");
         System.out.println("1) Av " + storeState.getTotalCustomers() + " handlade " + storeState.getCustomersPayed() + " medan " + storeState.getCustomersTurnedAway() + " missades.");
         System.out.println("");
-        System.out.println("2) Total tid " + storeState.getRegisters() + " kassor varit lediga: " + här i ska vi ta tid de varit lediga );
-        System.out.println("\tGenomsnittlig ledig kassa tid " + något + " (dvs " + "procentenhet på medelvärdet" + " + " + "av tiden från öppning tills sista kunden betalat" + ".");
+        System.out.println("2) Total tid " + storeState.getRegisters() + " kassor varit lediga: " + storeState.getUnoccupiedRegTime());
+        System.out.println("\tGenomsnittlig ledig kassa tid " + storeState.getUnoccupiedRegTime()/storeState.getRegisters() + " (dvs " + "procentenhet på medelvärdet" + " + " + "av tiden från öppning tills sista kunden betalat" + ".");
         System.out.println("");
         System.out.println("3) Total tid " + "köade kunder" + " kunder tvingats köa:" + "tid de köat i te" + ".");
         System.out.println("\tGenomsnittlig kötid: " + "genomsnittlig kötid i te");
