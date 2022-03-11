@@ -30,8 +30,8 @@ public class StoreView extends View {
         System.out.println("========");
         System.out.println("1) Av " + storeState.getTotalCustomers() + " handlade " + storeState.getCustomersPayed() + " medan " + storeState.getCustomersTurnedAway() + " missades.");
         System.out.println("");
-        System.out.println("2) Total tid " + storeState.getRegisters() + " kassor varit lediga: " + storeState.getUnoccupiedRegTime());
-        System.out.println("\tGenomsnittlig ledig kassa tid " + storeState.getUnoccupiedRegTime()/storeState.getRegisters() + " (dvs " + "procentenhet på medelvärdet" + " + " + "av tiden från öppning tills sista kunden betalat" + ".");
+        //System.out.println("2) Total tid " + storeState.getRegisters() + " kassor varit lediga: " + storeState.getUnoccupiedRegTime());
+        //System.out.println("\tGenomsnittlig ledig kassa tid " + storeState.getUnoccupiedRegTime()/storeState.getRegisters() + " (dvs " + "procentenhet på medelvärdet" + " + " + "av tiden från öppning tills sista kunden betalat" + ".");
         System.out.println("");
         System.out.println("3) Total tid " + "köade kunder" + " kunder tvingats köa:" + "tid de köat i te" + ".");
         System.out.println("\tGenomsnittlig kötid: " + "genomsnittlig kötid i te");
@@ -67,10 +67,10 @@ public class StoreView extends View {
         }
 
 
-        String cusID = String.valueOf(storeState.getCustomerID) + "  ";
-        String availableReg = String.valueOf(storeState.getRegisters() - storeState.getAvailableRegisters());
+        //String cusID = String.valueOf(storeState.getCustomerID) + "  ";
+        //String availableReg = String.valueOf(storeState.getRegisters() - storeState.getAvailableRegisters());
         String timeFreeReg = String.valueOf(String.format(".2f", storeState.getUnoccupiedRegTime()));
-        String
+        //String
 
 
     }
