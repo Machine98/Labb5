@@ -7,6 +7,7 @@ public abstract class Event {
     private double time;
     private StoreState state;
     protected EventQueue eventQueue;
+    private boolean open;
 
 
     public Event(StoreState state, double time, EventQueue eventQueue){
@@ -18,5 +19,12 @@ public abstract class Event {
 
     public double EventTime(){
         return time;
+    }
+
+    public void isOpen(Boolean close){
+        open = close;
+    }
+    public boolean getIsOpen(){
+        return open;
     }
 }
