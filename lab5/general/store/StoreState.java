@@ -117,6 +117,7 @@ public class StoreState extends State {
     }
 
     public int getCustomersPayed() {
+
         return this.payedCustomers;
     }
 
