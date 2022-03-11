@@ -20,6 +20,7 @@ public class ArrivalEvent extends Event {
 
     @Override
     public void performEvent() {
+
         time = ArrivalTimeCalc.newArrivalTime();
         if(event.getIsOpen()){
             if(storeState.getCurrentCustomers() == storeState.getMaxCustomers()){
@@ -28,6 +29,7 @@ public class ArrivalEvent extends Event {
                 customerID = new Customer(storeState.getTotalCustomers(), storeState);
                 eventQueue.addEvent(new PickUpEvent(storeState, time, customerID, eventQueue, state));
                 storeState.addTotalCustomers();
+                eventQueue.addEvent(new ArrivalEvent(storeState, time, eventQueue));
             }
         }
     }
