@@ -15,6 +15,6 @@ public class EndEvent extends Event {
 
     @Override
     public void performEvent() {
-        state.simulating = false;
+        state.setSimulating(false);
     }
 }

@@ -6,12 +6,13 @@ import lab5.general.State;
 
 public class StartEvent extends Event {
 
-    private StoreState state;
     private double time;
+    private StoreState state;
 
-    public StartEvent(StoreState state, double time,EventQueue eventQueue){
+    public StartEvent(StoreState state, double time, EventQueue eventQueue){
         super(state, time, eventQueue);
         this.time = time;
+        this.state = state;
     }
 
     @Override

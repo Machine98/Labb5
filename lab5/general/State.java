@@ -7,7 +7,16 @@ import java.util.Observable;
 public abstract class State extends Observable {
 
     public double timePassed;
-    public boolean simulating = true;
+
+    public boolean isSimulating() {
+        return simulating;
+    }
+
+    public void setSimulating(boolean simulating) {
+        this.simulating = simulating;
+    }
+
+    protected boolean simulating = true;
 
     public State() {
         this.timePassed = 0d;

@@ -14,6 +14,7 @@ public abstract class Event {
     public Event(StoreState state, double time, EventQueue eventQueue){
         this.state = state;
         this.time = time;
+        this.eventQueue = eventQueue;
     }
 
     public String getName(){

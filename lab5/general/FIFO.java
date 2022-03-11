@@ -1,5 +1,6 @@
 package lab5.general;
 
+import java.time.chrono.MinguoDate;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
@@ -9,9 +10,7 @@ public class FIFO {
 
     public void add(Object o) {
         queue.add(o);
-        if (this.queue.size() > maxSize) {
-            maxSize = this.queue.size();
-        }
+        maxSize++;
     }
 
     public Object getIndex(int index){
@@ -23,6 +22,13 @@ public class FIFO {
             throw new NoSuchElementException();
         }
         this.queue.remove(0);
+    }
+
+    public void remove(int index) throws NoSuchElementException {
+        if (isEmpty()) {
+            throw new NoSuchElementException();
+        }
+        this.queue.remove(index);
     }
 
     public Object first() throws NoSuchElementException {

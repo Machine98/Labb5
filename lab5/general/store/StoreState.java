@@ -5,10 +5,9 @@ import lab5.general.State;
 
 public class StoreState extends State {
 
-    private boolean simulating;
     private boolean open;
 
-    private CustomerQueue queue;
+    private CustomerQueue queue = new CustomerQueue();
     private String eventName;
     private Event currentEvent;
     private Customer currentCustomerID;
