@@ -21,6 +21,7 @@ public class PayAndLeaveEvent extends Event {
 
     @Override
     public void performEvent() {
+        storeState.setPayedCustomers(storeState.getCustomersPayed() + 1);
         customerQueue.remove();
         storeState.decOcupiedregisters();
     }
