@@ -7,7 +7,6 @@ import lab5.general.State;
 public class PayAndLeaveEvent extends Event {
     private State state;
     private Customer customerID;
-    private CustomerQueue customerQueue;
     private StoreState storeState;
 
 
@@ -24,7 +23,7 @@ public class PayAndLeaveEvent extends Event {
         storeState.setEventName("Betalning");
         storeState.currentCustomerID(customerID);
         storeState.addPayedCustomers();
-        customerQueue.remove();
+        storeState.customerQueue.remove();
         storeState.decOcupiedregisters();
     }
 }
