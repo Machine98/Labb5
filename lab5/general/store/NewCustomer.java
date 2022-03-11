@@ -1,11 +1,10 @@
 package lab5.general.store;
 
 public class NewCustomer {
-    private int customerNum = 0;
     private StoreState storeState;
 
-    public NewCustomer(){
+    public NewCustomer(int customerNum){
         Customer customer = new Customer(customerNum, storeState);
-        customerNum++;
+
     }
 }

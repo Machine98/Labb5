@@ -1,5 +1,6 @@
 package lab5.general.store;
 
+import lab5.general.Event;
 import lab5.general.State;
 
 public class StoreState extends State {
@@ -31,6 +32,8 @@ public class StoreState extends State {
     private double unoccupiedRegTime;
     private double timeInCQ;
     private String eventName;
+    private Event currentEvent;
+    private Customer currentCustomerID;
 
     public StoreState(long seed, int maxCustomers, int registers, double minPickTime, double maxPickTime, double minPayTime,
                       double maxPayTime, double lambda) {
@@ -122,6 +125,10 @@ public class StoreState extends State {
         return this.totalCustomers;
     }
 
+    public void addTotalCustomers(){
+        this.totalCustomers++;
+    }
+
     public int getCustomersPayed() {
 
         return this.payedCustomers;
@@ -147,8 +154,18 @@ public class StoreState extends State {
         this.customersTurnedAway = customersTurnedAway;
     }
 
-    public void currentEvent(StartEvent startEvent) {
+    public void currentCustomerID(Customer customerID) {
+        this.currentCustomerID = customerID;
+    }
 
+    public Customer getCurrentCustomerID() {
+        return currentCustomerID;
+    }
+
+    public void currentEvent(Event event) {
+        currentEvent = event;
+        setChanged();
+        notifyObservers();
     }
 
     public double getUnoccupiedRegTime(){
@@ -163,6 +180,11 @@ public class StoreState extends State {
     public void incTimeInCQ(double timeDiff) {
         timeInCQ += timeDiff * customerQueue.size();
     }
+    public void update(){
+        setChanged();
+        notifyObservers();
+    }
+
 }
 
 
