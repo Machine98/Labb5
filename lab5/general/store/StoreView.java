@@ -69,7 +69,7 @@ public class StoreView extends View {
 
         String cusID = String.valueOf(storeState.getCustomerID) + "  ";
         String store = (storeState.getIsOpen()) ? "Ö" : "S";
-        String availableReg = String.valueOf(storeState.getRegisters() - storeState.getAvailableRegisters());
+        String availableReg = String.valueOf(storeState.getRegisters() - storeState.getOcupiedregisters());
         String timeFreeReg = String.valueOf(String.format(".2f", storeState.getUnoccupiedRegTime()));
         String amCust = String.valueOf(storeState.getTotalCustomers());
         String coinMade = String.valueOf(storeState.getCustomersPayed());
@@ -77,7 +77,7 @@ public class StoreView extends View {
         String totAmQueue = String.valueOf(storeState.getTotQueueTime);
         String timeQueued = String.valueOf(String.format("%.2f", storeState.getQueueTime));
         String amQueue = String.valueOf(storeState.getQueueSize());
-        String currentQueue = storeState.getQueue();
+        String currentQueue = String.valueOf(storeState.getQueue());
 
         String infoRow;
         if (event == "Start " || event == "Stop "){

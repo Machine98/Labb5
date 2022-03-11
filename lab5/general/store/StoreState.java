@@ -91,6 +91,10 @@ public class StoreState extends State {
         this.ocupiedregisters--;
     }
 
+    public int getOcupiedregisters(){
+        return ocupiedregisters;
+    }
+
     public int getRegisters() {
         return this.registers;
     }
@@ -196,6 +200,10 @@ public class StoreState extends State {
 
     public boolean getIsOpen(){
         return open;
+    }
+
+    public int getQueue(){
+        return queue.size();
     }
 
 }
