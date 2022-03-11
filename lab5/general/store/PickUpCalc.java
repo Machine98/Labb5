@@ -2,13 +2,13 @@ package lab5.general.store;
 
 import lab5.UniformRandomStream;
 
-public class PickuoCalc {
+public class PickUpCalc {
     private double minPickTime;
     private double maxPickTIme;
     private long seed;
     private UniformRandomStream pickUpTime;
 
-    public PickuoCalc(double minPickTime, double maxPickTime, long seed){
+    public PickUpCalc(double minPickTime, double maxPickTime, long seed){
         this.minPickTime = minPickTime;
         this.maxPickTIme = maxPickTime;
         this.seed = seed;
