@@ -10,7 +10,7 @@ public class PickUpEvent extends Event {
     public PickUpEvent(StoreState storeState, double time, Customer customerID, EventQueue queue,
                             State state) {
 
-        super(state, time, queue);
+        super(storeState, time, queue);
         this.customerID = customerID;
         this.eventQueue = queue;
         this.storeState = storeState;
