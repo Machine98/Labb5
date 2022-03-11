@@ -1,5 +1,8 @@
 package lab5.general.store;
 
+import java.util.Observable;
+import java.util.Observer;
+
 import lab5.general.store.StoreState;
 import lab5.general.View;
 
@@ -36,8 +39,38 @@ public class StoreView extends View {
 
     }
     public void eventPrint(){
-        String currentEvent = "";
+
         //behöver ta emot kund id, lediga kassor, lediga kassor tid, I, antal kunder som betalat, missade kunder, köat, kötid, köar, kassakö
+
+
+
+    }
+
+    public void update(Observable arg0, Object f) {
+        String time = String.valueOf(String.format("%.2f", storeState.getTimePassed())) + "    ";
+        String event = "";
+
+        if (storeState.getEventName() == "Ankomst"){
+            event = "Ankomst    ";
+        }
+        else if (storeState.getEventName() == "Plock"){
+            event = "Plock      ";
+        }
+        else if (storeState.getEventName() == "Betalning"){
+            event = "Betalning  ";
+        }
+        else if (storeState.getEventName() == "Stänger"){
+            event = "Stänger    ";
+        }
+        else {
+            event = storeState.getEventName();
+        }
+
+
+        String cusID = String.valueOf(storeState.getCustomerID) + "  ";
+        String availableReg = String.valueOf(storeState.getRegisters() - storeState.getAvailableRegisters());
+        String timeFreeReg = String.valueOf(String.format(".2f", storeState.getUnoccupiedRegTime()));
+        String
 
 
     }
