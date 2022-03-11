@@ -29,6 +29,7 @@ public class StoreState extends State {
     private int customersTurnedAway;
     private int coinMade;
     private double unoccupiedRegTime;
+    private double timeInCQ;
 
     public StoreState(long seed, int maxCustomers, int registers, double minPickTime, double maxPickTime, double minPayTime,
                       double maxPayTime, double lambda) {
@@ -46,6 +47,7 @@ public class StoreState extends State {
         this.ArrivalTime = new ArrivalTimeCalc(lambda, seed);
         this.customerQueue = new CustomerQueue();
         this.unoccupiedRegTime = 0.0d;
+        this.timeInCQ = 0.0;
     }
 
     public boolean freeRegisters() {
@@ -143,6 +145,10 @@ public class StoreState extends State {
     public void incUnoccupiedRegTime(double timeDiff) {
         unoccupiedRegTime += timeDiff * (registers - ocupiedregisters);
 
+    }
+
+    public void incTimeInCQ(double timeDiff) {
+        timeInCQ += timeDiff * customerQueue.size();
     }
 }
 
