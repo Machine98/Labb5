@@ -1,5 +1,6 @@
 package lab5.general.store;
 
+import lab5.general.Event;
 import lab5.general.State;
 
 public class StoreState extends State {
@@ -149,8 +150,10 @@ public class StoreState extends State {
         this.customersTurnedAway = customersTurnedAway;
     }
 
-    public void currentEvent(StartEvent startEvent) {
-
+    public void currentEvent(Event event) {
+        currentEvent = event;
+        setChanged();
+        notifyObservers();
     }
 
     public double getUnoccupiedRegTime(){
