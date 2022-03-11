@@ -69,6 +69,10 @@ public class StoreState extends State {
         this.ocupiedregisters++;
     }
 
+    public void decOcupiedregisters(){
+        this.ocupiedregisters--;
+    }
+
     public int getRegisters() {
         return this.registers;
     }

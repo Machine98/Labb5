@@ -1,20 +1,29 @@
 package lab5.general.store;
-import lab5.general.*
+
+import lab5.general.Event;
+import lab5.general.EventQueue;
+import lab5.general.State;
+
 public class PayAndLeaveEvent extends Event {
-    private Customer customer;
+    private State state;
+    private Customer customerID;
     private CustomerQueue customerQueue;
     private StoreState storeState;
-    private CashierSpeedCalc cashierSpeedCalc;
 
-    public PayAndLeaveEvent() {
-        customerQueue.add(customer);
+
+    public PayAndLeaveEvent(StoreState storeState, double time, Customer customerID,
+                            EventQueue eventQueue, State state) {
+        super(state, time, eventQueue);
+        this.customerID = customerID;
+        this.eventQueue = eventQueue;
+        this.storeState = storeState;
     }
 
-    public void pay() {
-        if(storeState.freeRegisters()){
-            customerQueue.remove();
-            storeState.incOcupiedregisters();
-        }
+    @Override
+    public void performEvent() {
+        customerQueue.remove();
+        storeState.decOcupiedregisters();
     }
 }
+
 
