@@ -31,6 +31,7 @@ public class StoreState extends State {
     private double unoccupiedRegTime;
     private double timeInCQ;
     private String eventName;
+    private Customer currentCustomerID;
 
     public StoreState(long seed, int maxCustomers, int registers, double minPickTime, double maxPickTime, double minPayTime,
                       double maxPayTime, double lambda) {
@@ -131,6 +132,13 @@ public class StoreState extends State {
         return this.customersTurnedAway;
     }
 
+    public void currentCustomerID(Customer customerID) {
+        this.currentCustomerID = customerID;
+    }
+
+    public Customer getCurrentCostumerID() {
+        return currentCustomerID;
+    }
     public void setEventName(String eventName) {
         this.eventName = eventName;
     }
