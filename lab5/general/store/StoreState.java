@@ -25,7 +25,7 @@ public class StoreState extends State {
     private int ocupiedregisters = 0;
     private PickUpCalc PickTime;
     private CashierSpeedCalc PayTime;
-    private ArrivalTimeCalc ArrivalTime;
+    ArrivalTimeCalc ArrivalTime;
     private int payedCustomers;
     private int customersTurnedAway;
     private int coinMade;
