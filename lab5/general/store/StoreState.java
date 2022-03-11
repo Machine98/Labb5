@@ -21,7 +21,7 @@ public class StoreState extends State {
     CustomerQueue customerQueue;
     private int ocupiedregisters = 0;
     private PickuoCalc PickTime;
-    private PayTimeCalc PayTime;
+    private CashierSpeedCalc PayTime;
     private ArrivalTimeCalc ArrivalTime;
     private int payedCustomers;
     private int customersTurnedAway;
@@ -38,7 +38,7 @@ public class StoreState extends State {
         this.minPayTime = minPayTime;
         this.maxPayTime = maxPayTime;
         this.PickTime = new PickuoCalc(minPickTime, maxPickTime, seed);
-        this.PayTime = new PayTimeCalc(minPayTime, maxPayTime, seed);
+        this.PayTime = new CashierSpeedCalc(minPayTime, maxPayTime, seed);
         this.ArrivalTime = new ArrivalTimeCalc(lambda, seed);
         this.customerQueue = new CustomerQueue();
     }
