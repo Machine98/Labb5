@@ -146,8 +146,8 @@ public class StoreState extends State {
         return eventName;
     }
 
-    public void setPayedCustomers(int payedCustomers) {
-        this.payedCustomers = payedCustomers;
+    public void addPayedCustomers() {
+        this.payedCustomers++;
     }
 
     public void setCustomersTurnedAway(int customersTurnedAway) {
