@@ -29,9 +29,10 @@ public class StoreState extends State {
     private int customersTurnedAway;
     private int coinMade;
     private double unoccupiedRegTime;
+    private double timeInCQ;
 
     public StoreState(long seed, int maxCustomers, int registers, double minPickTime, double maxPickTime, double minPayTime,
-                      double maxPayTime, double lambda){
+                      double maxPayTime, double lambda) {
 
         this.maxCustomers = maxCustomers;
         this.registers = registers;
@@ -46,10 +47,11 @@ public class StoreState extends State {
         this.ArrivalTime = new ArrivalTimeCalc(lambda, seed);
         this.customerQueue = new CustomerQueue();
         this.unoccupiedRegTime = 0.0d;
+        this.timeInCQ = 0.0;
     }
 
-    public boolean freeRegisters(){
-        if(registers > ocupiedregisters){
+    public boolean freeRegisters() {
+        if (registers > ocupiedregisters) {
             return true;
         }
         return false;
@@ -58,6 +60,7 @@ public class StoreState extends State {
     public int getQueueSize() {
         return queue.size();
     }
+
     public double getArrivalTime() {
         return ArrivalTime.newArrivalTime();
     }
@@ -74,7 +77,7 @@ public class StoreState extends State {
         this.ocupiedregisters++;
     }
 
-    public void decOcupiedregisters(){
+    public void decOcupiedregisters() {
         this.ocupiedregisters--;
     }
 
@@ -110,7 +113,7 @@ public class StoreState extends State {
         return this.seed;
     }
 
-    public int getCurrentCustomers(){
+    public int getCurrentCustomers() {
         return this.currentCusomers;
     }
 
@@ -135,7 +138,7 @@ public class StoreState extends State {
         this.customersTurnedAway = customersTurnedAway;
     }
 
-    public void currentEvent(StartEvent startEvent){
+    public void currentEvent(StartEvent startEvent) {
 
     }
 
@@ -144,9 +147,12 @@ public class StoreState extends State {
     }
 
     public void incUnoccupiedRegTime(double timeDiff) {
-        if (freeRegisters()) {
-            unoccupiedRegTime += timeDiff;
-        }
+        unoccupiedRegTime += timeDiff * (registers - ocupiedregisters);
+
+    }
+
+    public void incTimeInCQ(double timeDiff) {
+        timeInCQ += timeDiff * customerQueue.size();
     }
 }
 

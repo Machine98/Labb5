@@ -5,7 +5,7 @@ import lab5.ExponentialRandomStream;
 public class ArrivalTimeCalc {
     private double lambda;
     private long seed;
-    private ExponentialRandomStream ArrivalTime;
+    private static ExponentialRandomStream ArrivalTime;
 
     public ArrivalTimeCalc(double lambda, long seed) {
         this.lambda = lambda;
@@ -13,7 +13,7 @@ public class ArrivalTimeCalc {
         this.ArrivalTime = new ExponentialRandomStream(lambda, seed);
     }
 
-    public double newArrivalTime() {
+    public static double newArrivalTime() {
         return ArrivalTime.next();
     }
 }

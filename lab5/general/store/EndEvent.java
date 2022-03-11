@@ -7,8 +7,8 @@ import lab5.general.State;
 public class EndEvent extends Event {
     private State state;
 
-    public EndEvent(State state, double time, EventQueue eventQueue){
-        super(state, time, eventQueue);
+    public EndEvent(StoreState storeState, double time, EventQueue eventQueue){
+        super(storeState, time, eventQueue);
         this.state = state;
         this.eventQueue = eventQueue;
     }
