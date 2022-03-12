@@ -18,9 +18,12 @@ public class StartEvent extends Event {
     @Override
     public void performEvent() {
         time = 0;
+        state.setEventName("Start");
+        double firstArriveTime = time + state.ArrivalTime.newArrivalTime();
         state.setOpen(true);
         state.currentEvent(this);
-        eventQueue.addEvent(new ArrivalEvent(state, time, eventQueue));
+
+        eventQueue.addEvent(new ArrivalEvent(state, firstArriveTime, eventQueue));
     }
 
 }
