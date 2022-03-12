@@ -38,6 +38,7 @@ public class StoreState extends State {
     private double lambda;
     private double unoccupiedRegTime;
     private double timeInCQ;
+    private double timeQueued;
 
     private int ocupiedregisters = 0;
     private int registers;
@@ -217,7 +218,10 @@ public class StoreState extends State {
     }
 
     public void incTimeInCQ(double timeDiff) {
-        timeInCQ += timeDiff * customerQueue.size();
+        this.timeQueued += timeDiff;
+    }
+    public double getTimeQueued() {
+        return timeQueued;
     }
 
     public void update(){
