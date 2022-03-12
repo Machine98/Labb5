@@ -18,5 +18,8 @@ public class ClosingEvent extends Event {
     @Override
     public void performEvent() {
         storeState.isOpen(false);
+        storeState.setEventName("Stänger");
+        storeState.setTimePassed(super.EventTime());
+        storeState.update();
     }
 }

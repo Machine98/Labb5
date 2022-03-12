@@ -19,13 +19,15 @@ public class ArrivalEvent extends Event {
     @Override
     public void performEvent() {
         storeState.setEventName("Ankomst");
-        storeState.currentEvent(this);
+        //storeState.currentEvent(this);
         storeState.currentCustomerID(customerID.getCustomerID());
 
         storeState.setTimePassed(super.EventTime());
         double newPickTime = time + storeState.getPickTime();
         //time+= storeState.ArrivalTime.newArrivalTime();
         double newArrivalTime = time + storeState.getArrivalTime();
+
+        storeState.update();
 
         if(storeState.isOpen()){
 
