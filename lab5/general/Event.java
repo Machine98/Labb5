@@ -6,8 +6,6 @@ public abstract class Event {
     private double time;
     private StoreState storeState;
     protected EventQueue eventQueue;
-    private String name;
-
 
     public Event(StoreState storeState, double time, EventQueue eventQueue){
         this.storeState = storeState;
