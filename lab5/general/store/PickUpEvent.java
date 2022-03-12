@@ -23,6 +23,7 @@ public class PickUpEvent extends Event {
         return name;
     }
 
+    @Override
     public void performEvent() {
         storeState.setEventName("Plock");
         storeState.currentCustomerID(customerID.getCustomerID());
