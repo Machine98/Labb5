@@ -6,7 +6,6 @@ public abstract class Event {
     private double time;
     private StoreState storeState;
     protected EventQueue eventQueue;
-    private boolean open;
     private String name;
 
 
@@ -16,9 +15,7 @@ public abstract class Event {
         this.eventQueue = eventQueue;
     }
 
-    public String getName(){
-        return name;
-    }
+    public abstract String getName();
 
     public abstract void performEvent();
 

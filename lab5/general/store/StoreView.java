@@ -3,6 +3,7 @@ package lab5.general.store;
 import java.util.Observable;
 import java.util.Observer;
 
+import lab5.general.Event;
 import lab5.general.store.StoreState;
 import lab5.general.View;
 

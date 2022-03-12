@@ -8,6 +8,7 @@ public class PayAndLeaveEvent extends Event {
     private State state;
     private Customer customerID;
     private StoreState storeState;
+    private String name = "PayAndLeaveEvent";
 
 
     public PayAndLeaveEvent(StoreState storeState, double time, Customer customerID, EventQueue eventQueue) {
@@ -15,6 +16,11 @@ public class PayAndLeaveEvent extends Event {
         this.customerID = customerID;
         this.eventQueue = eventQueue;
         this.storeState = storeState;
+    }
+
+    @Override
+    public String getName() {
+        return null;
     }
 
     @Override

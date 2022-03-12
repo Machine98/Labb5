@@ -17,6 +17,11 @@ public class StoreState extends State {
 
     private CustomerQueue queue = new CustomerQueue();
     private String eventName;
+
+    public Event getCurrentEvent() {
+        return currentEvent;
+    }
+
     private Event currentEvent;
     private int currentCustomerID;
     private PickUpCalc PickTime;

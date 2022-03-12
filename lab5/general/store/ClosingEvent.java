@@ -5,14 +5,18 @@ import lab5.general.EventQueue;
 import lab5.general.State;
 
 public class ClosingEvent extends Event {
-    private Event event;
-    private State state;
     private StoreState storeState;
+    private String name = "ClosingEvent";
 
 
     public ClosingEvent(StoreState storeState, double time, EventQueue eventQueue){
         super(storeState, time, eventQueue);
         this.storeState = storeState;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 
     @Override

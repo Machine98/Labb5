@@ -6,6 +6,7 @@ public class PickUpEvent extends Event {
     private Customer customerID;
     private EventQueue eventQueue;
     private double time;
+    private String name = "PickUpEvent";
 
     public PickUpEvent(StoreState storeState, double time, Customer customerID, EventQueue queue) {
 
@@ -14,6 +15,11 @@ public class PickUpEvent extends Event {
         this.eventQueue = queue;
         this.storeState = storeState;
         this.time = time;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 
     public void performEvent() {
