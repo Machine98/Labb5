@@ -34,6 +34,8 @@ public class PayAndLeaveEvent extends Event {
         } else {
             storeState.addTotAmQueue();
             storeState.decOcupiedregisters();
+            double timeQueued = super.EventTime() - storeState.getTimePassed();
+            storeState.incTimeInCQ(timeQueued);
         }
         storeState.setTimePassed(super.EventTime());
         storeState.decCurrentCustomers();

@@ -75,7 +75,7 @@ public class StoreView extends View {
         String coinMade = String.valueOf(storeState.getCustomersPayed()) + "     ";
         String missCust = String.valueOf(storeState.getCustomersTurnedAway()) + "      ";
         String totAmQueue = String.valueOf(storeState.getTotAmQueue()) + "     ";
-        //String timeQueued = String.valueOf(String.format("%.2f", storeState.getQueueTime)) + "     ";
+        String totTimeQueued = String.valueOf(String.format("%.2f", storeState.getTimeQueued())) + "     ";
         String amQueue = String.valueOf(storeState.getQueueSize()) + "     ";
         String currentQueue = String.valueOf(storeState.getQueue()) + "     ";
 
@@ -84,7 +84,7 @@ public class StoreView extends View {
             infoRow = time + event;
         }
         else {
-            infoRow = time + event + cusID + store + availableReg + timeFreeReg + amCust + coinMade + missCust + totAmQueue + "timeQueued" + amQueue + currentQueue;
+            infoRow = time + event + cusID + store + availableReg + timeFreeReg + amCust + coinMade + missCust + totAmQueue + totTimeQueued + amQueue + currentQueue;
         }
 
         System.out.println("  " + infoRow);
