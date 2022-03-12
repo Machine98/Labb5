@@ -24,5 +24,8 @@ public class PayAndLeaveEvent extends Event {
         storeState.addPayedCustomers();
         storeState.customerQueue.remove();
         storeState.decOcupiedregisters();
+
+        storeState.setTimePassed(super.EventTime());
+        storeState.update();
     }
 }
