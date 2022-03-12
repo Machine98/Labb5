@@ -18,7 +18,7 @@ public class StoreState extends State {
     private CustomerQueue queue = new CustomerQueue();
     private String eventName;
     private Event currentEvent;
-    private Customer currentCustomerID;
+    private int currentCustomerID;
     private PickUpCalc PickTime;
     private CashierSpeedCalc PayTime;
 
@@ -37,7 +37,7 @@ public class StoreState extends State {
     private int ocupiedregisters = 0;
     private int registers;
     private int maxCustomers;
-    private int totalCustomers;
+    private int totalCustomers = 0;
     private int currentCusomers;
     private int payedCustomers;
     private int customersTurnedAway;
@@ -171,11 +171,11 @@ public class StoreState extends State {
         this.customersTurnedAway++;
     }
 
-    public void currentCustomerID(Customer customerID) {
+    public void currentCustomerID(int customerID) {
         this.currentCustomerID = customerID;
     }
 
-    public Customer getCurrentCustomerID() {
+    public int getCurrentCustomerID() {
         return currentCustomerID;
     }
 

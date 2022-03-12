@@ -18,7 +18,7 @@ public class PickUpEvent extends Event {
 
     public void performEvent() {
         storeState.setEventName("Plock");
-        storeState.currentCustomerID(customerID);
+        storeState.currentCustomerID(customerID.getCustomerID());
         storeState.incTimeInCQ(super.EventTime() - storeState.getTimePassed());
         storeState.incUnoccupiedRegTime(super.EventTime() - storeState.getTimePassed());
 

@@ -9,17 +9,18 @@ public class ArrivalEvent extends Event {
     private Customer customerID;
     private StoreState storeState;
 
-    public ArrivalEvent(StoreState state, double time, EventQueue eventQueue) {
+    public ArrivalEvent(StoreState state, double time,Customer customerID, EventQueue eventQueue) {
         super(state, time, eventQueue);
         this.storeState = state;
         this.time = time;
+        this.customerID = customerID;
     }
 
     @Override
     public void performEvent() {
         storeState.setEventName("Ankomst");
         storeState.currentEvent(this);
-        storeState.currentCustomerID(customerID);
+        storeState.currentCustomerID(customerID.getCustomerID());
 
         storeState.setTimePassed(super.EventTime());
         double newPickTime = time + storeState.getPickTime();
@@ -28,9 +29,9 @@ public class ArrivalEvent extends Event {
 
         if(storeState.isOpen()){
 
-            customerID = new Customer(storeState.getTotalCustomers(), storeState);
+            customerID = new Customer(storeState.getTotalCustomers()+1, storeState);
             storeState.addTotalCustomers();
-            eventQueue.addEvent(new ArrivalEvent(storeState, newArrivalTime, eventQueue));
+            eventQueue.addEvent(new ArrivalEvent(storeState, newArrivalTime, customerID, eventQueue));
 
             if(storeState.getCurrentCustomers() == storeState.getMaxCustomers()){
                 storeState.incCustomersTurnedAway();
