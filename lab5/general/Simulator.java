@@ -7,6 +7,7 @@ public class Simulator {
     private State state;
     private EventQueue eventQueue;
     private View view;
+    private Event event;
 
     public Simulator(State state, View view, EventQueue eventQueue){
         this.state = state;
@@ -17,10 +18,10 @@ public class Simulator {
     public void run() {
         ((StoreView) view).firstPrint();
         while (!eventQueue.isEmpty() && state.simulating){
-            Event event = eventQueue.getNext();
-            //StoreView.eventPrint();
+            event = eventQueue.getNext();
             event.performEvent();
         }
+        ((StoreState) state).setLastEventTime(event.EventTime());
         ((StoreView) view).lastPrint();
     }
 }

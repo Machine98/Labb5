@@ -25,11 +25,11 @@ public class StoreView extends View {
         System.out.println("Plocktider, [P_min...P_max]: [" + storeState.getMinPickTime() + "..." + storeState.getMaxPickTime() + "]");
         System.out.println("Betaltider, [K_min...K_max]: [" + storeState.getMinPayTime() + "..." + storeState.getMaxPayTime() + "]");
         System.out.println("Frö, f.....................:" + storeState.getSeed());
-        System.out.println("");
-        System.out.println("FÖRLOPP");
+
+        System.out.println("\nFÖRLOPP");
         System.out.println("=======");
-        System.out.println(
-                "    Tid   Händelse     Kund    ?    led    ledT    I    $    :-(    köat    köT    köar    [Kassakö..]");
+        String förlopp = String.format("%-5s\t %-10s %-10s %-10s %-10s %s\t %-10s %-9s %-10s %-11s %-3s\t %-10s %s","Tid","Händelse","Kund", "?","led", "ledT" ,"I", "$",":-(", "köat","köT","köar","[Kassakö..]\n");
+        System.out.println(förlopp);
     }
 
     public void lastPrint(){
@@ -38,11 +38,11 @@ public class StoreView extends View {
         System.out.println("========");
         System.out.println("1) Av " + storeState.getTotalCustomers() + " handlade " + storeState.getCustomersPayed() + " medan " + storeState.getCustomersTurnedAway() + " missades.");
         System.out.println("");
-        System.out.println("2) Total tid " + storeState.getRegisters() + " kassor varit lediga: " + storeState.getUnoccupiedRegTime());
-        //System.out.println("\tGenomsnittlig ledig kassa tid " + storeState.getUnoccupiedRegTime()/storeState.getRegisters() + " (dvs " + "procentenhet på medelvärdet" + " + " + "av tiden från öppning tills sista kunden betalat" + ".");
+        System.out.println("2) Total tid " + storeState.getRegisters() + " kassor varit lediga: " + String.format("%.2f",storeState.getUnoccupiedRegTime()));
+        System.out.println("\tGenomsnittlig ledig kassa tid " + String.format("%.2f",storeState.getUnoccupiedRegTime()/storeState.getTotAmQueue()) + " (dvs " + String.format("%.2f",((storeState.getUnoccupiedRegTime()/storeState.getTotAmQueue())/storeState.getLastEventTime())*100) + " % " + "av tiden från öppning tills sista kunden betalat" + ".");
         System.out.println("");
-        System.out.println("3) Total tid " + "köade kunder" + " kunder tvingats köa:" + "tid de köat i te" + ".");
-        System.out.println("\tGenomsnittlig kötid: " + "genomsnittlig kötid i te");
+        System.out.println("3) Total tid " + storeState.getTotAmQueue() + " kunder tvingats köa: " + String.format("%.2f",storeState.getTimeQueued()) + " te" + ".");
+        System.out.println("\tGenomsnittlig kötid: " + String.format("%.2f",storeState.getTotAmQueue()/storeState.getTimeQueued()) + " te");
 
 
     }
@@ -52,16 +52,16 @@ public class StoreView extends View {
         String event = "";
 
         if (storeState.getEventName() == "Ankomst"){
-            event = "Ankomst       ";
+            event = "Ankomst";
         }
         else if (storeState.getEventName() == "Plock"){
-            event = "Plock         ";
+            event = "Plock";
         }
         else if (storeState.getEventName() == "Betalning"){
-            event = "Betalning     ";
+            event = "Betalning";
         }
         else if (storeState.getEventName() == "Stänger"){
-            event = "Stänger       ";
+            event = "Stänger";
         }
         else {
             event = storeState.getEventName();
@@ -79,8 +79,7 @@ public class StoreView extends View {
         currentQueue = currentQueue + "]";
 
 
-
-        String cusID = String.valueOf(storeState.getCurrentCustomerID()) + "      ";
+        String cusID = String.format("%o",storeState.getCurrentCustomerID()) + "      ";
         String store = (storeState.isOpen()) ? "Ö     " : "S     ";
         String availableReg = String.valueOf(String.format("%2d", storeState.getRegisters() - storeState.getOcupiedregisters()) + "   ");
         String timeFreeReg = String.valueOf(String.format("%5.2f", storeState.getUnoccupiedRegTime())) + "    ";
@@ -98,9 +97,14 @@ public class StoreView extends View {
             infoRow = time + event;
         }
         else {
-            infoRow = time + event + cusID + store + availableReg + timeFreeReg + amCust + coinMade + missCust + totAmQueue + totTimeQueued + amQueue + currentQueue;
+            //infoRow = time + event + cusID + store + availableReg + timeFreeReg + amCust + coinMade + missCust + totAmQueue + totTimeQueued + amQueue + currentQueue;
+            infoRow = String.format("%.2f\t %-10s %-10s %-10s %-10s %.2f\t %-10s %-10s %-10s %-10s %.2f\t %-10s %s", storeState.getTimePassed(),
+                    event, storeState.getCurrentCustomerID(), storeState.isOpen() ? "O" : "C", storeState.getRegisters() - storeState.getOcupiedregisters(),
+                    storeState.getUnoccupiedRegTime(), storeState.getCurrentCustomers(), storeState.getCustomersPayed(),
+                    storeState.getCustomersTurnedAway(), storeState.getTotAmQueue(), storeState.getTimeQueued(),
+                    storeState.customerQueue.size(), currentQueue + "\n");
         }
 
-        System.out.println("  " + infoRow);
+        System.out.print(infoRow);
     }
 }

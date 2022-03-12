@@ -30,6 +30,15 @@ public class StoreState extends State {
     private long seed;
 
     private double timePassed;
+
+    public void setLastEventTime(double lastEventTime) {
+        this.lastEventTime = lastEventTime;
+    }
+
+    public double getLastEventTime() {
+        return lastEventTime;
+    }
+
     private double lastEventTime;
     private double minPickTime;
     private double maxPickTime;
@@ -87,10 +96,6 @@ public class StoreState extends State {
 
     public int getTotAmQueue(){
         return totAmQueue;
-    }
-
-    public int getQueueSize() {
-        return queue.size();
     }
 
     public double getArrivalTime() {
@@ -220,6 +225,7 @@ public class StoreState extends State {
     public void incTimeInCQ(double timeDiff) {
         this.timeQueued += timeDiff;
     }
+
     public double getTimeQueued() {
         return timeQueued;
     }
