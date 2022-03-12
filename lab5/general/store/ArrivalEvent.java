@@ -8,11 +8,17 @@ public class ArrivalEvent extends Event {
     private double time;
     private Customer customerID;
     private StoreState storeState;
+    private String name = "ArrivalEvent";
 
     public ArrivalEvent(StoreState state, double time, EventQueue eventQueue) {
         super(state, time, eventQueue);
         this.storeState = state;
         this.time = time;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 
     @Override

@@ -8,11 +8,17 @@ public class StartEvent extends Event {
 
     private double time;
     private StoreState state;
+    private String name = "StartEvent";
 
     public StartEvent(StoreState state, double time, EventQueue eventQueue){
         super(state, time, eventQueue);
         this.time = time;
         this.state = state;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 
     @Override

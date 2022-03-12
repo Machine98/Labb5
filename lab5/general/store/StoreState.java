@@ -17,6 +17,11 @@ public class StoreState extends State {
 
     private CustomerQueue queue = new CustomerQueue();
     private String eventName;
+
+    public Event getCurrentEvent() {
+        return currentEvent;
+    }
+
     private Event currentEvent;
     private int currentCustomerID;
     private PickUpCalc PickTime;
@@ -198,8 +203,8 @@ public class StoreState extends State {
 
     public void currentEvent(Event event) {
         currentEvent = event;
-        setChanged();
-        notifyObservers();
+        //setChanged();
+        //notifyObservers();
     }
 
     public double getUnoccupiedRegTime(){
@@ -214,6 +219,7 @@ public class StoreState extends State {
     public void incTimeInCQ(double timeDiff) {
         timeInCQ += timeDiff * customerQueue.size();
     }
+
     public void update(){
         setChanged();
         notifyObservers();
