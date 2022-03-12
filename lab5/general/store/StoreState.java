@@ -232,8 +232,9 @@ public class StoreState extends State {
         open = close;
     }
 
-    public int getQueue(){
-        return queue.size();
+    public String getQueue(){
+
+        return this.queue.toString();
     }
 
 }
