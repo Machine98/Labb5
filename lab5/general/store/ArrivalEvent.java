@@ -20,11 +20,9 @@ public class ArrivalEvent extends Event {
 
         if(storeState.isOpen()){
             storeState.setEventName("Ankomst");
-            //storeState.currentEvent(this);
 
             storeState.setTimePassed(super.EventTime());
             double newPickTime = time + storeState.getPickTime();
-            //time+= storeState.ArrivalTime.newArrivalTime();
             double newArrivalTime = time + storeState.getArrivalTime();
 
             customerID = new Customer(storeState.getTotalCustomers(), storeState);

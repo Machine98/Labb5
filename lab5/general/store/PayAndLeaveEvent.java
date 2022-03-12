@@ -19,6 +19,7 @@ public class PayAndLeaveEvent extends Event {
 
     @Override
     public void performEvent() {
+
         storeState.setEventName("Betalning");
         storeState.currentCustomerID(customerID.getCustomerID());
         storeState.addPayedCustomers();
