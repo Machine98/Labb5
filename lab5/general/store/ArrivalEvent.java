@@ -31,8 +31,9 @@ public class ArrivalEvent extends Event {
 
         if(storeState.isOpen()){
 
-            customerID = new Customer(storeState.getTotalCustomers()+1, storeState);
             storeState.addTotalCustomers();
+            customerID = new Customer(storeState.getTotalCustomers(), storeState);
+
             eventQueue.addEvent(new ArrivalEvent(storeState, newArrivalTime, customerID, eventQueue));
 
             if(storeState.getCurrentCustomers() == storeState.getMaxCustomers()){
