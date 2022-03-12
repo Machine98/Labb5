@@ -28,7 +28,7 @@ public class StoreView extends View {
         System.out.println("FÖRLOPP");
         System.out.println("=======");
         System.out.println(
-                " Tid    Händelse    Kund    ?    led    ledT    I    $    :-(    köat    köT    köar    [Kassakö..]");
+                "    Tid   Händelse     Kund    ?    led    ledT    I    $    :-(    köat    köT    köar    [Kassakö..]");
     }
 
     public void lastPrint(){
@@ -47,7 +47,7 @@ public class StoreView extends View {
     }
 
     public void update(Observable arg0, Object f) {
-        String time = String.valueOf(String.format("%.2f", storeState.getTimePassed())) + "   ";
+        String time = String.valueOf(String.format("%5.2f", storeState.getTimePassed())) + "   ";
         String event = "";
 
         if (storeState.getEventName() == "Ankomst"){
@@ -69,12 +69,12 @@ public class StoreView extends View {
 
         String cusID = String.valueOf(storeState.getCurrentCustomerID()) + "      ";
         String store = (storeState.isOpen()) ? "Ö     " : "S     ";
-        String availableReg = String.valueOf(storeState.getRegisters() - storeState.getOcupiedregisters()) + "     ";
-        String timeFreeReg = String.valueOf(String.format("%.2f", storeState.getUnoccupiedRegTime())) + "    ";
-        String amCust = String.valueOf(storeState.getCurrentCustomers()) + "     ";
-        String coinMade = String.valueOf(storeState.getCustomersPayed()) + "    ";
-        String missCust = String.valueOf(storeState.getCustomersTurnedAway()) + "    ";
-        //String totAmQueue = String.valueOf(storeState.getTotQueueTime) + "     ";
+        String availableReg = String.valueOf(String.format("%2d", storeState.getRegisters() - storeState.getOcupiedregisters()) + "   ");
+        String timeFreeReg = String.valueOf(String.format("%5.2f", storeState.getUnoccupiedRegTime())) + "    ";
+        String amCust = String.valueOf(storeState.getCurrentCustomers()) + "    ";
+        String coinMade = String.valueOf(storeState.getCustomersPayed()) + "     ";
+        String missCust = String.valueOf(storeState.getCustomersTurnedAway()) + "      ";
+        String totAmQueue = String.valueOf(storeState.getTotAmQueue()) + "     ";
         //String timeQueued = String.valueOf(String.format("%.2f", storeState.getQueueTime)) + "     ";
         String amQueue = String.valueOf(storeState.getQueueSize()) + "     ";
         String currentQueue = String.valueOf(storeState.getQueue()) + "     ";
@@ -84,9 +84,9 @@ public class StoreView extends View {
             infoRow = time + event;
         }
         else {
-            infoRow = time + event + cusID + store + availableReg + timeFreeReg + amCust + coinMade + missCust + "totAmQueue" + "timeQueued" + amQueue + currentQueue;
+            infoRow = time + event + cusID + store + availableReg + timeFreeReg + amCust + coinMade + missCust + totAmQueue + "timeQueued" + amQueue + currentQueue;
         }
 
-        System.out.println(infoRow);
+        System.out.println("  " + infoRow);
     }
 }
