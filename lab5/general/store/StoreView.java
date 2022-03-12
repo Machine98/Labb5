@@ -23,11 +23,15 @@ public class StoreView extends View {
         System.out.println("Plocktider, [P_min...P_max]: [" + storeState.getMinPickTime() + "..." + storeState.getMaxPickTime() + "]");
         System.out.println("Betaltider, [K_min...K_max]: [" + storeState.getMinPayTime() + "..." + storeState.getMaxPayTime() + "]");
         System.out.println("Frö, f.....................:" + storeState.getSeed());
+        System.out.println("");
+        System.out.println("FÖRLOPP");
+        System.out.println("=======");
         System.out.println(
                 " Tid    Händelse    Kund    ?    led    ledT    I    $    :-(    köat    köT    köar    [Kassakö..]");
     }
 
     public void lastPrint(){
+        System.out.println("");
         System.out.println("RESULTAT");
         System.out.println("========");
         System.out.println("1) Av " + storeState.getTotalCustomers() + " handlade " + storeState.getCustomersPayed() + " medan " + storeState.getCustomersTurnedAway() + " missades.");
@@ -37,13 +41,6 @@ public class StoreView extends View {
         System.out.println("");
         System.out.println("3) Total tid " + "köade kunder" + " kunder tvingats köa:" + "tid de köat i te" + ".");
         System.out.println("\tGenomsnittlig kötid: " + "genomsnittlig kötid i te");
-
-
-    }
-    public void eventPrint(){
-
-        //behöver ta emot kund id, lediga kassor, lediga kassor tid, I, antal kunder som betalat, missade kunder, köat, kötid, köar, kassakö
-
 
 
     }
@@ -82,7 +79,7 @@ public class StoreView extends View {
         String currentQueue = String.valueOf(storeState.getQueue()) + "     ";
 
         String infoRow;
-        if (event == "Start" || event == "Stop"){
+        if (event == "Start" || event == "Stänger       "){
             infoRow = time + event;
         }
         else {
