@@ -38,7 +38,7 @@ public class ArrivalEvent extends Event {
             }else{
 
                 eventQueue.addEvent(new PickUpEvent(storeState, newPickTime, customerID, eventQueue));
-
+                storeState.incCurrentCustomers();
             }
         }
     }

@@ -38,7 +38,7 @@ public class StoreState extends State {
     private int registers;
     private int maxCustomers;
     private int totalCustomers = 0;
-    private int currentCusomers;
+    private int currentCustomers = 0;
     private int payedCustomers;
     private int customersTurnedAway;
     private int coinMade;
@@ -135,7 +135,7 @@ public class StoreState extends State {
     }
 
     public int getCurrentCustomers() {
-        return this.currentCusomers;
+        return this.currentCustomers;
     }
 
     public int getTotalCustomers() {
@@ -144,6 +144,14 @@ public class StoreState extends State {
 
     public void addTotalCustomers(){
         this.totalCustomers++;
+    }
+
+    public void incCurrentCustomers() {
+        this.currentCustomers++;
+    }
+
+    public void decCurrentCustomers() {
+        this.currentCustomers--;
     }
 
     public int getCustomersPayed() {

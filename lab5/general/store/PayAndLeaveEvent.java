@@ -26,6 +26,7 @@ public class PayAndLeaveEvent extends Event {
         storeState.decOcupiedregisters();
 
         storeState.setTimePassed(super.EventTime());
+        storeState.decCurrentCustomers();
         storeState.update();
     }
 }

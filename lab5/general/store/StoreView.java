@@ -71,7 +71,7 @@ public class StoreView extends View {
         String store = (storeState.isOpen()) ? "Ö" : "S";
         String availableReg = String.valueOf(storeState.getRegisters() - storeState.getOcupiedregisters());
         String timeFreeReg = String.valueOf(String.format(".2f", storeState.getUnoccupiedRegTime()));
-        String amCust = String.valueOf(storeState.getTotalCustomers());
+        String amCust = String.valueOf(storeState.getCurrentCustomers());
         String coinMade = String.valueOf(storeState.getCustomersPayed());
         String missCust = String.valueOf(storeState.getCustomersTurnedAway());
         //String totAmQueue = String.valueOf(storeState.getTotQueueTime);
