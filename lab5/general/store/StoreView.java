@@ -10,6 +10,7 @@ import lab5.general.View;
 public class StoreView extends View {
 
     private StoreState storeState;
+    private Customer customerID;
 
     public StoreView(StoreState storeState){
         this.storeState = storeState;
@@ -65,6 +66,18 @@ public class StoreView extends View {
         else {
             event = storeState.getEventName();
         }
+        String currentQueue = "[";
+        for (int i = 0; i < storeState.customerQueue.size(); i ++){
+            customerID = (Customer) storeState.customerQueue.getIndex(i);
+            if (storeState.customerQueue.size() == i + 1){
+                currentQueue = currentQueue + String.valueOf(customerID.getCustomerID());
+            }
+            else{
+                currentQueue = currentQueue + String.valueOf(customerID.getCustomerID()) + " , ";
+            }
+        }
+        currentQueue = currentQueue + "]";
+
 
 
         String cusID = String.valueOf(storeState.getCurrentCustomerID()) + "      ";
@@ -77,7 +90,8 @@ public class StoreView extends View {
         String totAmQueue = String.valueOf(storeState.getTotAmQueue()) + "     ";
         String totTimeQueued = String.valueOf(String.format("%.2f", storeState.getTimeQueued())) + "     ";
         String amQueue = String.valueOf(storeState.getQueueSize()) + "     ";
-        String currentQueue = String.valueOf(storeState.getQueue()) + "     ";
+
+
 
         String infoRow;
         if (event == "Start" || event == "Stänger       "){

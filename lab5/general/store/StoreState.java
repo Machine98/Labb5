@@ -232,11 +232,6 @@ public class StoreState extends State {
         open = close;
     }
 
-    public String getQueue(){
-
-        return this.queue.toString();
-    }
-
 }
 
 
