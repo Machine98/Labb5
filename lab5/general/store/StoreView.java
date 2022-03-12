@@ -82,7 +82,7 @@ public class StoreView extends View {
         String currentQueue = String.valueOf(storeState.getQueue()) + "     ";
 
         String infoRow;
-        if (event == "Start " || event == "Stop "){
+        if (event == "Start" || event == "Stop"){
             infoRow = time + event;
         }
         else {
