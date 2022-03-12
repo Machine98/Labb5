@@ -18,6 +18,10 @@ public class CustomerQueue {
         customerFIFO.removeFirst();
     }
 
+    public Object first(){
+        return customerFIFO.first();
+    }
+
     public int size(){
         return customerFIFO.size();
     }

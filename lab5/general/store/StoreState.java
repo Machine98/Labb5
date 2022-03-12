@@ -39,6 +39,7 @@ public class StoreState extends State {
     private int maxCustomers;
     private int totalCustomers = 0;
     private int currentCustomers = 0;
+    private int totAmQueue = 0;
     private int payedCustomers;
     private int customersTurnedAway;
     private int coinMade;
@@ -72,6 +73,14 @@ public class StoreState extends State {
             return true;
         }
         return false;
+    }
+
+    public void addTotAmQueue(){
+        this.totAmQueue++;
+    }
+
+    public int getTotAmQueue(){
+        return totAmQueue;
     }
 
     public int getQueueSize() {

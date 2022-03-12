@@ -10,24 +10,31 @@ public class PayAndLeaveEvent extends Event {
     private StoreState storeState;
 
 
-    public PayAndLeaveEvent(StoreState storeState, double time, Customer customerID, EventQueue eventQueue) {
+    public PayAndLeaveEvent(StoreState storeState, double time, EventQueue eventQueue) {
         super(storeState, time, eventQueue);
-        this.customerID = customerID;
         this.eventQueue = eventQueue;
         this.storeState = storeState;
     }
 
     @Override
     public void performEvent() {
+        if(storeState.freeRegisters()){
+            storeState.setEventName("Betalning");
+            customerID = (Customer) storeState.customerQueue.first();
+            storeState.currentCustomerID(customerID.getCustomerID());
+            storeState.addPayedCustomers();
+            if(storeState.customerQueue.size() > 1 && storeState.getOcupiedregisters() == storeState.getRegisters()){
+                storeState.addTotAmQueue();
+            }
+            storeState.customerQueue.remove();
+        }
 
-        storeState.setEventName("Betalning");
-        storeState.currentCustomerID(customerID.getCustomerID());
-        storeState.addPayedCustomers();
-        storeState.customerQueue.remove();
         storeState.decOcupiedregisters();
 
         storeState.setTimePassed(super.EventTime());
         storeState.decCurrentCustomers();
         storeState.update();
+
+
     }
 }

@@ -1,4 +1,5 @@
 package lab5.general.store;
+
 import lab5.general.*;
 
 public class PickUpEvent extends Event {
@@ -23,19 +24,12 @@ public class PickUpEvent extends Event {
         storeState.incUnoccupiedRegTime(super.EventTime() - storeState.getTimePassed());
 
         storeState.setTimePassed(super.EventTime());
-        //time+= storeState.getTimePassed() + super.EventTime();
         double newPayTime = time + storeState.getPayTime();
 
         storeState.update();
-        if (storeState.freeRegisters()) {
-            eventQueue.addEvent(new PayAndLeaveEvent(storeState, newPayTime, customerID, eventQueue));
-            storeState.incOcupiedregisters();
-        }
-        else {
-            storeState.customerQueue.add(customerID);
-        }
-
-        //tate.setNewTimePassed(Customer.getPickTime(customerID) + state.timePassed);
+        storeState.customerQueue.add(customerID);
+        eventQueue.addEvent(new PayAndLeaveEvent(storeState, newPayTime, eventQueue));
     }
 
+    //tate.setNewTimePassed(Customer.getPickTime(customerID) + state.timePassed);
 }
