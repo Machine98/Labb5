@@ -22,8 +22,7 @@ public class StartEvent extends Event {
         double firstArriveTime = time + state.ArrivalTime.newArrivalTime();
         state.setOpen(true);
         state.currentEvent(this);
-        Customer customerID = new Customer(state.getTotalCustomers(), state);
-        eventQueue.addEvent(new ArrivalEvent(state, firstArriveTime, customerID, eventQueue));
+        eventQueue.addEvent(new ArrivalEvent(state, firstArriveTime, eventQueue));
     }
 
 }
