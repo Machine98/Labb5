@@ -23,26 +23,26 @@ public class ArrivalEvent extends Event {
 
     @Override
     public void performEvent() {
+        storeState.setEventName("Ankomst");
+
+        customerID = new Customer(storeState.getTotalCustomers(), storeState);
+        storeState.addTotalCustomers();
+        storeState.currentCustomerID(customerID.getCustomerID());
+
+        storeState.setTimePassed(super.EventTime());
+
+        storeState.update();
 
         if(storeState.isOpen()){
-            storeState.setEventName("Ankomst");
-
-            storeState.setTimePassed(super.EventTime());
-            double newPickTime = time + storeState.getPickTime();
-            double newArrivalTime = time + storeState.getArrivalTime();
-
-            customerID = new Customer(storeState.getTotalCustomers(), storeState);
-            eventQueue.addEvent(new ArrivalEvent(storeState, newArrivalTime, eventQueue));
-            storeState.currentCustomerID(customerID.getCustomerID());
-            storeState.addTotalCustomers();
-            storeState.update();
             if(storeState.getCurrentCustomers() == storeState.getMaxCustomers()){
                 storeState.incCustomersTurnedAway();
             }else{
-
+                double newPickTime = time + storeState.getPickTime();
                 eventQueue.addEvent(new PickUpEvent(storeState, newPickTime, customerID, eventQueue));
                 storeState.incCurrentCustomers();
             }
+            double newArrivalTime = time + storeState.getArrivalTime();
+            eventQueue.addEvent(new ArrivalEvent(storeState, newArrivalTime, eventQueue));
         }
 
     }
