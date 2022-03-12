@@ -89,7 +89,7 @@ public class StoreView extends View {
         String missCust = String.valueOf(storeState.getCustomersTurnedAway()) + "      ";
         String totAmQueue = String.valueOf(storeState.getTotAmQueue()) + "     ";
         String totTimeQueued = String.valueOf(String.format("%.2f", storeState.getTimeQueued())) + "     ";
-        String amQueue = String.valueOf(storeState.getQueueSize()) + "     ";
+        String amQueue = String.valueOf(storeState.customerQueue.size()) + "     ";
 
 
 
