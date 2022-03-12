@@ -130,7 +130,7 @@ public class StoreState extends State {
     }
 
     public double getMinPickTime() {
-        return this.maxPickTime;
+        return this.minPickTime;
     }
 
     public double getMinPayTime() {

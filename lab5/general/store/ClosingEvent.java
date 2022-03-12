@@ -31,7 +31,7 @@ public class ClosingEvent extends Event {
             for (int i = 0; i < storeState.customerQueue.size(); i++) {
                 double newPayTime = time + storeState.getPayTime();
                 eventQueue.addEvent(new PayAndLeaveEvent(storeState, newPayTime, eventQueue));
-                storeState.update();
+                //storeState.update();
             }
 
         }
