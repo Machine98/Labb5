@@ -73,7 +73,7 @@ public class StoreView extends View {
                 currentQueue = currentQueue + String.valueOf(customerID.getCustomerID());
             }
             else{
-                currentQueue = currentQueue + String.valueOf(customerID.getCustomerID()) + " , ";
+                currentQueue = currentQueue + String.valueOf(customerID.getCustomerID()) + ", ";
             }
         }
         currentQueue = currentQueue + "]";
