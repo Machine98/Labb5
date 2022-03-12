@@ -9,32 +9,28 @@ public class ArrivalEvent extends Event {
     private Customer customerID;
     private StoreState storeState;
 
-    public ArrivalEvent(StoreState state, double time,Customer customerID, EventQueue eventQueue) {
+    public ArrivalEvent(StoreState state, double time, EventQueue eventQueue) {
         super(state, time, eventQueue);
         this.storeState = state;
         this.time = time;
-        this.customerID = customerID;
     }
 
     @Override
     public void performEvent() {
-        storeState.setEventName("Ankomst");
-        //storeState.currentEvent(this);
-        storeState.currentCustomerID(customerID.getCustomerID());
-
-        storeState.setTimePassed(super.EventTime());
-        double newPickTime = time + storeState.getPickTime();
-        //time+= storeState.ArrivalTime.newArrivalTime();
-        double newArrivalTime = time + storeState.getArrivalTime();
-
-        storeState.update();
 
         if(storeState.isOpen()){
+            storeState.setEventName("Ankomst");
+            //storeState.currentEvent(this);
 
-            storeState.addTotalCustomers();
+            storeState.setTimePassed(super.EventTime());
+            double newPickTime = time + storeState.getPickTime();
+            //time+= storeState.ArrivalTime.newArrivalTime();
+            double newArrivalTime = time + storeState.getArrivalTime();
+
             customerID = new Customer(storeState.getTotalCustomers(), storeState);
-
-            eventQueue.addEvent(new ArrivalEvent(storeState, newArrivalTime, customerID, eventQueue));
+            eventQueue.addEvent(new ArrivalEvent(storeState, newArrivalTime, eventQueue));
+            storeState.currentCustomerID(customerID.getCustomerID());
+            storeState.addTotalCustomers();
 
             if(storeState.getCurrentCustomers() == storeState.getMaxCustomers()){
                 storeState.incCustomersTurnedAway();
@@ -44,5 +40,6 @@ public class ArrivalEvent extends Event {
                 storeState.incCurrentCustomers();
             }
         }
+        storeState.update();
     }
 }
