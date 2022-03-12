@@ -28,10 +28,11 @@ public class ArrivalEvent extends Event {
         customerID = new Customer(storeState.getTotalCustomers(), storeState);
 
         storeState.currentCustomerID(customerID.getCustomerID());
-
+        storeState.incUnoccupiedRegTime(super.EventTime() - storeState.getTimePassed());
         storeState.setTimePassed(super.EventTime());
 
         storeState.update();
+
 
         if(storeState.isOpen()){
             if(storeState.getCurrentCustomers() == storeState.getMaxCustomers()){
