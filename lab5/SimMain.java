@@ -20,7 +20,7 @@ public class SimMain {
         double maxPayTime = 3.0;
         long seed = 1234;
 
-        StoreState storeState = new StoreState(seed, maxCustomers, registers, minPayTime, maxPayTime, minPickTime, maxPickTime, lambda);
+        StoreState storeState = new StoreState(seed, maxCustomers, registers, minPickTime, maxPickTime, minPayTime, maxPayTime, lambda);
 
         EventQueue eventQueue = new EventQueue();
 

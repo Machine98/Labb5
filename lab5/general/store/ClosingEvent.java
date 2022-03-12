@@ -7,11 +7,13 @@ import lab5.general.State;
 public class ClosingEvent extends Event {
     private StoreState storeState;
     private String name = "ClosingEvent";
+    private double time;
 
 
-    public ClosingEvent(StoreState storeState, double time, EventQueue eventQueue){
+    public ClosingEvent(StoreState storeState, double time, EventQueue eventQueue) {
         super(storeState, time, eventQueue);
         this.storeState = storeState;
+        this.time = time;
     }
 
     @Override
@@ -25,5 +27,13 @@ public class ClosingEvent extends Event {
         storeState.setEventName("Stänger");
         storeState.setTimePassed(super.EventTime());
         storeState.update();
+        if (storeState.customerQueue.size() > 0) {
+            for (int i = 0; i < storeState.customerQueue.size(); i++) {
+                double newPayTime = time + storeState.getPayTime();
+                eventQueue.addEvent(new PayAndLeaveEvent(storeState, newPayTime, eventQueue));
+                storeState.update();
+            }
+
+        }
     }
 }
