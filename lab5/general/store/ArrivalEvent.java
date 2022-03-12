@@ -20,18 +20,24 @@ public class ArrivalEvent extends Event {
         storeState.setEventName("Ankomst");
         storeState.currentEvent(this);
         storeState.currentCustomerID(customerID);
+
         storeState.setTimePassed(super.EventTime());
         double newPickTime = time + storeState.getPickTime();
-        time+= storeState.ArrivalTime.newArrivalTime();
+        //time+= storeState.ArrivalTime.newArrivalTime();
+        double newArrivalTime = time + storeState.getArrivalTime();
 
         if(storeState.isOpen()){
+
+            customerID = new Customer(storeState.getTotalCustomers(), storeState);
+            storeState.addTotalCustomers();
+            eventQueue.addEvent(new ArrivalEvent(storeState, newArrivalTime, eventQueue));
+
             if(storeState.getCurrentCustomers() == storeState.getMaxCustomers()){
                 storeState.incCustomersTurnedAway();
             }else{
-                customerID = new Customer(storeState.getTotalCustomers(), storeState);
+
                 eventQueue.addEvent(new PickUpEvent(storeState, newPickTime, customerID, eventQueue));
-                storeState.addTotalCustomers();
-                eventQueue.addEvent(new ArrivalEvent(storeState, time, eventQueue));
+
             }
         }
     }
