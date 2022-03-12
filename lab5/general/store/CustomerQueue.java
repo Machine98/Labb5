@@ -22,6 +22,10 @@ public class CustomerQueue {
         return customerFIFO.first();
     }
 
+    public Object getIndex(int index){
+        return customerFIFO.getIndex(index);
+    }
+
     public int size(){
         return customerFIFO.size();
     }
