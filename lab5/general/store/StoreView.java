@@ -1,10 +1,6 @@
 package lab5.general.store;
 
 import java.util.Observable;
-import java.util.Observer;
-
-import lab5.general.Event;
-import lab5.general.store.StoreState;
 import lab5.general.View;
 
 public class StoreView extends View {
@@ -48,7 +44,6 @@ public class StoreView extends View {
     }
 
     public void update(Observable arg0, Object f) {
-        String time = String.valueOf(String.format("%5.2f", storeState.getTimePassed())) + "   ";
         String event = "";
 
         if (storeState.getEventName() == "Ankomst"){
@@ -78,32 +73,12 @@ public class StoreView extends View {
         }
         currentQueue = currentQueue + "]";
 
-
-        String cusID = String.format("%o",storeState.getCurrentCustomerID()) + "      ";
-        String store = (storeState.isOpen()) ? "Ö     " : "S     ";
-        String availableReg = String.valueOf(String.format("%2d", storeState.getRegisters() - storeState.getOcupiedregisters()) + "   ");
-        String timeFreeReg = String.valueOf(String.format("%5.2f", storeState.getUnoccupiedRegTime())) + "    ";
-        String amCust = String.valueOf(storeState.getCurrentCustomers()) + "    ";
-        String coinMade = String.valueOf(storeState.getCustomersPayed()) + "     ";
-        String missCust = String.valueOf(storeState.getCustomersTurnedAway()) + "      ";
-        String totAmQueue = String.valueOf(storeState.getTotAmQueue()) + "     ";
-        String totTimeQueued = String.valueOf(String.format("%.2f", storeState.getTimeQueued())) + "     ";
-        String amQueue = String.valueOf(storeState.customerQueue.size()) + "     ";
-
-
-
         String infoRow;
-        if (event == "Start" || event == "Stänger       "){
-            infoRow = time + event;
-        }
-        else {
-            //infoRow = time + event + cusID + store + availableReg + timeFreeReg + amCust + coinMade + missCust + totAmQueue + totTimeQueued + amQueue + currentQueue;
-            infoRow = String.format("%.2f\t %-10s %-10s %-10s %-10s %.2f\t %-10s %-10s %-10s %-10s %.2f\t %-10s %s", storeState.getTimePassed(),
-                    event, storeState.getCurrentCustomerID(), storeState.isOpen() ? "O" : "C", storeState.getRegisters() - storeState.getOcupiedregisters(),
-                    storeState.getUnoccupiedRegTime(), storeState.getCurrentCustomers(), storeState.getCustomersPayed(),
-                    storeState.getCustomersTurnedAway(), storeState.getTotAmQueue(), storeState.getTimeQueued(),
-                    storeState.customerQueue.size(), currentQueue + "\n");
-        }
+        infoRow = String.format("%.2f\t %-10s %-10s %-10s %-10s %.2f\t %-10s %-10s %-10s %-10s %.2f\t %-10s %s", storeState.getTimePassed(),
+                event, storeState.getCurrentCustomerID(), storeState.isOpen() ? "O" : "C", storeState.getRegisters() - storeState.getOcupiedregisters(),
+                storeState.getUnoccupiedRegTime(), storeState.getCurrentCustomers(), storeState.getCustomersPayed(),
+                storeState.getCustomersTurnedAway(), storeState.getTotAmQueue(), storeState.getTimeQueued(),
+                storeState.customerQueue.size(), currentQueue + "\n");
 
         System.out.print(infoRow);
     }
