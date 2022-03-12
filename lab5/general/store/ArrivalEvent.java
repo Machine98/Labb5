@@ -35,7 +35,7 @@ public class ArrivalEvent extends Event {
             eventQueue.addEvent(new ArrivalEvent(storeState, newArrivalTime, eventQueue));
             storeState.currentCustomerID(customerID.getCustomerID());
             storeState.addTotalCustomers();
-
+            storeState.update();
             if(storeState.getCurrentCustomers() == storeState.getMaxCustomers()){
                 storeState.incCustomersTurnedAway();
             }else{
@@ -44,6 +44,6 @@ public class ArrivalEvent extends Event {
                 storeState.incCurrentCustomers();
             }
         }
-        storeState.update();
+
     }
 }
