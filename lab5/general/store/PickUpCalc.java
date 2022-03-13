@@ -8,14 +8,14 @@ public class PickUpCalc {
     private long seed;
     private UniformRandomStream pickUpTime;
 
-    public PickUpCalc(double minPickTime, double maxPickTime, long seed){
+    public PickUpCalc(double minPickTime, double maxPickTime, long seed) {
         this.minPickTime = minPickTime;
         this.maxPickTIme = maxPickTime;
         this.seed = seed;
         this.pickUpTime = new UniformRandomStream(minPickTime, maxPickTime, seed);
     }
-    public double newPickUpTime() {
 
+    public double newPickUpTime() {
         return pickUpTime.next();
     }
 

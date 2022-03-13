@@ -1,16 +1,15 @@
 package lab5.general.store;
 
-import lab5.general.*;
+import lab5.general.Event;
+import lab5.general.EventQueue;
 
 public class PickUpEvent extends Event {
     private StoreState storeState;
     private Customer customerID;
     private EventQueue eventQueue;
     private double time;
-    private String name = "PickUpEvent";
 
     public PickUpEvent(StoreState storeState, double time, Customer customerID, EventQueue queue) {
-
         super(storeState, time, queue);
         this.customerID = customerID;
         this.eventQueue = queue;
@@ -19,35 +18,21 @@ public class PickUpEvent extends Event {
     }
 
     @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
     public void performEvent() {
         storeState.setEventName("Plock");
         storeState.currentCustomerID(customerID.getCustomerID());
         storeState.incTimeInCQ(super.EventTime() - storeState.getTimePassed());
         storeState.incUnoccupiedRegTime(super.EventTime() - storeState.getTimePassed());
-
         storeState.setTimePassed(super.EventTime());
-
-
         storeState.update();
 
-
-        if(storeState.freeRegisters()) {
+        if (storeState.freeRegisters()) {
             double newPayTime = time + storeState.getPayTime();
             storeState.incOcupiedregisters();
             eventQueue.addEvent(new PayAndLeaveEvent(storeState, newPayTime, customerID, eventQueue));
-
-        }
-        else {
+        } else {
             storeState.customerQueue.add(customerID);
             storeState.addTotAmQueue();
         }
-
     }
-
-    //tate.setNewTimePassed(Customer.getPickTime(customerID) + state.timePassed);
 }
