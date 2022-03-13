@@ -26,14 +26,14 @@ public class SimMain {
 
     public static void main(String[] args) {
         int registers = 2;
-        int maxCustomers = 7;
-        double lambda = 3.0;
-        double minPickTime = 0.6;
-        double maxPickTime = 0.9;
-        double minPayTime = 0.35;
-        double maxPayTime = 0.6;
-        double closeTime = 8.0;
-        long seed = 13;
+        int maxCustomers = 5;
+        double lambda = 1.0;
+        double minPickTime = 0.5;
+        double maxPickTime = 1.0;
+        double minPayTime = 2.0;
+        double maxPayTime = 3.0;
+        double closeTime = 10.0;
+        long seed = 1234;
 
         StoreState storeState = new StoreState(seed, maxCustomers, registers, minPickTime, maxPickTime, minPayTime, maxPayTime, lambda);
 
