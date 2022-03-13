@@ -4,22 +4,16 @@ import lab5.general.Event;
 import lab5.general.EventQueue;
 
 public class EndEvent extends Event {
-    private StoreState state;
-    private String name = "EndEvent" ;
+    private StoreState storeState;
 
-    public EndEvent(StoreState storeState, double time, EventQueue eventQueue){
+    public EndEvent(StoreState storeState, double time, EventQueue eventQueue) {
         super(storeState, time, eventQueue);
-        this.state = storeState;
+        this.storeState = storeState;
         this.eventQueue = eventQueue;
     }
 
     @Override
-    public String getName() {
-        return null;
-    }
-
-    @Override
     public void performEvent() {
-        state.setSimulating(false);
+        storeState.setSimulating(false);
     }
 }

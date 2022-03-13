@@ -13,8 +13,6 @@ public abstract class Event {
         this.eventQueue = eventQueue;
     }
 
-    public abstract String getName();
-
     public abstract void performEvent();
 
     public double EventTime(){

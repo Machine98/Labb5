@@ -3,23 +3,15 @@ package lab5.general.store;
 import lab5.general.Event;
 import lab5.general.EventQueue;
 
-
 public class PayAndLeaveEvent extends Event {
     private Customer customerID;
     private StoreState storeState;
-    private String name = "PayAndLeaveEvent";
-
 
     public PayAndLeaveEvent(StoreState storeState, double time, Customer customerID, EventQueue eventQueue) {
         super(storeState, time, eventQueue);
         this.customerID = customerID;
         this.eventQueue = eventQueue;
         this.storeState = storeState;
-    }
-
-    @Override
-    public String getName() {
-        return name;
     }
 
     @Override
@@ -33,15 +25,12 @@ public class PayAndLeaveEvent extends Event {
         storeState.addPayedCustomers();
         storeState.decCurrentCustomers();
 
-        if(storeState.customerQueue.size() >= 1) {
+        if (storeState.customerQueue.size() >= 1) {
             double newPayTime = super.EventTime() + storeState.getPayTime();
             Customer customerInQueueID = (Customer) storeState.customerQueue.first();
-
             eventQueue.addEvent(new PayAndLeaveEvent(storeState, newPayTime, customerInQueueID, eventQueue));
-
             storeState.customerQueue.remove();
-        }
-        else {
+        } else {
             storeState.decOcupiedregisters();
         }
     }
