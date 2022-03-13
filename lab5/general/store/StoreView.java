@@ -1,6 +1,7 @@
 package lab5.general.store;
 
 import java.util.Observable;
+
 import lab5.general.View;
 
 /**
@@ -24,13 +25,12 @@ public class StoreView extends View {
      * @param storeState contains all valuable data needed, and the specific event
      */
 
-    public StoreView(StoreState storeState){
+    public StoreView(StoreState storeState) {
         this.storeState = storeState;
     }
 
     /**
      * Handles the first print that includes the simulations parameters
-     *
      */
 
     public void firstPrint() {
@@ -45,33 +45,31 @@ public class StoreView extends View {
 
         System.out.println("\nFÖRLOPP");
         System.out.println("=======");
-        String förlopp = String.format("%-5s\t %-10s %-10s %-10s %-10s %s\t %-10s %-9s %-10s %-11s %-3s\t %-10s %s","Tid","Händelse","Kund", "?","led", "ledT" ,"I", "$",":-(", "köat","köT","köar","[Kassakö..]\n");
+        String förlopp = String.format("%-5s\t %-10s %-10s %-10s %-10s %s\t %-10s %-9s %-10s %-11s %-3s\t %-10s %s", "Tid", "Händelse", "Kund", "?", "led", "ledT", "I", "$", ":-(", "köat", "köT", "köar", "[Kassakö..]\n");
         System.out.println(förlopp);
     }
 
     /**
      * Handles the last print that includes the simulations results
-     *
      */
 
-    public void lastPrint(){
+    public void lastPrint() {
         System.out.println("");
         System.out.println("RESULTAT");
         System.out.println("========");
         System.out.println("1) Av " + storeState.getTotalCustomers() + " handlade " + storeState.getCustomersPayed() + " medan " + storeState.getCustomersTurnedAway() + " missades.");
         System.out.println("");
-        System.out.println("2) Total tid " + storeState.getRegisters() + " kassor varit lediga: " + String.format("%.2f",storeState.getUnoccupiedRegTime()));
-        System.out.println("\tGenomsnittlig ledig kassa tid " + String.format("%.2f",storeState.getUnoccupiedRegTime()/storeState.getRegisters()) + " (dvs " + String.format("%.2f",((storeState.getUnoccupiedRegTime()/storeState.getRegisters())/storeState.getTimePassed())*100) + "%  av tiden från öppning tills sista kunden betalat).");
+        System.out.println("2) Total tid " + storeState.getRegisters() + " kassor varit lediga: " + String.format("%.2f", storeState.getUnoccupiedRegTime()));
+        System.out.println("\tGenomsnittlig ledig kassa tid " + String.format("%.2f", storeState.getUnoccupiedRegTime() / storeState.getRegisters()) + " (dvs " + String.format("%.2f", ((storeState.getUnoccupiedRegTime() / storeState.getRegisters()) / storeState.getTimePassed()) * 100) + "%  av tiden från öppning tills sista kunden betalat).");
         System.out.println("");
-        System.out.println("3) Total tid " + storeState.getTotAmQueue() + " kunder tvingats köa: " + String.format("%.2f",storeState.getTimeQueued()) + " te" + ".");
-        System.out.println("\tGenomsnittlig kötid: " + String.format("%.2f",storeState.getTimeQueued()/storeState.getTotAmQueue()) + " te");
+        System.out.println("3) Total tid " + storeState.getTotAmQueue() + " kunder tvingats köa: " + String.format("%.2f", storeState.getTimeQueued()) + " te" + ".");
+        System.out.println("\tGenomsnittlig kötid: " + String.format("%.2f", storeState.getTimeQueued() / storeState.getTotAmQueue()) + " te");
 
 
     }
 
     /**
      * Prints data from the specific event
-     *
      *
      * @param arg0
      * @param f
@@ -81,32 +79,26 @@ public class StoreView extends View {
     public void update(Observable arg0, Object f) {
 
         String currentQueue = "[";
-        for (int i = 0; i < storeState.customerQueue.size(); i ++){
+        for (int i = 0; i < storeState.customerQueue.size(); i++) {
             customerID = (Customer) storeState.customerQueue.getIndex(i);
-            if (storeState.customerQueue.size() == i + 1){
+            if (storeState.customerQueue.size() == i + 1) {
                 currentQueue = currentQueue + String.valueOf(customerID.getCustomerID());
-            }
-            else{
+            } else {
                 currentQueue = currentQueue + String.valueOf(customerID.getCustomerID()) + ", ";
             }
         }
         currentQueue = currentQueue + "]";
 
         String infoRow;
-        if (storeState.getEventName() == "Stänger")
-        {
+        if (storeState.getEventName() == "Stänger") {
             infoRow = String.format("%.2f\t %-10s %-10s %-10s %-10s %.2f\t %-10s %-10s %-10s %-10s %.2f\t %-10s %s", storeState.getTimePassed(),
                     storeState.getEventName(), "----", storeState.isOpen() ? "Ö" : "S", storeState.getRegisters() - storeState.getOcupiedregisters(),
                     storeState.getUnoccupiedRegTime(), storeState.getCurrentCustomers(), storeState.getCustomersPayed(),
                     storeState.getCustomersTurnedAway(), storeState.getTotAmQueue(), storeState.getTimeQueued(),
                     storeState.customerQueue.size(), currentQueue + "\n");
-        }
-        else if (storeState.getEventName() == "Start")
-        {
-            infoRow = String.format("%.2f\t %-10s",storeState.getTimePassed(), storeState.getEventName()) + "\n";
-        }
-        else
-        {
+        } else if (storeState.getEventName() == "Start") {
+            infoRow = String.format("%.2f\t %-10s", storeState.getTimePassed(), storeState.getEventName()) + "\n";
+        } else {
             infoRow = String.format("%.2f\t %-10s %-10s %-10s %-10s %.2f\t %-10s %-10s %-10s %-10s %.2f\t %-10s %s", storeState.getTimePassed(),
                     storeState.getEventName(), storeState.getCurrentCustomerID(), storeState.isOpen() ? "Ö" : "S", storeState.getRegisters() - storeState.getOcupiedregisters(),
                     storeState.getUnoccupiedRegTime(), storeState.getCurrentCustomers(), storeState.getCustomersPayed(),
