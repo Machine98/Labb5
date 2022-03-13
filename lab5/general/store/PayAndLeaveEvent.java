@@ -40,7 +40,8 @@ public class PayAndLeaveEvent extends Event {
     public void performEvent() {
         storeState.setEventName("Betalning");
         storeState.setCurrentCustomerID(customerID.getCustomerID());
-        storeState.incTimeInCQ(super.EventTime() - storeState.getTimePassed());
+        storeState.incTimeInCQ(super.EventTime() - storeState.getTimePassed()); // Increase Time in Queue.
+        // Increase Time for occupied Registers.
         storeState.incUnoccupiedRegTime(super.EventTime() - storeState.getTimePassed());
         storeState.setTimePassed(super.EventTime());
         storeState.update();
@@ -48,10 +49,13 @@ public class PayAndLeaveEvent extends Event {
         storeState.decCurrentCustomers();
         storeState.setSecondToLastEventTime();
 
+        // If there is customers in queue let them pay one by one in order.
         if (storeState.customerQueue.size() >= 1) {
             double newPayTime = super.EventTime() + storeState.getPayTime();
+            // Takes the first customer in the queue and lets the customer pay.
             Customer customerInQueueID = (Customer) storeState.customerQueue.first();
             eventQueue.addEvent(new PayAndLeaveEvent(storeState, newPayTime, customerInQueueID, eventQueue));
+            // Removes the first customer in queue.
             storeState.customerQueue.remove();
         } else {
             storeState.decOcupiedregisters();
