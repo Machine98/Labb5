@@ -7,8 +7,23 @@ import lab5.general.State;
 import lab5.general.View;
 import lab5.general.store.*;
 
+/**
+ * Represents the programs core, here we define the simulations conditions
+ *
+ * @author Calle Rautio
+ * @author Wilhelm Rauston
+ * @author Albin Sundström
+ * @author Eric Vikberg
+ */
+
 
 public class SimMain {
+
+    /**
+     * (i) Creates constants that define the specific state
+     * (ii) Creates instances of StoreState, View, Simulator
+     * (iii) Creates crucial parts of the simulation regulating the startEvent, closingEvent, endEvent
+     */
 
     public static void main(String[] args) {
         int registers = 2;
