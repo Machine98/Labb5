@@ -32,7 +32,7 @@ public abstract class Event {
     }
 
     /**
-     * An abstract method for what the event will perform
+     * An abstract method for the kind of event it will perform
      */
 
     public abstract void performEvent();
