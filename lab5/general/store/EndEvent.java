@@ -38,7 +38,7 @@ public class EndEvent extends Event {
 
     @Override
     public void performEvent() {
-        storeState.setEventName("End");
+        storeState.setEventName("Stop");
         storeState.setTimePassed(time);
         storeState.update();
         storeState.setSimulating(false);
