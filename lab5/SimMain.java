@@ -18,6 +18,7 @@ public class SimMain {
         double maxPickTime = 1.0;
         double minPayTime = 2.0;
         double maxPayTime = 3.0;
+        double closeTime = 10.0;
         long seed = 1234;
 
         StoreState storeState = new StoreState(seed, maxCustomers, registers, minPickTime, maxPickTime, minPayTime, maxPayTime, lambda);
@@ -25,7 +26,7 @@ public class SimMain {
         EventQueue eventQueue = new EventQueue();
 
         eventQueue.addEvent(new StartEvent(storeState, 0, eventQueue));
-        eventQueue.addEvent(new ClosingEvent(storeState, 10, eventQueue));
+        eventQueue.addEvent(new ClosingEvent(storeState, closeTime, eventQueue));
         eventQueue.addEvent(new EndEvent(storeState, 999, eventQueue));
 
         View view = new StoreView(storeState);

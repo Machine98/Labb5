@@ -19,27 +19,25 @@ public class PayAndLeaveEvent extends Event {
 
     @Override
     public String getName() {
-        return null;
+        return name;
     }
 
     @Override
     public void performEvent() {
         storeState.setEventName("Betalning");
         storeState.currentCustomerID(customerID.getCustomerID());
-
         storeState.incTimeInCQ(super.EventTime() - storeState.getTimePassed());
         storeState.incUnoccupiedRegTime(super.EventTime() - storeState.getTimePassed());
-
         storeState.setTimePassed(super.EventTime());
-        double newPayTime = super.EventTime() + storeState.getPayTime();
         storeState.update();
         storeState.addPayedCustomers();
         storeState.decCurrentCustomers();
 
         if(storeState.customerQueue.size() >= 1) {
-            Customer customerInQeuueID = (Customer) storeState.customerQueue.first();
+            double newPayTime = super.EventTime() + storeState.getPayTime();
+            Customer customerInQueueID = (Customer) storeState.customerQueue.first();
 
-            eventQueue.addEvent(new PayAndLeaveEvent(storeState, newPayTime, customerInQeuueID, eventQueue));
+            eventQueue.addEvent(new PayAndLeaveEvent(storeState, newPayTime, customerInQueueID, eventQueue));
 
             storeState.customerQueue.remove();
         }
