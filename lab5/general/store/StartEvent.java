@@ -28,6 +28,7 @@ public class StartEvent extends Event {
         double firstArriveTime = time + state.ArrivalTime.newArrivalTime();
         state.setOpen(true);
         state.currentEvent(this);
+        state.update();
         eventQueue.addEvent(new ArrivalEvent(state, firstArriveTime, eventQueue));
     }
 
