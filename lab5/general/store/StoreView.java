@@ -45,8 +45,8 @@ public class StoreView extends View {
 
         System.out.println("\nFÖRLOPP");
         System.out.println("=======");
-        String förlopp = String.format("%-5s\t %-10s %-10s %-10s %-10s %s\t %-10s %-9s %-10s %-11s %-3s\t %-10s %s", "Tid", "Händelse", "Kund", "?", "led", "ledT", "I", "$", ":-(", "köat", "köT", "köar", "[Kassakö..]\n");
-        System.out.println(förlopp);
+        String header = String.format("%-5s\t %-10s %-10s %-10s %-10s %s\t %-10s %-9s %-10s %-11s %-3s\t %-10s %s", "Tid", "Händelse", "Kund", "?", "led", "ledT", "I", "$", ":-(", "köat", "köT", "köar", "[Kassakö..]\n");
+        System.out.println(header);
     }
 
     /**
