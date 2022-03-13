@@ -3,14 +3,35 @@ package lab5.general.store;
 import java.util.Observable;
 import lab5.general.View;
 
+/**
+ * Represents the programs function of printing out the simulation data
+ *
+ * @author Calle Rautio
+ * @author Wilhelm Rauston
+ * @author Albin Sundström
+ * @author Eric Vikberg
+ */
+
 public class StoreView extends View {
 
     private StoreState storeState;
     private Customer customerID;
 
+
+    /**
+     * Constructor
+     *
+     * @param storeState contains all valuable data needed, and the specific event
+     */
+
     public StoreView(StoreState storeState){
         this.storeState = storeState;
     }
+
+    /**
+     * Handles the first print that includes the simulations parameters
+     *
+     */
 
     public void firstPrint() {
         System.out.println("PARAMETRAR");
@@ -28,6 +49,11 @@ public class StoreView extends View {
         System.out.println(förlopp);
     }
 
+    /**
+     * Handles the last print that includes the simulations results
+     *
+     */
+
     public void lastPrint(){
         System.out.println("");
         System.out.println("RESULTAT");
@@ -42,6 +68,15 @@ public class StoreView extends View {
 
 
     }
+
+    /**
+     * Prints data from the specific event
+     *
+     *
+     * @param arg0
+     * @param f
+     */
+
 
     public void update(Observable arg0, Object f) {
 
