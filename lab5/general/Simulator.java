@@ -9,7 +9,7 @@ public class Simulator {
     private View view;
     private Event event;
 
-    public Simulator(State state, View view, EventQueue eventQueue){
+    public Simulator(State state, View view, EventQueue eventQueue) {
         this.state = state;
         this.view = view;
         this.eventQueue = eventQueue;
@@ -17,7 +17,7 @@ public class Simulator {
 
     public void run() {
         ((StoreView) view).firstPrint();
-        while (!eventQueue.isEmpty() && state.simulating){
+        while (!eventQueue.isEmpty() && state.simulating) {
             event = eventQueue.getNext();
             event.performEvent();
         }

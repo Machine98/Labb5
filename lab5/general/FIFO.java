@@ -1,6 +1,5 @@
 package lab5.general;
 
-import java.time.chrono.MinguoDate;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
@@ -13,7 +12,7 @@ public class FIFO {
         maxSize++;
     }
 
-    public Object getIndex(int index){
+    public Object getIndex(int index) {
         return queue.get(index);
     }
 
@@ -36,7 +35,7 @@ public class FIFO {
 
         }
         for (int i = 0; i < queue.size(); i++) {
-            if (item.equals(queue.get(i))){
+            if (item.equals(queue.get(i))) {
                 removeIndex(i);
             }
         }
@@ -77,17 +76,15 @@ public class FIFO {
                             continue;
                         }
                         return false;
-                    }
-
-                    else if (((FIFO) f).queue.get(i).equals(this.queue.get(i))) {
+                    } else if (((FIFO) f).queue.get(i).equals(this.queue.get(i))) {
                         continue;
                     }
                 }
                 return true;
-            }else {
+            } else {
                 return false;
             }
-        }else {
+        } else {
             throw new ClassCastException();
         }
     }
