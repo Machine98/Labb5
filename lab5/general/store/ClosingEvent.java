@@ -38,7 +38,7 @@ public class ClosingEvent extends Event {
         storeState.setEventName("Stänger");
         // Increase Time for occupied Registers.
         storeState.incUnoccupiedRegTime(super.EventTime() - storeState.getTimePassed());
-        storeState.incTimeInCQ(super.EventTime() - storeState.getTimePassed()); // Increase Time in Q
+        storeState.incTimeInCQ(super.EventTime() - storeState.getTimePassed()); // Increase Time in Queue.
         storeState.setTimePassed(super.EventTime());
         storeState.update();
         storeState.setSecondToLastEventTime();

@@ -40,10 +40,11 @@ public class ArrivalEvent extends Event {
         storeState.setEventName("Ankomst");
         customerID = new Customer(storeState.getTotalCustomers());
         storeState.setCurrentCustomerID(customerID.getCustomerID());
-        storeState.incTimeInCQ(super.EventTime() - storeState.getTimePassed());
-        storeState.setSecondToLastEventTime();
 
         if (storeState.isOpen()) {
+            storeState.setSecondToLastEventTime();
+            storeState.incTimeInCQ(super.EventTime() - storeState.getTimePassed()); // Increase Time in Queue.
+            // Increase Time for occupied Registers.
             storeState.incUnoccupiedRegTime(super.EventTime() - storeState.getTimePassed());
             storeState.setTimePassed(super.EventTime());
             storeState.incTotalCustomers();
