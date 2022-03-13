@@ -5,21 +5,29 @@ import lab5.general.EventQueue;
 
 public class StartEvent extends Event {
     private double time;
-    private StoreState state;
+    private StoreState storeState;
 
-    public StartEvent(StoreState state, double time, EventQueue eventQueue) {
-        super(state, time, eventQueue);
+    /**
+     * Constructor
+     *
+     * @param storeState - The stores state that keeps track of all the moving variables
+     * @param time - The time that it takes for an event to be run
+     * @param eventQueue - The event queue where it will add new events
+     */
+
+    public StartEvent(StoreState storeState, double time, EventQueue eventQueue) {
+        super(storeState, time, eventQueue);
         this.time = time;
-        this.state = state;
+        this.storeState = storeState;
     }
 
     @Override
     public void performEvent() {
         time = 0;
-        state.setEventName("Start");
-        double firstArriveTime = time + state.ArrivalTime.newArrivalTime();
-        state.setOpen(true);
-        state.update();
-        eventQueue.addEvent(new ArrivalEvent(state, firstArriveTime, eventQueue));
+        storeState.setEventName("Start");
+        double firstArriveTime = time + storeState.ArrivalTime.newArrivalTime();
+        storeState.setOpen(true);
+        storeState.update();
+        eventQueue.addEvent(new ArrivalEvent(storeState, firstArriveTime, eventQueue));
     }
 }
