@@ -21,9 +21,9 @@ public class Simulator {
     /**
      * Constructor
      *
-     * @param state - the general state of the program
-     * @param view - the view
-     * @param eventQueue  - the queue of events
+     * @param state      - the general state of the program
+     * @param view       - the view
+     * @param eventQueue - the queue of events
      */
 
     public Simulator(State state, View view, EventQueue eventQueue) {
@@ -34,7 +34,6 @@ public class Simulator {
 
     /**
      * handles performing the events in the queue and calling the prints out of storeview
-     *
      */
 
     public void run() {
@@ -45,6 +44,13 @@ public class Simulator {
         }
         ((StoreState) state).setLastEventTime(event.EventTime());
         ((StoreView) view).lastPrint();
+    }
+
+    public void optRun() {
+        while (!eventQueue.isEmpty() && state.simulating) {
+            event = eventQueue.getNext();
+            event.performEvent();
+        }
     }
 }
 
