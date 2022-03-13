@@ -2,19 +2,19 @@ package lab5.general.store;
 
 import lab5.general.Event;
 import lab5.general.EventQueue;
-import lab5.general.State;
+
 
 public class PayAndLeaveEvent extends Event {
-    private State state;
-    private Customer customerID;
+    private Customer customerID, customerInTurn;
     private StoreState storeState;
     private String name = "PayAndLeaveEvent";
 
 
-    public PayAndLeaveEvent(StoreState storeState, double time, EventQueue eventQueue) {
+    public PayAndLeaveEvent(StoreState storeState, double time, Customer customerID, EventQueue eventQueue) {
         super(storeState, time, eventQueue);
         this.eventQueue = eventQueue;
         this.storeState = storeState;
+        this.customerID = customerID;
     }
 
     @Override
@@ -24,23 +24,14 @@ public class PayAndLeaveEvent extends Event {
 
     @Override
     public void performEvent() {
-        if (storeState.freeRegisters()) {
-            storeState.setEventName("Betalning");
-            customerID = (Customer) storeState.customerQueue.first();
-            storeState.currentCustomerID(customerID.getCustomerID());
-            storeState.addPayedCustomers();
-            storeState.customerQueue.remove();
-            storeState.incOcupiedregisters();
-        } else {
-            storeState.addTotAmQueue();
+        storeState.setEventName("Betalning");
+        storeState.currentCustomerID(customerID.getCustomerID());
+        if(storeState.customerQueue.size() < storeState.getRegisters()){
             storeState.decOcupiedregisters();
-            double timeQueued = super.EventTime() - storeState.getTimePassed();
-            storeState.incTimeInCQ(timeQueued);
         }
         storeState.setTimePassed(super.EventTime());
+        storeState.addPayedCustomers();
         storeState.decCurrentCustomers();
         storeState.update();
-
-
     }
 }
