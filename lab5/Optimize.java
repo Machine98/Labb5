@@ -37,6 +37,7 @@ public class Optimize implements K{
      */
     private static StoreState optSimulator(int registers, long seed){
 
+        // Creates a new store state with given parameters.
         StoreState storeState = new StoreState(seed, M, registers, LOW_COLLECTION_TIME, HIGH_COLLECTION_TIME,
                 LOW_PAYMENT_TIME, HIGH_PAYMENT_TIME, L);
 
@@ -47,8 +48,8 @@ public class Optimize implements K{
         eventQueue.addEvent(new EndEvent(storeState, STOP_TIME, eventQueue));
 
         View view = new StoreView(storeState);
-        //storeState.addObserver(view);
 
+        //Run the simulation without printing any data from it.
         Simulator simulator = new Simulator(storeState, view, eventQueue);
         simulator.optRun();
 
@@ -66,12 +67,15 @@ public class Optimize implements K{
         int optimalAmOfReg = 0;
 
         int missed = 99999;
+        // Loops through different amount of registers
         for (int i = M; i >= 1; i--) {
             newState = optSimulator(i,seed);
 
+            //break if amount of missed customer increases.
             if(missed < newState.getCustomersTurnedAway()) {
                 break;
             }
+            //otherwise set new missed and new optimal amount of registers.
             missed = newState.getCustomersTurnedAway();
             optimalAmOfReg = i;
         }
@@ -88,25 +92,31 @@ public class Optimize implements K{
      * @param f - The seed to the random number generator, Random(f).
      */
     private static void worstCaseOfOptReg(long f) {
+        //get random seed
         Random randomSeed = new Random(f);
         int loopsSinceChange = 0;
-        int optimalAmOfReg = 1;
+        int worstOptimalAmOfReg = 1;
         while(true) {
+            //get optimal amount of registers for a new random seed.
             int newOptRegisters = optimizeRegisters(randomSeed.nextLong());
 
-            if(newOptRegisters > optimalAmOfReg) {
+            //check if it's bigger than the last
+            if(newOptRegisters > worstOptimalAmOfReg) {
                 loopsSinceChange = 0;
-                optimalAmOfReg = newOptRegisters;
+                //and if it is, set new worstOptimalAmOfReg and reset the counter.
+                worstOptimalAmOfReg = newOptRegisters;
             }
             else {
+                //If it's not bigger, then increase the counter.
                 loopsSinceChange++;
             }
+
             if(loopsSinceChange == 100){
                 break;
             }
         }
         printParam();
-        System.out.println("\nWorst case - minst antal kassor: "+optimalAmOfReg);
+        System.out.println("\nWorst case - minst antal kassor: "+worstOptimalAmOfReg);
 
     }
     private static void printParam() {
