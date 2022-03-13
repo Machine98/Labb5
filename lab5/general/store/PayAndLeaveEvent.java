@@ -34,17 +34,20 @@ public class PayAndLeaveEvent extends Event {
         storeState.setTimePassed(super.EventTime());
         double newPayTime = super.EventTime() + storeState.getPayTime();
         storeState.update();
+        storeState.addPayedCustomers();
 
         storeState.decCurrentCustomers();
 
         if(storeState.customerQueue.size() >= 1) {
             Customer customerInQeuueID = (Customer) storeState.customerQueue.first();
 
-            eventQueue.addEvent(new PayAndLeaveEvent(storeState, newPayTime, customerID, eventQueue));
+            eventQueue.addEvent(new PayAndLeaveEvent(storeState, newPayTime, customerInQeuueID, eventQueue));
+
             storeState.customerQueue.remove();
         }
         else {
             storeState.decOcupiedregisters();
+
 
         }
 

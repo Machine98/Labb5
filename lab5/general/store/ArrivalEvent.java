@@ -35,10 +35,13 @@ public class ArrivalEvent extends Event {
 
 
         if(storeState.isOpen()){
+
+            storeState.addTotalCustomers();
+
             if(storeState.getCurrentCustomers() == storeState.getMaxCustomers()){
                 storeState.incCustomersTurnedAway();
             }else{
-                storeState.addTotalCustomers();
+
                 double newPickTime = time + storeState.getPickTime();
                 eventQueue.addEvent(new PickUpEvent(storeState, newPickTime, customerID, eventQueue));
                 storeState.incCurrentCustomers();
