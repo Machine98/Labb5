@@ -223,7 +223,7 @@ public class StoreState extends State {
     }
 
     public void incTimeInCQ(double timeDiff) {
-        this.timeQueued += timeDiff;
+        this.timeQueued += (timeDiff * customerQueue.size());
     }
 
     public double getTimeQueued() {

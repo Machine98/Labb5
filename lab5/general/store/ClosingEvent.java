@@ -25,7 +25,10 @@ public class ClosingEvent extends Event {
     public void performEvent() {
         storeState.isOpen(false);
         storeState.setEventName("Stänger");
+        storeState.incUnoccupiedRegTime(super.EventTime() - storeState.getTimePassed());
+        storeState.incTimeInCQ(super.EventTime() - storeState.getTimePassed());
         storeState.setTimePassed(super.EventTime());
+
         storeState.update();
         /*if (storeState.customerQueue.size() > 0) {
             for (int i = 0; i < storeState.customerQueue.size(); i++) {
