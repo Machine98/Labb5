@@ -3,19 +3,40 @@ package lab5.general.store;
 import lab5.general.Event;
 import lab5.general.EventQueue;
 
+/**
+ * Represents a customer picking up what to buy
+ *
+ * @author Calle Rautio
+ * @author Wilhelm Rauston
+ * @author Albin Sundström
+ * @author Eric Vikberg
+ */
+
 public class PickUpEvent extends Event {
     private StoreState storeState;
     private Customer customerID;
     private EventQueue eventQueue;
     private double time;
 
-    public PickUpEvent(StoreState storeState, double time, Customer customerID, EventQueue queue) {
-        super(storeState, time, queue);
+    /**
+     * Constructor
+     *
+     * @param storeState - The stores state that keeps track of all the moving variables
+     * @param time - The time that it takes for an event to be run
+     * @param eventQueue - The event queue where it will add new events
+     * @param customerID - A specific customer id for the current customer
+     */
+    public PickUpEvent(StoreState storeState, double time, Customer customerID, EventQueue eventQueue) {
+        super(storeState, time, eventQueue);
         this.customerID = customerID;
-        this.eventQueue = queue;
+        this.eventQueue = eventQueue;
         this.storeState = storeState;
         this.time = time;
     }
+
+    /**
+     * Performs what happens when the customer picks up items
+     */
 
     @Override
     public void performEvent() {
