@@ -4,7 +4,12 @@ import lab5.general.Event;
 import lab5.general.EventQueue;
 
 /**
+ * Represents the start of the simulation
  *
+ * @author Calle Rautio
+ * @author Wilhelm Rauston
+ * @author Albin Sundström
+ * @author Eric Vikberg
  */
 
 public class StartEvent extends Event {
@@ -24,6 +29,10 @@ public class StartEvent extends Event {
         this.time = time;
         this.storeState = storeState;
     }
+
+    /**
+     * Performs what happens when the store opens
+     */
 
     @Override
     public void performEvent() {

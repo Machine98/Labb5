@@ -4,7 +4,12 @@ import lab5.general.Event;
 import lab5.general.EventQueue;
 
 /**
+ * Represents the end of the simulation
  *
+ * @author Calle Rautio
+ * @author Wilhelm Rauston
+ * @author Albin Sundström
+ * @author Eric Vikberg
  */
 
 public class EndEvent extends Event {
@@ -22,6 +27,10 @@ public class EndEvent extends Event {
         this.storeState = storeState;
         this.eventQueue = eventQueue;
     }
+
+    /**
+     * Performs what happens when the simulation ends
+     */
 
     @Override
     public void performEvent() {

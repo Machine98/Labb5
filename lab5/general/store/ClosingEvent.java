@@ -4,9 +4,13 @@ import lab5.general.Event;
 import lab5.general.EventQueue;
 
 /**
+ * Represents the closing of the store
  *
+ * @author Calle Rautio
+ * @author Wilhelm Rauston
+ * @author Albin Sundström
+ * @author Eric Vikberg
  */
-
 
 public class ClosingEvent extends Event {
     private StoreState storeState;
@@ -23,6 +27,10 @@ public class ClosingEvent extends Event {
         super(storeState, time, eventQueue);
         this.storeState = storeState;
     }
+
+    /**
+     * Performs what happens when the store closes
+     */
 
     @Override
     public void performEvent() {
