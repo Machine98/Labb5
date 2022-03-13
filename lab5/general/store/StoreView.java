@@ -100,7 +100,7 @@ public class StoreView extends View {
         else if (storeState.getEventName() == "Start") {
             infoRow = String.format("%.2f\t %-10s", storeState.getTimePassed(), storeState.getEventName()) + "\n";
         }
-        else if (storeState.getEventName() == "End"){
+        else if (storeState.getEventName() == "Stop"){
             infoRow = String.format("%.2f\t %-10s", storeState.getTimePassed(), storeState.getEventName()) + "\n";
         }
         else {
