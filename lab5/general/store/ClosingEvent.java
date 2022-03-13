@@ -8,7 +8,6 @@ public class ClosingEvent extends Event {
     private StoreState storeState;
     private String name = "ClosingEvent";
     private double time;
-    private Customer customer;
 
 
     public ClosingEvent(StoreState storeState, double time, EventQueue eventQueue) {
@@ -26,14 +25,17 @@ public class ClosingEvent extends Event {
     public void performEvent() {
         storeState.isOpen(false);
         storeState.setEventName("Stänger");
+        storeState.incUnoccupiedRegTime(super.EventTime() - storeState.getTimePassed());
+        storeState.incTimeInCQ(super.EventTime() - storeState.getTimePassed());
         storeState.setTimePassed(super.EventTime());
+
         storeState.update();
-        if (storeState.customerQueue.size() > 0) {
+        /*if (storeState.customerQueue.size() > 0) {
             for (int i = 0; i < storeState.customerQueue.size(); i++) {
                 double newPayTime = time + storeState.getPayTime();
-                customer = (Customer) storeState.customerQueue.getIndex(i);
-                eventQueue.addEvent(new PayAndLeaveEvent(storeState, newPayTime, customer, eventQueue));
+                eventQueue.addEvent(new PayAndLeaveEvent(storeState, newPayTime, eventQueue));
             }
-        }
+
+        }*/
     }
 }
