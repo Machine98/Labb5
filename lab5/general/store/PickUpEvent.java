@@ -34,8 +34,17 @@ public class PickUpEvent extends Event {
         double newPayTime = time + storeState.getPayTime();
 
         storeState.update();
-        storeState.customerQueue.add(customerID);
-        eventQueue.addEvent(new PayAndLeaveEvent(storeState, newPayTime, eventQueue));
+
+        if(storeState.freeRegisters()) {
+            storeState.incOcupiedregisters();
+            eventQueue.addEvent(new PayAndLeaveEvent(storeState, newPayTime, customerID, eventQueue));
+
+        }
+        else {
+            storeState.customerQueue.add(customerID);
+            storeState.addTotAmQueue();
+        }
+
     }
 
     //tate.setNewTimePassed(Customer.getPickTime(customerID) + state.timePassed);

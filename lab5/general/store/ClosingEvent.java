@@ -27,12 +27,12 @@ public class ClosingEvent extends Event {
         storeState.setEventName("Stänger");
         storeState.setTimePassed(super.EventTime());
         storeState.update();
-        if (storeState.customerQueue.size() > 0) {
+        /*if (storeState.customerQueue.size() > 0) {
             for (int i = 0; i < storeState.customerQueue.size(); i++) {
                 double newPayTime = time + storeState.getPayTime();
                 eventQueue.addEvent(new PayAndLeaveEvent(storeState, newPayTime, eventQueue));
             }
 
-        }
+        }*/
     }
 }

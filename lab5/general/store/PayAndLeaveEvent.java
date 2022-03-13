@@ -11,8 +11,9 @@ public class PayAndLeaveEvent extends Event {
     private String name = "PayAndLeaveEvent";
 
 
-    public PayAndLeaveEvent(StoreState storeState, double time, EventQueue eventQueue) {
+    public PayAndLeaveEvent(StoreState storeState, double time, Customer customerID, EventQueue eventQueue) {
         super(storeState, time, eventQueue);
+        this.customerID = customerID;
         this.eventQueue = eventQueue;
         this.storeState = storeState;
     }
@@ -24,7 +25,30 @@ public class PayAndLeaveEvent extends Event {
 
     @Override
     public void performEvent() {
-        if (storeState.freeRegisters()) {
+        storeState.setEventName("Betalning");
+        storeState.currentCustomerID(customerID.getCustomerID());
+
+        storeState.incTimeInCQ(super.EventTime() - storeState.getTimePassed());
+        storeState.incUnoccupiedRegTime(super.EventTime() - storeState.getTimePassed());
+
+        storeState.setTimePassed(super.EventTime());
+        double newPayTime = super.EventTime() + storeState.getPayTime();
+        storeState.update();
+
+        storeState.decCurrentCustomers();
+
+        if(storeState.customerQueue.size() >= 1) {
+            Customer customerInQeuueID = (Customer) storeState.customerQueue.first();
+
+            eventQueue.addEvent(new PayAndLeaveEvent(storeState, newPayTime, customerID, eventQueue));
+            storeState.customerQueue.remove();
+        }
+        else {
+            storeState.decOcupiedregisters();
+
+        }
+
+        /*if (storeState.freeRegisters()) {
             storeState.setEventName("Betalning");
             customerID = (Customer) storeState.customerQueue.first();
             storeState.currentCustomerID(customerID.getCustomerID());
@@ -39,7 +63,8 @@ public class PayAndLeaveEvent extends Event {
         }
         storeState.setTimePassed(super.EventTime());
         storeState.decCurrentCustomers();
-        storeState.update();
+
+        storeState.update();*/
 
 
     }
