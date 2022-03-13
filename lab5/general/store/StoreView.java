@@ -102,7 +102,7 @@ public class StoreView extends View {
         if (storeState.getEventName() == "Stänger") {
             infoRow = String.format("%.2f\t %-10s %-10s %-10s %-10s %.2f\t %-10s %-10s %-10s %-10s %.2f\t %-10s %s",
                     storeState.getTimePassed(),
-                    storeState.getEventName(), "----", storeState.isOpen() ? "Ö" : "S", storeState.getRegisters() -
+                    storeState.getEventName(), "---", storeState.isOpen() ? "Ö" : "S", storeState.getRegisters() -
                             storeState.getOcupiedregisters(),
                     storeState.getUnoccupiedRegTime(), storeState.getCurrentCustomers(), storeState.getCustomersPayed(),
                     storeState.getCustomersTurnedAway(), storeState.getTotAmQueue(), storeState.getTimeQueued(),
