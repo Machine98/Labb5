@@ -3,6 +3,15 @@ package lab5.general;
 import java.util.Observer;
 import java.util.Observable;
 
+/**
+ * Represents an abstract class View as observer
+ *
+ * @author Calle Rautio
+ * @author Wilhelm Rauston
+ * @author Albin Sundström
+ * @author Eric Vikberg
+ */
+
 public abstract class View implements Observer {
 
     private State state;
