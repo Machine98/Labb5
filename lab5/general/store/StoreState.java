@@ -33,6 +33,7 @@ public class StoreState extends State {
     private double lambda;
     private double unoccupiedRegTime;
     private double timeQueued;
+    private double secondToLastEventTime;
 
     private int ocupiedregisters;
     private int registers;
@@ -47,14 +48,14 @@ public class StoreState extends State {
     /**
      * Constructor
      *
-     * @param seed the seed that the randomizers use to perform calculations
+     * @param seed         the seed that the randomizers use to perform calculations
      * @param maxCustomers maximum amount of customers allowed in store
-     * @param registers amount of registers working during opening
-     * @param minPickTime minimum amount of time to pick goods
-     * @param maxPickTime maximum amount of time to pick goods
-     * @param minPayTime minimum amount of time to pay for goods
-     * @param maxPayTime maximum amount of time to pay for goods
-     * @param lambda time divider
+     * @param registers    amount of registers working during opening
+     * @param minPickTime  minimum amount of time to pick goods
+     * @param maxPickTime  maximum amount of time to pick goods
+     * @param minPayTime   minimum amount of time to pay for goods
+     * @param maxPayTime   maximum amount of time to pay for goods
+     * @param lambda       time divider
      */
 
     public StoreState(long seed, int maxCustomers, int registers, double minPickTime, double maxPickTime, double minPayTime,
@@ -76,7 +77,27 @@ public class StoreState extends State {
     }
 
     /**
+     * Setter that sets the time passed for each event except for the "Stop" event
+     */
+
+    public void setSecondToLastEventTime() {
+        if (!(getEventName() == "Stop")) {
+            secondToLastEventTime = getTimePassed();
+        }
+    }
+
+    /**
+     * Getter for the arrival time
      *
+     * @return double of the time passed when the second to last event is performed
+     */
+
+    public double getSecondToLastEventTime() {
+        return secondToLastEventTime;
+    }
+
+
+    /**
      * @return if there are registers free
      */
 
@@ -88,7 +109,6 @@ public class StoreState extends State {
     }
 
     /**
-     *
      * @return that the store is open
      */
 
@@ -278,7 +298,6 @@ public class StoreState extends State {
 
     /**
      * Increase customers in store by 1
-     *
      */
 
     public void incCurrentCustomers() {
@@ -287,7 +306,6 @@ public class StoreState extends State {
 
     /**
      * Decrease customers in store by 1
-     *
      */
 
     public void decCurrentCustomers() {
@@ -306,7 +324,6 @@ public class StoreState extends State {
 
     /**
      * Increase occupied registers by 1
-     *
      */
 
     public void incOcupiedregisters() {
@@ -315,7 +332,6 @@ public class StoreState extends State {
 
     /**
      * Decrease occupied registers by 1
-     *
      */
 
     public void decOcupiedregisters() {
@@ -324,7 +340,6 @@ public class StoreState extends State {
 
     /**
      * Increase amount in the customer queue by 1
-     *
      */
 
     public void incTotAmQueue() {
@@ -345,7 +360,6 @@ public class StoreState extends State {
      * Increase how long at least one register has been unoccupied
      *
      * @param timeDiff
-     *
      */
 
     public void incUnoccupiedRegTime(double timeDiff) {
@@ -364,7 +378,6 @@ public class StoreState extends State {
 
     /**
      * Increase for how many customers have purchased something
-     *
      */
 
     public void incPayedCustomers() {
@@ -373,7 +386,6 @@ public class StoreState extends State {
 
     /**
      * Getter for how many customers have purchased something
-     *
      */
 
     public int getCustomersPayed() {
@@ -382,7 +394,6 @@ public class StoreState extends State {
 
     /**
      * Increase for total customers that have been in the store since opening
-     *
      */
 
     public void incTotalCustomers() {
@@ -401,7 +412,6 @@ public class StoreState extends State {
 
     /**
      * Increase for how many customers have been turned away
-     *
      */
 
     public void incCustomersTurnedAway() {
@@ -440,7 +450,6 @@ public class StoreState extends State {
 
     /**
      * Notify the observer that changes have been made.
-     *
      */
 
     public void update() {

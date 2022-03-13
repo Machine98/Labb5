@@ -42,5 +42,6 @@ public class StartEvent extends Event {
         storeState.setOpen(true);
         storeState.update();
         eventQueue.addEvent(new ArrivalEvent(storeState, firstArriveTime, eventQueue));
+        storeState.setSecondToLastEventTime();
     }
 }

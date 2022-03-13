@@ -44,6 +44,7 @@ public class ArrivalEvent extends Event {
         storeState.incTimeInCQ(super.EventTime() - storeState.getTimePassed());
         storeState.setTimePassed(super.EventTime());
         storeState.update();
+        storeState.setSecondToLastEventTime();
 
         if (storeState.isOpen()) {
             storeState.incTotalCustomers();

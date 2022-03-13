@@ -29,6 +29,7 @@ public class StoreView extends View {
         this.storeState = storeState;
     }
 
+
     /**
      * Handles the first print that includes the simulations parameters
      */
@@ -60,19 +61,17 @@ public class StoreView extends View {
         System.out.println("1) Av " + storeState.getTotalCustomers() + " handlade " + storeState.getCustomersPayed() + " medan " + storeState.getCustomersTurnedAway() + " missades.");
         System.out.println("");
         System.out.println("2) Total tid " + storeState.getRegisters() + " kassor varit lediga: " + String.format("%.2f", storeState.getUnoccupiedRegTime()));
-        System.out.println("\tGenomsnittlig ledig kassa tid " + String.format("%.2f", storeState.getUnoccupiedRegTime() / storeState.getRegisters()) + " (dvs " + String.format("%.2f", ((storeState.getUnoccupiedRegTime() / storeState.getRegisters()) / storeState.getTimePassed()) * 100) + "%  av tiden från öppning tills sista kunden betalat).");
+        System.out.println("\tGenomsnittlig ledig kassa tid " + String.format("%.2f", storeState.getUnoccupiedRegTime() / storeState.getRegisters()) + " (dvs " + String.format("%.2f", ((storeState.getUnoccupiedRegTime() / storeState.getRegisters()) / storeState.getSecondToLastEventTime()) * 100) + "%  av tiden från öppning tills sista kunden betalat).");
         System.out.println("");
         System.out.println("3) Total tid " + storeState.getTotAmQueue() + " kunder tvingats köa: " + String.format("%.2f", storeState.getTimeQueued()) + " te" + ".");
         System.out.println("\tGenomsnittlig kötid: " + String.format("%.2f", storeState.getTimeQueued() / storeState.getTotAmQueue()) + " te");
-
-
     }
 
     /**
      * Prints data from the specific event
      *
      * @param arg0 - arg0
-     * @param f - f
+     * @param f    - f
      */
 
 
@@ -96,14 +95,11 @@ public class StoreView extends View {
                     storeState.getUnoccupiedRegTime(), storeState.getCurrentCustomers(), storeState.getCustomersPayed(),
                     storeState.getCustomersTurnedAway(), storeState.getTotAmQueue(), storeState.getTimeQueued(),
                     storeState.customerQueue.size(), currentQueue + "\n");
-        }
-        else if (storeState.getEventName() == "Start") {
+        } else if (storeState.getEventName() == "Start") {
             infoRow = String.format("%.2f\t %-10s", storeState.getTimePassed(), storeState.getEventName()) + "\n";
-        }
-        else if (storeState.getEventName() == "Stop"){
+        } else if (storeState.getEventName() == "Stop") {
             infoRow = String.format("%.2f\t %-10s", storeState.getTimePassed(), storeState.getEventName()) + "\n";
-        }
-        else {
+        } else {
             infoRow = String.format("%.2f\t %-10s %-10s %-10s %-10s %.2f\t %-10s %-10s %-10s %-10s %.2f\t %-10s %s", storeState.getTimePassed(),
                     storeState.getEventName(), storeState.getCurrentCustomerID(), storeState.isOpen() ? "Ö" : "S", storeState.getRegisters() - storeState.getOcupiedregisters(),
                     storeState.getUnoccupiedRegTime(), storeState.getCurrentCustomers(), storeState.getCustomersPayed(),

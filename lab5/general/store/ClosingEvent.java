@@ -39,7 +39,7 @@ public class ClosingEvent extends Event {
         storeState.incUnoccupiedRegTime(super.EventTime() - storeState.getTimePassed());
         storeState.incTimeInCQ(super.EventTime() - storeState.getTimePassed());
         storeState.setTimePassed(super.EventTime());
-
         storeState.update();
+        storeState.setSecondToLastEventTime();
     }
 }

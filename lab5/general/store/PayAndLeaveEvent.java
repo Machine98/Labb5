@@ -46,6 +46,7 @@ public class PayAndLeaveEvent extends Event {
         storeState.update();
         storeState.incPayedCustomers();
         storeState.decCurrentCustomers();
+        storeState.setSecondToLastEventTime();
 
         if (storeState.customerQueue.size() >= 1) {
             double newPayTime = super.EventTime() + storeState.getPayTime();
