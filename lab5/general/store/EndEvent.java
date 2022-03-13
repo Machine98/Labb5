@@ -3,6 +3,10 @@ package lab5.general.store;
 import lab5.general.Event;
 import lab5.general.EventQueue;
 
+/**
+ *
+ */
+
 public class EndEvent extends Event {
     private StoreState storeState;
 
