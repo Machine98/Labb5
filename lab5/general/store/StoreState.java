@@ -239,7 +239,7 @@ public class StoreState extends State {
     /**
      * Setter for the customers ID
      *
-     * @param customerID
+     * @param customerID - CustomerId
      */
 
     public void setCurrentCustomerID(int customerID) {

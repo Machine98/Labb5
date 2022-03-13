@@ -71,8 +71,8 @@ public class StoreView extends View {
     /**
      * Prints data from the specific event
      *
-     * @param arg0
-     * @param f
+     * @param arg0 - arg0
+     * @param f - f
      */
 
 
