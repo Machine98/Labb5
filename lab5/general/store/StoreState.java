@@ -58,8 +58,8 @@ public class StoreState extends State {
      * @param lambda       time divider
      */
 
-    public StoreState(long seed, int maxCustomers, int registers, double minPickTime, double maxPickTime, double minPayTime,
-                      double maxPayTime, double lambda) {
+    public StoreState(long seed, int maxCustomers, int registers, double minPickTime, double maxPickTime,
+                      double minPayTime, double maxPayTime, double lambda) {
 
         this.maxCustomers = maxCustomers;
         this.registers = registers;
@@ -119,7 +119,7 @@ public class StoreState extends State {
     /**
      * Setter that sets the store to open
      *
-     * @param open
+     * @param open -Boolean open
      */
 
     public void setOpen(boolean open) {
@@ -129,7 +129,7 @@ public class StoreState extends State {
     /**
      * Setter that sets lastEventTime
      *
-     * @param lastEventTime
+     * @param lastEventTime -Last event time
      */
 
     public void setLastEventTime(double lastEventTime) {
@@ -259,7 +259,7 @@ public class StoreState extends State {
     /**
      * Setter for the customers ID
      *
-     * @param customerID - CustomerId
+     * @param customerID -Customer ID
      */
 
     public void setCurrentCustomerID(int customerID) {
@@ -279,7 +279,7 @@ public class StoreState extends State {
     /**
      * Setter for the events name
      *
-     * @param eventName
+     * @param eventName -Name of event
      */
 
     public void setEventName(String eventName) {
@@ -359,7 +359,7 @@ public class StoreState extends State {
     /**
      * Increase how long at least one register has been unoccupied
      *
-     * @param timeDiff
+     * @param timeDiff -Time difference
      */
 
     public void incUnoccupiedRegTime(double timeDiff) {
@@ -441,7 +441,7 @@ public class StoreState extends State {
     /**
      * Increase for how long people have stood in the queue
      *
-     * @param timeDiff
+     * @param timeDiff -Time difference
      */
 
     public void incTimeInCQ(double timeDiff) {

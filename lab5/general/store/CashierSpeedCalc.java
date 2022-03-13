@@ -3,7 +3,8 @@ package lab5.general.store;
 import lab5.UniformRandomStream;
 
 /**
- * Represents the part of the program that utilize UniformRandomStream to calculate and randomize the time it takes to pay for goods
+ * Represents the part of the program that utilize UniformRandomStream to calculate and randomize the time it
+ * takes to pay for goods
  *
  * @author Calle Rautio
  * @author Wilhelm Rauston
