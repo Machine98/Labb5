@@ -1,43 +1,19 @@
 package lab5.general.store;
 
-import lab5.general.Event;
 import lab5.general.State;
 
 public class StoreState extends State {
-
-    public boolean isOpen() {
-        return open;
-    }
-
-    public void setOpen(boolean open) {
-        this.open = open;
-    }
-
     private boolean open;
 
     private CustomerQueue queue = new CustomerQueue();
     private String eventName;
-
-    public Event getCurrentEvent() {
-        return currentEvent;
-    }
-
-    private Event currentEvent;
-    private int currentCustomerID;
     private PickUpCalc PickTime;
     private CashierSpeedCalc PayTime;
 
+    CustomerQueue customerQueue;
+    ArrivalTimeCalc ArrivalTime;
+
     private long seed;
-
-    private double timePassed;
-
-    public void setLastEventTime(double lastEventTime) {
-        this.lastEventTime = lastEventTime;
-    }
-
-    public double getLastEventTime() {
-        return lastEventTime;
-    }
 
     private double lastEventTime;
     private double minPickTime;
@@ -49,19 +25,15 @@ public class StoreState extends State {
     private double timeInCQ;
     private double timeQueued;
 
-    private int ocupiedregisters = 0;
+    private int ocupiedregisters;
     private int registers;
     private int maxCustomers;
-    private int totalCustomers = 0;
-    private int currentCustomers = 0;
-    private int totAmQueue = 0;
+    private int totalCustomers;
+    private int currentCustomers;
+    private int totAmQueue;
     private int payedCustomers;
     private int customersTurnedAway;
-    private int coinMade;
-
-    CustomerQueue customerQueue;
-    ArrivalTimeCalc ArrivalTime;
-
+    private int currentCustomerID;
 
 
     public StoreState(long seed, int maxCustomers, int registers, double minPickTime, double maxPickTime, double minPayTime,
@@ -90,12 +62,15 @@ public class StoreState extends State {
         return false;
     }
 
-    public void addTotAmQueue(){
-        this.totAmQueue++;
+    public boolean isOpen() {
+        return open;
+    }
+    public void setOpen(boolean open) {
+        this.open = open;
     }
 
-    public int getTotAmQueue(){
-        return totAmQueue;
+    public void setLastEventTime(double lastEventTime) {
+        this.lastEventTime = lastEventTime;
     }
 
     public double getArrivalTime() {
@@ -108,18 +83,6 @@ public class StoreState extends State {
 
     public double getPayTime() {
         return PayTime.newPayTime();
-    }
-
-    public void incOcupiedregisters() {
-        this.ocupiedregisters++;
-    }
-
-    public void decOcupiedregisters() {
-        this.ocupiedregisters--;
-    }
-
-    public int getOcupiedregisters(){
-        return ocupiedregisters;
     }
 
     public int getRegisters() {
@@ -137,15 +100,13 @@ public class StoreState extends State {
     public double getMinPickTime() {
         return this.minPickTime;
     }
-
-    public double getMinPayTime() {
-        return this.minPayTime;
-    }
-
     public double getMaxPickTime() {
         return this.maxPickTime;
     }
 
+    public double getMinPayTime() {
+        return this.minPayTime;
+    }
     public double getMaxPayTime() {
         return this.maxPayTime;
     }
@@ -154,90 +115,86 @@ public class StoreState extends State {
         return this.seed;
     }
 
-    public int getCurrentCustomers() {
-        return this.currentCustomers;
+    public int getCurrentCustomerID() {
+        return currentCustomerID;
     }
-
-    public int getTotalCustomers() {
-        return this.totalCustomers;
-    }
-
-    public void addTotalCustomers(){
-        this.totalCustomers++;
-    }
-
-    public void incCurrentCustomers() {
-        this.currentCustomers++;
-    }
-
-    public void decCurrentCustomers() {
-        this.currentCustomers--;
-    }
-
-    public int getCustomersPayed() {
-
-        return this.payedCustomers;
-    }
-
-    public int getCustomersTurnedAway() {
-        return this.customersTurnedAway;
-    }
-
-    public void setEventName(String eventName) {
-        this.eventName = eventName;
+    public void setCurrentCustomerID(int customerID) {
+        this.currentCustomerID = customerID;
     }
 
     public String getEventName() {
         return eventName;
     }
+    public void setEventName(String eventName) {
+        this.eventName = eventName;
+    }
 
-    public void addPayedCustomers() {
+    public int getCurrentCustomers() {
+        return this.currentCustomers;
+    }
+    public void incCurrentCustomers() {
+        this.currentCustomers++;
+    }
+    public void decCurrentCustomers() {
+        this.currentCustomers--;
+    }
+
+    public int getOcupiedregisters() {
+        return ocupiedregisters;
+    }
+    public void incOcupiedregisters() {
+        this.ocupiedregisters++;
+    }
+    public void decOcupiedregisters() {
+        this.ocupiedregisters--;
+    }
+
+    public void incTotAmQueue() {
+        this.totAmQueue++;
+    }
+    public int getTotAmQueue() {
+        return totAmQueue;
+    }
+
+    public void incUnoccupiedRegTime(double timeDiff) {
+        unoccupiedRegTime += timeDiff * (registers - ocupiedregisters);
+    }
+    public double getUnoccupiedRegTime() {
+        return this.unoccupiedRegTime;
+    }
+
+    public void incPayedCustomers() {
         this.payedCustomers++;
+    }
+    public int getCustomersPayed() {
+        return this.payedCustomers;
+    }
+
+    public void incTotalCustomers() {
+        this.totalCustomers++;
+    }
+    public int getTotalCustomers() {
+        return this.totalCustomers;
     }
 
     public void incCustomersTurnedAway() {
         this.customersTurnedAway++;
     }
-
-    public void currentCustomerID(int customerID) {
-        this.currentCustomerID = customerID;
-    }
-
-    public int getCurrentCustomerID() {
-        return currentCustomerID;
-    }
-
-    public void currentEvent(Event event) {
-        currentEvent = event;
-        //setChanged();
-        //notifyObservers();
-    }
-
-    public double getUnoccupiedRegTime(){
-        return this.unoccupiedRegTime;
-    }
-
-    public void incUnoccupiedRegTime(double timeDiff) {
-        unoccupiedRegTime += timeDiff * (registers - ocupiedregisters);
-
-    }
-
-    public void incTimeInCQ(double timeDiff) {
-        this.timeQueued += (timeDiff * customerQueue.size());
+    public int getCustomersTurnedAway() {
+        return this.customersTurnedAway;
     }
 
     public double getTimeQueued() {
         return timeQueued;
     }
+    public void incTimeInCQ(double timeDiff) {
+        this.timeQueued += (timeDiff * customerQueue.size());
+    }
 
-    public void update(){
+    public void update() {
         setChanged();
         notifyObservers();
     }
-    public void isOpen(Boolean close){
-        open = close;
-    }
-
 }
 
 

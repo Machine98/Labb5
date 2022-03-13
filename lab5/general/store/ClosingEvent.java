@@ -13,7 +13,7 @@ public class ClosingEvent extends Event {
 
     @Override
     public void performEvent() {
-        storeState.isOpen(false);
+        storeState.setOpen(false);
         storeState.setEventName("Stänger");
         storeState.incUnoccupiedRegTime(super.EventTime() - storeState.getTimePassed());
         storeState.incTimeInCQ(super.EventTime() - storeState.getTimePassed());

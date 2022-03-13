@@ -20,7 +20,7 @@ public class PickUpEvent extends Event {
     @Override
     public void performEvent() {
         storeState.setEventName("Plock");
-        storeState.currentCustomerID(customerID.getCustomerID());
+        storeState.setCurrentCustomerID(customerID.getCustomerID());
         storeState.incTimeInCQ(super.EventTime() - storeState.getTimePassed());
         storeState.incUnoccupiedRegTime(super.EventTime() - storeState.getTimePassed());
         storeState.setTimePassed(super.EventTime());
@@ -32,7 +32,7 @@ public class PickUpEvent extends Event {
             eventQueue.addEvent(new PayAndLeaveEvent(storeState, newPayTime, customerID, eventQueue));
         } else {
             storeState.customerQueue.add(customerID);
-            storeState.addTotAmQueue();
+            storeState.incTotAmQueue();
         }
     }
 }

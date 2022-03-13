@@ -17,12 +17,12 @@ public class PayAndLeaveEvent extends Event {
     @Override
     public void performEvent() {
         storeState.setEventName("Betalning");
-        storeState.currentCustomerID(customerID.getCustomerID());
+        storeState.setCurrentCustomerID(customerID.getCustomerID());
         storeState.incTimeInCQ(super.EventTime() - storeState.getTimePassed());
         storeState.incUnoccupiedRegTime(super.EventTime() - storeState.getTimePassed());
         storeState.setTimePassed(super.EventTime());
         storeState.update();
-        storeState.addPayedCustomers();
+        storeState.incPayedCustomers();
         storeState.decCurrentCustomers();
 
         if (storeState.customerQueue.size() >= 1) {

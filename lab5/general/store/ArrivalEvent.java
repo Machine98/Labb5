@@ -18,14 +18,14 @@ public class ArrivalEvent extends Event {
     public void performEvent() {
         storeState.setEventName("Ankomst");
         customerID = new Customer(storeState.getTotalCustomers(), storeState);
-        storeState.currentCustomerID(customerID.getCustomerID());
+        storeState.setCurrentCustomerID(customerID.getCustomerID());
         storeState.incUnoccupiedRegTime(super.EventTime() - storeState.getTimePassed());
         storeState.incTimeInCQ(super.EventTime() - storeState.getTimePassed());
         storeState.setTimePassed(super.EventTime());
         storeState.update();
 
         if (storeState.isOpen()) {
-            storeState.addTotalCustomers();
+            storeState.incTotalCustomers();
             if (storeState.getCurrentCustomers() == storeState.getMaxCustomers()) {
                 storeState.incCustomersTurnedAway();
             } else {
