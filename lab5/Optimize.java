@@ -26,15 +26,16 @@ public class Optimize implements K{
      */
     public static void main(String[] args) {
 
-        //optSimulator(2,SEED);
-        optimizeRegisters(SEED);
-        //worstCaseOfOptReg(SEED);
+        optimizeRegisters(SEED); //metod 2
+        //worstCaseOfOptReg(SEED); //metod 3
     }
     /**
      * Runs the simulation, without printing any data, and returns the final store state.
      *
      * @param registers - Amount of registers.
      * @param seed - The seed that is sent as an argument to optSimulator().
+     *
+     * @return finale store state.
      */
     private static StoreState optSimulator(int registers, long seed){
 
@@ -60,6 +61,7 @@ public class Optimize implements K{
      * missed customers for the given seed.
      *
      * @param seed - The seed that is sent as an argument to optSimulator().
+     * @return Smallest amount of registers.
      */
     private static int optimizeRegisters(long seed) {
         StoreState newState;
@@ -87,6 +89,7 @@ public class Optimize implements K{
      *
      *
      * @param f - The seed to the random number generator, Random(f).
+     *
      */
     private static void worstCaseOfOptReg(long f) {
         Random randomSeed = new Random(f);
@@ -110,6 +113,12 @@ public class Optimize implements K{
         System.out.println("Worst case - minst antal kassor: "+optimalAmOfReg);
 
     }
+    /**
+     * Prints the parameters to the simulation, and the result of the optimization.
+     *
+     *
+     *
+     */
     private static void printParam() {
         System.out.println("Max som ryms, M..........: "+M);
         System.out.println("Ankomshastighet, lambda..: "+L);
