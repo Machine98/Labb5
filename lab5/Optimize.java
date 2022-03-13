@@ -52,7 +52,7 @@ public class Optimize implements K{
 
         Simulator simulator = new Simulator(storeState, view, eventQueue);
         simulator.optRun();
-        //System.out.println(storeState.getCustomersTurnedAway());
+
         return storeState;
     }
     /**
@@ -69,7 +69,7 @@ public class Optimize implements K{
         int missed = 99999;
         for (int i = M; i >= 1; i--) {
             newState = optSimulator(i,seed);
-            //System.out.println(newState.getCustomersTurnedAway());
+
             if(missed < newState.getCustomersTurnedAway()) {
                 break;
             }
@@ -77,7 +77,9 @@ public class Optimize implements K{
             optimalAmOfReg = i;
         }
 
-        System.out.println("Minst antal kassor: "+"("+missed+") "+optimalAmOfReg);
+        printParam();
+        System.out.print("Minsta antal kassor som ger minimalt antal missade ");
+        System.out.println("("+missed+") "+optimalAmOfReg);
         return optimalAmOfReg;
     }
     /**
@@ -104,8 +106,17 @@ public class Optimize implements K{
                 break;
             }
         }
-        System.out.print("Worst case - minst antal kassor: "+optimalAmOfReg);
+        printParam();
+        System.out.println("Worst case - minst antal kassor: "+optimalAmOfReg);
 
+    }
+    private static void printParam() {
+        System.out.println("Max som ryms, M..........: "+M);
+        System.out.println("Ankomshastighet, lambda..: "+L);
+        System.out.println("Plocktider, [P_min..Pmax]: "+"["+LOW_COLLECTION_TIME+" .. "+HIGH_COLLECTION_TIME+"]");
+        System.out.println("Plocktider, [P_min..Pmax]: "+"["+LOW_PAYMENT_TIME+" .. "+HIGH_PAYMENT_TIME+"]");
+        System.out.println("Frö, f...................: "+SEED);
+        System.out.println("Stängning sker tiden "+END_TIME+" och stophändelsen sker tiden "+STOP_TIME);
     }
 
 }
