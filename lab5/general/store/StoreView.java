@@ -44,23 +44,7 @@ public class StoreView extends View {
     }
 
     public void update(Observable arg0, Object f) {
-        String event = "";
 
-        if (storeState.getEventName() == "Ankomst"){
-            event = "Ankomst";
-        }
-        else if (storeState.getEventName() == "Plock"){
-            event = "Plock";
-        }
-        else if (storeState.getEventName() == "Betalning"){
-            event = "Betalning";
-        }
-        else if (storeState.getEventName() == "Stänger"){
-            event = "Stänger";
-        }
-        else {
-            event = storeState.getEventName();
-        }
         String currentQueue = "[";
         for (int i = 0; i < storeState.customerQueue.size(); i ++){
             customerID = (Customer) storeState.customerQueue.getIndex(i);
@@ -74,12 +58,16 @@ public class StoreView extends View {
         currentQueue = currentQueue + "]";
 
         String infoRow;
-        infoRow = String.format("%.2f\t %-10s %-10s %-10s %-10s %.2f\t %-10s %-10s %-10s %-10s %.2f\t %-10s %s", storeState.getTimePassed(),
-                event, storeState.getCurrentCustomerID(), storeState.isOpen() ? "O" : "C", storeState.getRegisters() - storeState.getOcupiedregisters(),
-                storeState.getUnoccupiedRegTime(), storeState.getCurrentCustomers(), storeState.getCustomersPayed(),
-                storeState.getCustomersTurnedAway(), storeState.getTotAmQueue(), storeState.getTimeQueued(),
-                storeState.customerQueue.size(), currentQueue + "\n");
-
+        if (storeState.getEventName() != "Stop") {
+            infoRow = String.format("%.2f\t %-10s %-10s %-10s %-10s %.2f\t %-10s %-10s %-10s %-10s %.2f\t %-10s %s", storeState.getTimePassed(),
+                    storeState.getEventName(), storeState.getCurrentCustomerID(), storeState.isOpen() ? "ö" : "C", storeState.getRegisters() - storeState.getOcupiedregisters(),
+                    storeState.getUnoccupiedRegTime(), storeState.getCurrentCustomers(), storeState.getCustomersPayed(),
+                    storeState.getCustomersTurnedAway(), storeState.getTotAmQueue(), storeState.getTimeQueued(),
+                    storeState.customerQueue.size(), currentQueue + "\n");
+        }
+        else{
+            infoRow = String.format("%.2f\t %-10s",storeState.getTimePassed(), storeState.getEventName()) + "\n";
+        }
         System.out.print(infoRow);
     }
 }

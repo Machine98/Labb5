@@ -8,10 +8,6 @@ public abstract class State extends Observable {
 
     public double timePassed;
 
-    public boolean isSimulating() {
-        return simulating;
-    }
-
     public void setSimulating(boolean simulating) {
         this.simulating = simulating;
     }
@@ -19,7 +15,7 @@ public abstract class State extends Observable {
     protected boolean simulating = true;
 
     public State() {
-        this.timePassed = 0d;
+        this.timePassed = 0;
     }
 
     public double getTimePassed() {
