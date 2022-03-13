@@ -38,7 +38,7 @@ public class ArrivalEvent extends Event {
     @Override
     public void performEvent() {
         storeState.setEventName("Ankomst");
-        customerID = new Customer(storeState.getTotalCustomers(), storeState);
+        customerID = new Customer(storeState.getTotalCustomers());
         storeState.setCurrentCustomerID(customerID.getCustomerID());
         storeState.incUnoccupiedRegTime(super.EventTime() - storeState.getTimePassed());
         storeState.incTimeInCQ(super.EventTime() - storeState.getTimePassed());
