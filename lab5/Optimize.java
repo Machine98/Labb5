@@ -26,9 +26,8 @@ public class Optimize implements K{
      */
     public static void main(String[] args) {
 
-        //optSimulator(2,SEED);
-        //optimizeRegisters(SEED);
-        worstCaseOfOptReg(SEED);
+        //optimizeRegisters(SEED); //metod 2
+        worstCaseOfOptReg(SEED); // metod 3
     }
     /**
      * Runs the simulation, without printing any data, and returns the final store state.

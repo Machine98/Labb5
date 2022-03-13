@@ -46,6 +46,9 @@ public class Simulator {
         ((StoreView) view).lastPrint();
     }
 
+    /**
+     * Handles performing the events in the queue without calling any prints.
+     */
     public void optRun() {
         while (!eventQueue.isEmpty() && state.simulating) {
             event = eventQueue.getNext();
