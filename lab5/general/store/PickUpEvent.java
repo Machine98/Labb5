@@ -42,7 +42,8 @@ public class PickUpEvent extends Event {
     public void performEvent() {
         storeState.setEventName("Plock");
         storeState.setCurrentCustomerID(customerID.getCustomerID());
-        storeState.incTimeInCQ(super.EventTime() - storeState.getTimePassed());
+        storeState.incTimeInCQ(super.EventTime() - storeState.getTimePassed()); // Increase Time in Queue.
+        // Increase Time for occupied Registers.
         storeState.incUnoccupiedRegTime(super.EventTime() - storeState.getTimePassed());
         storeState.setTimePassed(super.EventTime());
         storeState.update();
@@ -53,7 +54,7 @@ public class PickUpEvent extends Event {
             eventQueue.addEvent(new PayAndLeaveEvent(storeState, newPayTime, customerID, eventQueue));
         } else {
             storeState.customerQueue.add(customerID);
-            storeState.incTotAmQueue();
+            storeState.incTotAmQueue(); // Increase Total amount of Customers in Queue.
         }
     }
 }
