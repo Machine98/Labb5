@@ -96,9 +96,14 @@ public class StoreView extends View {
                     storeState.getUnoccupiedRegTime(), storeState.getCurrentCustomers(), storeState.getCustomersPayed(),
                     storeState.getCustomersTurnedAway(), storeState.getTotAmQueue(), storeState.getTimeQueued(),
                     storeState.customerQueue.size(), currentQueue + "\n");
-        } else if (storeState.getEventName() == "Start") {
+        }
+        else if (storeState.getEventName() == "Start") {
             infoRow = String.format("%.2f\t %-10s", storeState.getTimePassed(), storeState.getEventName()) + "\n";
-        } else {
+        }
+        else if (storeState.getEventName() == "End"){
+            infoRow = String.format("%.2f\t %-10s", storeState.getTimePassed(), storeState.getEventName()) + "\n";
+        }
+        else {
             infoRow = String.format("%.2f\t %-10s %-10s %-10s %-10s %.2f\t %-10s %-10s %-10s %-10s %.2f\t %-10s %s", storeState.getTimePassed(),
                     storeState.getEventName(), storeState.getCurrentCustomerID(), storeState.isOpen() ? "Ö" : "S", storeState.getRegisters() - storeState.getOcupiedregisters(),
                     storeState.getUnoccupiedRegTime(), storeState.getCurrentCustomers(), storeState.getCustomersPayed(),

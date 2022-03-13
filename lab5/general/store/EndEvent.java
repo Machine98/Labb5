@@ -14,6 +14,7 @@ import lab5.general.EventQueue;
 
 public class EndEvent extends Event {
     private StoreState storeState;
+    private double time;
 
     /**
      * Constructor
@@ -22,10 +23,13 @@ public class EndEvent extends Event {
      * @param time - The time that it takes for an event to be run
      * @param eventQueue - The event queue where it will add new events
      */
+
     public EndEvent(StoreState storeState, double time, EventQueue eventQueue) {
         super(storeState, time, eventQueue);
         this.storeState = storeState;
         this.eventQueue = eventQueue;
+        this.time = time;
+
     }
 
     /**
@@ -34,6 +38,9 @@ public class EndEvent extends Event {
 
     @Override
     public void performEvent() {
+        storeState.setEventName("End");
+        storeState.setTimePassed(time);
+        storeState.update();
         storeState.setSimulating(false);
     }
 }
