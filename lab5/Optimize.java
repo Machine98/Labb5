@@ -26,17 +26,17 @@ public class Optimize implements K{
      */
     public static void main(String[] args) {
 
-        //metod1(2,SEED);
-        metod2(SEED);
-        //metod3(SEED);
+        //optSimulator(2,SEED);
+        optimizeRegisters(SEED);
+        //worstCaseOfOptReg(SEED);
     }
     /**
-     * Runs the simulation, without printing any data, and returns the final state.
+     * Runs the simulation, without printing any data, and returns the final store state.
      *
-     *
-     * @param seed - The seed that is sent as an argument to metod1().
+     * @param registers - Amount of registers.
+     * @param seed - The seed that is sent as an argument to optSimulator().
      */
-    private static StoreState metod1(int registers, long seed){
+    private static StoreState optSimulator(int registers, long seed){
 
         StoreState storeState = new StoreState(seed, M, registers, LOW_COLLECTION_TIME, HIGH_COLLECTION_TIME,
                 LOW_PAYMENT_TIME, HIGH_PAYMENT_TIME, L);
@@ -59,16 +59,16 @@ public class Optimize implements K{
      * Finds the lowest number of registers that minimizes the number of
      * missed customers for the given seed.
      *
-     * @param seed - The seed that is sent as an argument to metod1().
+     * @param seed - The seed that is sent as an argument to optSimulator().
      */
-    private static int metod2(long seed) {
+    private static int optimizeRegisters(long seed) {
         StoreState newState;
 
         int optimalAmOfReg = 0;
 
         int missed = 99999;
         for (int i = M; i >= 1; i--) {
-            newState = metod1(i,seed);
+            newState = optSimulator(i,seed);
             //System.out.println(newState.getCustomersTurnedAway());
             if(missed < newState.getCustomersTurnedAway()) {
                 break;
@@ -81,17 +81,17 @@ public class Optimize implements K{
         return optimalAmOfReg;
     }
     /**
-     * Test different seeds to find the highest return value of metod2().
+     * Test different seeds to find the highest return value of optimizeRegisters().
      *
      *
      * @param f - The seed to the random number generator, Random(f).
      */
-    private static void metod3(long f) {
+    private static void worstCaseOfOptReg(long f) {
         Random randomSeed = new Random(f);
         int loopsSinceChange = 0;
         int optimalAmOfReg = 1;
         while(true) {
-            int newOptRegisters = metod2(randomSeed.nextLong());
+            int newOptRegisters = optimizeRegisters(randomSeed.nextLong());
 
             if(newOptRegisters > optimalAmOfReg) {
                 loopsSinceChange = 0;
