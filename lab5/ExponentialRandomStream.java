@@ -13,40 +13,39 @@ import java.util.Random;
 
 
 public class ExponentialRandomStream {
-	
-	private Random rand;
-	private double lambda;
 
-	/**
-	 * Constructor
-	 *
-	 * @param lambda - a simulator constant
-	 * @param seed - a seed used to initialize a pseudorandom number generator
-	 */
+    private Random rand;
+    private double lambda;
 
-	public ExponentialRandomStream(double lambda, long seed) {
-	  	rand = new Random(seed);
-	  	this.lambda = lambda;
-	}
+    /**
+     * Constructor
+     *
+     * @param lambda - a simulator constant
+     * @param seed   - a seed used to initialize a pseudorandom number generator
+     */
 
-	/**
-	 * Constructor
-	 *
-	 * @param lambda - a simulator constant
-	 */
-	  
-	public ExponentialRandomStream(double lambda) {
-		rand = new Random();
-	    this.lambda = lambda;
-	}
+    public ExponentialRandomStream(double lambda, long seed) {
+        rand = new Random(seed);
+        this.lambda = lambda;
+    }
 
-	/**
-	 *
-	 * @return A random double that is divided with the variable lambda
-	 */
+    /**
+     * Constructor
+     *
+     * @param lambda - a simulator constant
+     */
 
-	public double next() {
-	  	return -Math.log(rand.nextDouble())/lambda;
-	}
+    public ExponentialRandomStream(double lambda) {
+        rand = new Random();
+        this.lambda = lambda;
+    }
+
+    /**
+     * @return A random double that is divided with the variable lambda
+     */
+
+    public double next() {
+        return -Math.log(rand.nextDouble()) / lambda;
+    }
 }
 
