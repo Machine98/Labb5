@@ -22,7 +22,6 @@ public class StoreState extends State {
     private double maxPayTime;
     private double lambda;
     private double unoccupiedRegTime;
-    private double timeInCQ;
     private double timeQueued;
 
     private int ocupiedregisters;
@@ -52,7 +51,6 @@ public class StoreState extends State {
         this.ArrivalTime = new ArrivalTimeCalc(lambda, seed);
         this.customerQueue = new CustomerQueue();
         this.unoccupiedRegTime = 0.0d;
-        this.timeInCQ = 0.0;
     }
 
     public boolean freeRegisters() {
