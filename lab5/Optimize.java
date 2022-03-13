@@ -27,8 +27,8 @@ public class Optimize implements K{
     public static void main(String[] args) {
 
         //optSimulator(2,SEED);
-        optimizeRegisters(SEED);
-        //worstCaseOfOptReg(SEED);
+        //optimizeRegisters(SEED);
+        worstCaseOfOptReg(SEED);
     }
     /**
      * Runs the simulation, without printing any data, and returns the final store state.
@@ -77,9 +77,9 @@ public class Optimize implements K{
             optimalAmOfReg = i;
         }
 
-        printParam();
-        System.out.print("Minsta antal kassor som ger minimalt antal missade ");
-        System.out.println("("+missed+") "+optimalAmOfReg);
+        //printParam();
+        //System.out.print("\nMinsta antal kassor som ger minimalt antal missade ");
+        //System.out.println("("+missed+") "+optimalAmOfReg);
         return optimalAmOfReg;
     }
     /**
@@ -107,7 +107,7 @@ public class Optimize implements K{
             }
         }
         printParam();
-        System.out.println("Worst case - minst antal kassor: "+optimalAmOfReg);
+        System.out.println("\nWorst case - minst antal kassor: "+optimalAmOfReg);
 
     }
     private static void printParam() {
@@ -116,7 +116,7 @@ public class Optimize implements K{
         System.out.println("Plocktider, [P_min..Pmax]: "+"["+LOW_COLLECTION_TIME+" .. "+HIGH_COLLECTION_TIME+"]");
         System.out.println("Plocktider, [P_min..Pmax]: "+"["+LOW_PAYMENT_TIME+" .. "+HIGH_PAYMENT_TIME+"]");
         System.out.println("Frö, f...................: "+SEED);
-        System.out.println("Stängning sker tiden "+END_TIME+" och stophändelsen sker tiden "+STOP_TIME);
+        System.out.println("\nStängning sker tiden "+END_TIME+" och stophändelsen sker tiden "+STOP_TIME);
     }
 
 }
