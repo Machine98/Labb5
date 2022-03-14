@@ -26,8 +26,8 @@ public class Optimize implements K{
      */
     public static void main(String[] args) {
 
-        optimizeRegisters(SEED); //metod 2
-        //worstCaseOfOptReg(SEED); // metod 3
+        //optimizeRegisters(SEED); //metod 2
+        worstCaseOfOptReg(SEED); // metod 3
     }
     /**
      * Runs the simulation, without printing any data, and returns the final store state.
@@ -61,10 +61,10 @@ public class Optimize implements K{
      *
      * @param seed - The seed that is sent as an argument to optSimulator().
      */
-    private static int optimizeRegisters(long seed) {
+    private static int[] optimizeRegisters(long seed) {
         StoreState newState;
 
-        int optimalAmOfReg = 0;
+        int[] optimalAmOfReg = {0,0};
 
         int missed = 99999;
         // Loops through different amount of registers
@@ -77,12 +77,13 @@ public class Optimize implements K{
             }
             //otherwise set new missed and new optimal amount of registers.
             missed = newState.getCustomersTurnedAway();
-            optimalAmOfReg = i;
+            optimalAmOfReg[0] = i;
+            optimalAmOfReg[1] = missed;
         }
 
-        printParam();
-        System.out.print("\nMinsta antal kassor som ger minimalt antal missade ");
-        System.out.println("("+missed+") "+optimalAmOfReg);
+        //printParam();
+        //System.out.print("\nMinsta antal kassor som ger minimalt antal missade ");
+        //System.out.println("("+missed+") "+optimalAmOfReg);
         return optimalAmOfReg;
     }
     /**
@@ -96,15 +97,17 @@ public class Optimize implements K{
         Random randomSeed = new Random(f);
         int loopsSinceChange = 0;
         int worstOptimalAmOfReg = 1;
+        int missed = 0;
         while(true) {
             //get optimal amount of registers for a new random seed.
-            int newOptRegisters = optimizeRegisters(randomSeed.nextLong());
-
+            int[] newOptRegisters = optimizeRegisters(randomSeed.nextLong());
+            int tempBest = newOptRegisters[0];
+            missed = newOptRegisters[1];
             //check if it's bigger than the last
-            if(newOptRegisters > worstOptimalAmOfReg) {
+            if(tempBest > worstOptimalAmOfReg) {
                 loopsSinceChange = 0;
                 //and if it is, set new worstOptimalAmOfReg and reset the counter.
-                worstOptimalAmOfReg = newOptRegisters;
+                worstOptimalAmOfReg = tempBest;
             }
             else {
                 //If it's not bigger, then increase the counter.
@@ -116,9 +119,9 @@ public class Optimize implements K{
             }
         }
         printParam();
-        System.out.println("\nWorst case - minst antal kassor: "+worstOptimalAmOfReg);
-
+        System.out.println("\nWorst case - minst antal kassor: "+" ("+missed+") "+worstOptimalAmOfReg);
     }
+
     private static void printParam() {
         System.out.println("Max som ryms, M..........: "+M);
         System.out.println("Ankomshastighet, lambda..: "+L);
