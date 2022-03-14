@@ -18,7 +18,7 @@ public interface K {
 		
 	
 	//Ex 2:
-      /*public static final int M = 7;
+      public static final int M = 7;
       public static final double L = 2;
 
       public static final double LOW_COLLECTION_TIME = 0.5d;
@@ -29,7 +29,7 @@ public interface K {
 
 	  public static final int SEED = 1234;
 	  public static final double END_TIME = 10.0d;
-	  public static final double STOP_TIME = 999.0d;*/
+	  public static final double STOP_TIME = 999.0d;
 	  
 	// Ex 3: (som sim2)
   /*public static final int M = 7;
@@ -61,7 +61,7 @@ public interface K {
 
     // Ex 5
     
-    public static final int M = 1400;
+    /*public static final int M = 1400;
     public static final double L = 100;
 
     public static final double LOW_COLLECTION_TIME = 0.45d;
@@ -72,7 +72,7 @@ public interface K {
 
     public static final int SEED = 42;
     public static final double END_TIME = 20.0d;
-    public static final double STOP_TIME = 999.0d;
+    public static final double STOP_TIME = 999.0d;*/
     
 // Ex 6
     

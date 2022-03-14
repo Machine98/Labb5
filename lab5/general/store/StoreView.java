@@ -34,6 +34,7 @@ public class StoreView extends View {
      * Handles the first print that includes the simulations parameters
      */
 
+    @Override
     public void firstPrint() {
         System.out.println("PARAMETRAR");
         System.out.println("==========");
@@ -48,8 +49,8 @@ public class StoreView extends View {
 
         System.out.println("\nFÖRLOPP");
         System.out.println("=======");
-        String header = String.format("%-5s\t %-10s %-10s %-10s %-10s %s\t %-10s %-9s %-10s %-11s %-3s\t %-10s %s",
-                "Tid", "Händelse", "Kund", "?", "led", "ledT", "I", "$", ":-(", "köat", "köT", "köar", "[Kassakö..]\n");
+        String header = String.format("%-5s\t %-10s %-10s %-10s %-10s %s\t %-10s %-9s %-10s %-11s %-3s\t %-5s %s",
+                "Tid", "Händelse", "Kund", "?", "led", "ledT", "I", "$", ":-(", "köat", "köT", "köar", "[Kassakö..]");
         System.out.println(header);
     }
 
@@ -57,6 +58,7 @@ public class StoreView extends View {
      * Handles the last print that includes the simulations results
      */
 
+    @Override
     public void lastPrint() {
         System.out.println("");
         System.out.println("RESULTAT");
@@ -100,7 +102,7 @@ public class StoreView extends View {
 
         String infoRow;
         if (storeState.getEventName() == "Stänger") {
-            infoRow = String.format("%.2f\t %-10s %-10s %-10s %-10s %.2f\t %-10s %-10s %-10s %-10s %.2f\t %-10s %s",
+            infoRow = String.format("%.2f\t %-13s %-7s %-12s %-8s %.2f\t %-10s %-10s %-12s %-8s %.2f\t %-10s %s",
                     storeState.getTimePassed(),
                     storeState.getEventName(), "---", storeState.isOpen() ? "Ö" : "S", storeState.getRegisters() -
                             storeState.getOcupiedregisters(),
@@ -112,7 +114,7 @@ public class StoreView extends View {
         } else if (storeState.getEventName() == "Stop") {
             infoRow = String.format("%.2f\t %-10s", storeState.getTimePassed(), storeState.getEventName()) + "\n";
         } else {
-            infoRow = String.format("%.2f\t %-10s %-10s %-10s %-10s %.2f\t %-10s %-10s %-10s %-10s %.2f\t %-10s %s",
+            infoRow = String.format("%.2f\t %-13s %-7s %-12s %-8s %.2f\t %-10s %-10s %-12s %-8s %.2f\t %-10s %s",
                     storeState.getTimePassed(),
                     storeState.getEventName(), storeState.getCurrentCustomerID(), storeState.isOpen() ? "Ö" : "S",
                     storeState.getRegisters() - storeState.getOcupiedregisters(),

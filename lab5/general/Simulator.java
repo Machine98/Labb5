@@ -37,13 +37,13 @@ public class Simulator {
      */
 
     public void run() {
-        ((StoreView) view).firstPrint();
+        view.firstPrint();
         while (!eventQueue.isEmpty() && state.simulating) {
             event = eventQueue.getNext();
             event.performEvent();
         }
         ((StoreState) state).setLastEventTime(event.EventTime());
-        ((StoreView) view).lastPrint();
+        view.lastPrint();
     }
 
     /**

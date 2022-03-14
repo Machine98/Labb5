@@ -2,6 +2,7 @@ package lab5.general.store;
 
 import lab5.general.Event;
 import lab5.general.EventQueue;
+import lab5.general.View;
 
 /**
  * Represents the end of the simulation
@@ -29,7 +30,6 @@ public class EndEvent extends Event {
         this.storeState = storeState;
         this.eventQueue = eventQueue;
         this.time = time;
-
     }
 
     /**

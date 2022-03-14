@@ -22,4 +22,9 @@ public abstract class View implements Observer {
     @Override
     public void update(Observable arg0, Object f) {
     }
+
+    public abstract void firstPrint();
+
+    public abstract void lastPrint();
+
 }

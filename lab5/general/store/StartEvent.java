@@ -2,6 +2,7 @@ package lab5.general.store;
 
 import lab5.general.Event;
 import lab5.general.EventQueue;
+import lab5.general.View;
 
 /**
  * Represents the start of the simulation
@@ -15,7 +16,6 @@ import lab5.general.EventQueue;
 public class StartEvent extends Event {
     private double time;
     private StoreState storeState;
-
     /**
      * Constructor
      *

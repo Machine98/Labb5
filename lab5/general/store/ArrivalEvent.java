@@ -40,6 +40,7 @@ public class ArrivalEvent extends Event {
         storeState.setEventName("Ankomst");
         customerID = new Customer(storeState.getTotalCustomers());
         storeState.setCurrentCustomerID(customerID.getCustomerID());
+        storeState.update();
 
         if (storeState.isOpen()) {
             storeState.incTimeInCQ(super.EventTime() - storeState.getTimePassed()); // Increase Time in Queue.
@@ -57,6 +58,6 @@ public class ArrivalEvent extends Event {
             double newArrivalTime = time + storeState.getArrivalTime();
             eventQueue.addEvent(new ArrivalEvent(storeState, newArrivalTime, eventQueue));
         }
-        storeState.update();
+
     }
 }
