@@ -40,13 +40,13 @@ public class ArrivalEvent extends Event {
         storeState.setEventName("Ankomst");
         customerID = new Customer(storeState.getTotalCustomers());
         storeState.setCurrentCustomerID(customerID.getCustomerID());
+        // Increase Time for occupied Registers.
+        storeState.incUnoccupiedRegTime(super.EventTime() - storeState.getTimePassed());
+        storeState.incTimeInCQ(super.EventTime() - storeState.getTimePassed()); // Increase Time in Queue.
+        storeState.setTimePassed(super.EventTime());
         storeState.update();
 
         if (storeState.isOpen()) {
-            storeState.incTimeInCQ(super.EventTime() - storeState.getTimePassed()); // Increase Time in Queue.
-            // Increase Time for occupied Registers.
-            storeState.incUnoccupiedRegTime(super.EventTime() - storeState.getTimePassed());
-            storeState.setTimePassed(super.EventTime());
             storeState.incTotalCustomers();
             if (storeState.getCurrentCustomers() == storeState.getMaxCustomers()) {
                 storeState.incCustomersTurnedAway();
@@ -58,6 +58,5 @@ public class ArrivalEvent extends Event {
             double newArrivalTime = time + storeState.getArrivalTime();
             eventQueue.addEvent(new ArrivalEvent(storeState, newArrivalTime, eventQueue));
         }
-
     }
 }

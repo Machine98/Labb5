@@ -42,7 +42,6 @@ public class Simulator {
             event = eventQueue.getNext();
             event.performEvent();
         }
-        ((StoreState) state).setLastEventTime(event.EventTime());
         view.lastPrint();
     }
 
