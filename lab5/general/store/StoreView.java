@@ -49,7 +49,7 @@ public class StoreView extends View {
 
         System.out.println("\nFÖRLOPP");
         System.out.println("=======");
-        String header = String.format("%-5s\t %-10s %-10s %-10s %-10s %s\t %-10s %-9s %-10s %-11s %-3s\t %-5s %s",
+        String header = String.format("%-5s\t %-10s %-6s %-5s %-10s %s\t %-10s %-9s %-10s %-11s %-8s %-13s %s",
                 "Tid", "Händelse", "Kund", "?", "led", "ledT", "I", "$", ":-(", "köat", "köT", "köar", "[Kassakö..]");
         System.out.println(header);
     }
@@ -102,7 +102,7 @@ public class StoreView extends View {
 
         String infoRow;
         if (storeState.getEventName() == "Stänger") {
-            infoRow = String.format("%.2f\t %-13s %-7s %-12s %-8s %.2f\t %-10s %-10s %-12s %-8s %.2f\t %-10s %s",
+            infoRow = String.format("%.2f\t %-13s %-3s %-7s %-8s %.2f\t %-10s %-10s %-12s %-7s %-8.2f\t %-10s %s",
                     storeState.getTimePassed(),
                     storeState.getEventName(), "---", storeState.isOpen() ? "Ö" : "S", storeState.getRegisters() -
                             storeState.getOcupiedregisters(),
@@ -114,7 +114,7 @@ public class StoreView extends View {
         } else if (storeState.getEventName() == "Stop") {
             infoRow = String.format("%.2f\t %-10s", storeState.getTimePassed(), storeState.getEventName()) + "\n";
         } else {
-            infoRow = String.format("%.2f\t %-13s %-7s %-12s %-8s %.2f\t %-10s %-10s %-12s %-8s %.2f\t %-10s %s",
+            infoRow = String.format("%.2f\t %-13s %-3s %-7s %-8s %.2f\t %-10s %-10s %-12s %-7s %-8.2f\t %-10s %s",
                     storeState.getTimePassed(),
                     storeState.getEventName(), storeState.getCurrentCustomerID(), storeState.isOpen() ? "Ö" : "S",
                     storeState.getRegisters() - storeState.getOcupiedregisters(),

@@ -83,7 +83,7 @@ public class Optimize implements K{
 
         //printParam();
         //System.out.print("\nMinsta antal kassor som ger minimalt antal missade ");
-        //System.out.println("("+missed+") "+optimalAmOfReg);
+        //System.out.println("("+missed+") "+optimalAmOfReg[0]);
         return optimalAmOfReg;
     }
     /**
