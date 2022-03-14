@@ -42,7 +42,6 @@ public class ArrivalEvent extends Event {
         storeState.setCurrentCustomerID(customerID.getCustomerID());
 
         if (storeState.isOpen()) {
-            storeState.setSecondToLastEventTime();
             storeState.incTimeInCQ(super.EventTime() - storeState.getTimePassed()); // Increase Time in Queue.
             // Increase Time for occupied Registers.
             storeState.incUnoccupiedRegTime(super.EventTime() - storeState.getTimePassed());

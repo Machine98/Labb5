@@ -26,8 +26,8 @@ public class Optimize implements K{
      */
     public static void main(String[] args) {
 
-        //optimizeRegisters(SEED); //metod 2
-        worstCaseOfOptReg(SEED); // metod 3
+        optimizeRegisters(SEED); //metod 2
+        //worstCaseOfOptReg(SEED); // metod 3
     }
     /**
      * Runs the simulation, without printing any data, and returns the final store state.
@@ -80,9 +80,9 @@ public class Optimize implements K{
             optimalAmOfReg = i;
         }
 
-        //printParam();
-        //System.out.print("\nMinsta antal kassor som ger minimalt antal missade ");
-        //System.out.println("("+missed+") "+optimalAmOfReg);
+        printParam();
+        System.out.print("\nMinsta antal kassor som ger minimalt antal missade ");
+        System.out.println("("+missed+") "+optimalAmOfReg);
         return optimalAmOfReg;
     }
     /**
